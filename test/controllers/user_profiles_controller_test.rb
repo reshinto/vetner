@@ -17,7 +17,7 @@ class UserProfilesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user_profile" do
     assert_difference('UserProfile.count') do
-      post user_profiles_url, params: { user_profile: { address: @user_profile.address, first_name: @user_profile.first_name, image: @user_profile.image, last_name: @user_profile.last_name, phone: @user_profile.phone, username: @user_profile.username } }
+      post user_profiles_url, params: { user_profile: { address: @user_profile.address, first_name: @user_profile.first_name, image: @user_profile.image, last_name: @user_profile.last_name, phone: @user_profile.phone, user_id: @user_profile.user_id, username: @user_profile.username } }
     end
 
     assert_redirected_to user_profile_url(UserProfile.last)
@@ -34,7 +34,7 @@ class UserProfilesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user_profile" do
-    patch user_profile_url(@user_profile), params: { user_profile: { address: @user_profile.address, first_name: @user_profile.first_name, image: @user_profile.image, last_name: @user_profile.last_name, phone: @user_profile.phone, username: @user_profile.username } }
+    patch user_profile_url(@user_profile), params: { user_profile: { address: @user_profile.address, first_name: @user_profile.first_name, image: @user_profile.image, last_name: @user_profile.last_name, phone: @user_profile.phone, user_id: @user_profile.user_id, username: @user_profile.username } }
     assert_redirected_to user_profile_url(@user_profile)
   end
 

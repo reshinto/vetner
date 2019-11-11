@@ -7,6 +7,7 @@ one:
   phone: MyString
   username: MyString
   image: MyText
+  user: one
 
 two:
   first_name: MyString
@@ -15,3 +16,4 @@ two:
   phone: MyString
   username: MyString
   image: MyText
+  user: two

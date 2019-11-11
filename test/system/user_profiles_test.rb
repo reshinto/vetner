@@ -19,6 +19,7 @@ class UserProfilesTest < ApplicationSystemTestCase
     fill_in "Image", with: @user_profile.image
     fill_in "Last name", with: @user_profile.last_name
     fill_in "Phone", with: @user_profile.phone
+    fill_in "User", with: @user_profile.user_id
     fill_in "Username", with: @user_profile.username
     click_on "Create User profile"
 
@@ -35,6 +36,7 @@ class UserProfilesTest < ApplicationSystemTestCase
     fill_in "Image", with: @user_profile.image
     fill_in "Last name", with: @user_profile.last_name
     fill_in "Phone", with: @user_profile.phone
+    fill_in "User", with: @user_profile.user_id
     fill_in "Username", with: @user_profile.username
     click_on "Update User profile"
 
