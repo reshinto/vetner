@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vet Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clinic name</th>
+      <th>Address</th>
+      <th>Postalcode</th>
+      <th>Phone</th>
+      <th>Hours</th>
+      <th>Services</th>
+      <th>Vet</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vet_profiles.each do |vet_profile| %>
+      <tr>
+        <td><%= vet_profile.clinic_name %></td>
+        <td><%= vet_profile.address %></td>
+        <td><%= vet_profile.postalcode %></td>
+        <td><%= vet_profile.phone %></td>
+        <td><%= vet_profile.hours %></td>
+        <td><%= vet_profile.services %></td>
+        <td><%= vet_profile.vet %></td>
+        <td><%= vet_profile.image %></td>
+        <td><%= link_to 'Show', vet_profile %></td>
+        <td><%= link_to 'Edit', edit_vet_profile_path(vet_profile) %></td>
+        <td><%= link_to 'Destroy', vet_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vet Profile', new_vet_profile_path %>

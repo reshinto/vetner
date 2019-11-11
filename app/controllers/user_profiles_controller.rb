@@ -1,5 +1,6 @@
 class UserProfilesController < ApplicationController
   before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /user_profiles
   # GET /user_profiles.json

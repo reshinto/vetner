@@ -1,0 +1,2 @@
+module VetProfilesHelper
+end
