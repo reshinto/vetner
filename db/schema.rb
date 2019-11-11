@@ -41,6 +41,20 @@ ActiveRecord::Schema.define(version: 2019_11_11_084536) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vet_profiles", force: :cascade do |t|
+    t.text "clinic_name"
+    t.text "address"
+    t.string "postalcode"
+    t.string "phone"
+    t.string "hours"
+    t.text "services"
+    t.bigint "vet_id"
+    t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vet_id"], name: "index_vet_profiles_on_vet_id"
+  end
+
   create_table "vets", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -54,4 +68,5 @@ ActiveRecord::Schema.define(version: 2019_11_11_084536) do
   end
 
   add_foreign_key "user_profiles", "users"
+  add_foreign_key "vet_profiles", "vets"
 end
