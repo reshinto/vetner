@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_153404) do
+ActiveRecord::Schema.define(version: 2019_11_11_155456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pet_records", force: :cascade do |t|
+    t.string "title"
+    t.date "date"
+    t.text "content"
+    t.bigint "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_pet_records_on_pet_id"
+  end
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
@@ -79,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_153404) do
     t.index ["reset_password_token"], name: "index_vets_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pet_records", "pets"
   add_foreign_key "pets", "users"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "vet_profiles", "vets"

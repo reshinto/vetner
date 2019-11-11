@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @pet_record.title %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @pet_record.date %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @pet_record.content %>
+</p>
+
+<p>
+  <strong>Pet:</strong>
+  <%= @pet_record.pet %>
+</p>
+
+<%= link_to 'Edit', edit_pet_record_path(@pet_record) %> |
+<%= link_to 'Back', pet_records_path %>
