@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :vet_profiles
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :vets
   devise_for :users

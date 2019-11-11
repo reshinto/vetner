@@ -1,0 +1,57 @@
+<%= form_with(model: vet_profile, local: true) do |form| %>
+  <% if vet_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vet_profile.errors.count, "error") %> prohibited this vet_profile from being saved:</h2>
+
+      <ul>
+      <% vet_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :clinic_name %>
+    <%= form.text_area :clinic_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postalcode %>
+    <%= form.text_field :postalcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hours %>
+    <%= form.text_field :hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :services %>
+    <%= form.text_area :services %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vet_id %>
+    <%= form.text_field :vet_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_area :image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
