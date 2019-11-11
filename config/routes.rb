@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pet_records
   resources :user_profiles
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :vets, controllers: {registrations: "registrations"}
