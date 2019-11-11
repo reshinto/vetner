@@ -17,3 +17,17 @@ User.create(email: "user3@email.com", password: "password")
 Vet.create(email: "vet1@email.com", password: "password")
 Vet.create(email: "vet2@email.com", password: "password")
 Vet.create(email: "vet3@email.com", password: "password")
+
+10.times do
+  User.create!(
+    email: Faker::Internet.safe_email,
+    password: Faker::Internet.password(min_length: 8)
+  )
+end
+
+10.times do
+  Vet.create!(
+    email: Faker::Internet.safe_email,
+    password: Faker::Internet.password(min_length: 8)
+  )
+end
