@@ -63,6 +63,32 @@ class VetProfilesController < ApplicationController
     end
   end
 
+  # POST /vet_profiles/1/add_to_user
+  def add_vet_to_user
+    # @vet_profile = VetProfile.new(vet_profile_params)
+    # @vet_profile.vet_id = current_vet.id
+
+    # respond_to do |format|
+    #   if @vet_profile.save
+    #     format.html { redirect_to @vet_profile, notice: 'Vet profile was successfully created.' }
+    #     format.json { render :show, status: :created, location: @vet_profile }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @vet_profile.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
+    puts "*********************"
+    puts "add_vet_to_user_params"
+    puts add_vet_to_user_params
+    puts "*********************"
+    puts "params[:id]"
+    puts params[:id]
+
+    render plain: 'add vet to user!'
+  end
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vet_profile
@@ -72,5 +98,9 @@ class VetProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def vet_profile_params
       params.require(:vet_profile).permit(:clinic_name, :address, :postalcode, :phone, :hours, :services, :image)
+    end
+
+    def add_vet_to_user_params
+      params.require(:add_vet_to_user).permit(:vet_id)
     end
 end

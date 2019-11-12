@@ -40,3 +40,29 @@
     <%= @vet_profile.services %>
   </p>
 </div>
+
+<hr>
+<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path, local: true) do |form| %>
+<%# <%= form_with(model: users_vets, local: true) do |form| %>
+  <% if false %>
+  <% if users_vets.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(users_vets.errors.count, "error") %> prohibited this users_vets from being saved:</h2>
+      <ul>
+      <% users_vets.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %> 
+  <% end %> 
+
+  <div class="field">
+    <%= form.label :vet_id, 'Vet ID'%>
+    <%= form.text_field :vet_id, value:@vet_profile.vet_id %> 
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Add as vet' %>
+  </div>
+<% end %>
