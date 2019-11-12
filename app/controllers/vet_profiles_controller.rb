@@ -1,5 +1,5 @@
 class VetProfilesController < ApplicationController
-  before_action :set_vet_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_vet_profile, only: [:show, :edit, :update, :destroy, :add_vet_to_user]
   before_action :authenticate_vet!, only: [:edit, :update, :destroy]
 
   # GET /vet_profiles
@@ -63,40 +63,28 @@ class VetProfilesController < ApplicationController
     end
   end
 
-  # POST /vet_profiles/1/add_to_user
+  # POST /vet_profiles/1/add_vet_to_user
   def add_vet_to_user
-    # @vet_profile = VetProfile.new(vet_profile_params)
-    # @vet_profile.vet_id = current_vet.id
-    puts "**************************"
-    puts "current_user.vets"
-    p current_user.vets
+    # retrieve the vet object based on the vet_id passed from the form
     vet = Vet.find_by(id: add_vet_to_user_params[:vet_id])
-    puts "**************************"
-    puts "vet"
-    p vet
+    
+    # check if the vet is already in the user's list of vets
+    if current_user.vets and current_user.vets.map(&:id).include? vet.id
+      redirect_to @vet_profile, notice: 'Vet was already added previously.'
+    else
+      # add this vet to the list of vets of the user
+      current_user.vets << vet
 
-    current_user.vets << vet
-    current_user.save(validate: false)
-    puts "****************************"
-    puts "save!!!!"
-    # respond_to do |format|
-    #   if @vet_profile.save
-    #     format.html { redirect_to @vet_profile, notice: 'Vet profile was successfully created.' }
-    #     format.json { render :show, status: :created, location: @vet_profile }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @vet_profile.errors, status: :unprocessable_entity }
-    #   end
-    # end
-
-    # puts "*********************"
-    # puts "add_vet_to_user_params"
-    # puts add_vet_to_user_params
-    # puts "*********************"
-    # puts "params[:id]"
-    # puts params[:id]
-
-    render plain: 'add vet to user!'
+      # redirect back to the vet profile page, with a notice
+      respond_to do |format|
+        # if the current user is successfully saved
+        if current_user.save(validate: false)
+          format.html { redirect_to @vet_profile, notice: 'Vet was successfully added to user.'}
+        else
+          format.html { redirect_to @vet_profile, notice: 'Error adding vet to user.'}
+        end
+      end
+    end
   end
   
 
