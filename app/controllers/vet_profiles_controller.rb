@@ -26,6 +26,7 @@ class VetProfilesController < ApplicationController
   # POST /vet_profiles.json
   def create
     @vet_profile = VetProfile.new(vet_profile_params)
+    @vet_profile.vet_id = current_vet.id
 
     respond_to do |format|
       if @vet_profile.save
@@ -70,6 +71,6 @@ class VetProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vet_profile_params
-      params.require(:vet_profile).permit(:clinic_name, :address, :postalcode, :phone, :hours, :services, :vet_id, :image)
+      params.require(:vet_profile).permit(:clinic_name, :address, :postalcode, :phone, :hours, :services, :image)
     end
 end

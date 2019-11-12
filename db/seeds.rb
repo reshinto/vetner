@@ -31,3 +31,16 @@ end
     password: Faker::Internet.password(min_length: 8)
   )
 end
+
+13.times do |i|
+  VetProfile.create!(
+    clinic_name: Faker::Company.name,
+    address: Faker::Address.full_address,
+    postalcode: Faker::Address.postcode,
+    phone: Faker::Number.number(digits: 10),
+    hours: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+    services: Faker::Company.catch_phrase,
+    vet_id: i+1,
+    image: Faker::Avatar.image
+  )
+end
