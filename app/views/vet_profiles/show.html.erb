@@ -1,39 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Clinic name:</strong>
-  <%= @vet_profile.clinic_name %>
-</p>
+<div>
+  <p>
+    <strong>Image:</strong>
+    <img src=<%= @vet_profile.image %> alt="">
+  </p>
+  <p>
+    <strong>Clinic name:</strong>
+    <%= @vet_profile.clinic_name %>
+  </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @vet_profile.address %>
-</p>
+  <p>
+    <strong>Address:</strong>
+    <%= @vet_profile.address %>
+  </p>
 
-<p>
-  <strong>Postalcode:</strong>
-  <%= @vet_profile.postalcode %>
-</p>
+  <p>
+    <strong>Postalcode:</strong>
+    <%= @vet_profile.postalcode %>
+  </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @vet_profile.phone %>
-</p>
+  <p>
+    <strong>Contacts:</strong>
+    <%= @vet_profile.phone %>
+  </p>
 
-<p>
-  <strong>Hours:</strong>
-  <%= @vet_profile.hours %>
-</p>
+  <%= link_to 'Edit', edit_vet_profile_path(@vet_profile) %> |
+  <%= link_to 'Back', vet_profiles_path %>
+</div>
 
-<p>
-  <strong>Services:</strong>
-  <%= @vet_profile.services %>
-</p>
+<div>
+  <p>
+    <strong>Hours:</strong>
+    <%= @vet_profile.hours %>
+  </p>
 
-<p>
-  <strong>Image:</strong>
-  <img src=<%= @vet_profile.image %> alt="">
-</p>
-
-<%= link_to 'Edit', edit_vet_profile_path(@vet_profile) %> |
-<%= link_to 'Back', vet_profiles_path %>
+  <p>
+    <strong>Services:</strong>
+    <%= @vet_profile.services %>
+  </p>
+</div>
