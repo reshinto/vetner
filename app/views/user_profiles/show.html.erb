@@ -3,19 +3,21 @@
     <div class="col-12 col-md-4">
       <div class="row">
         <div class="col-6 col-md-6">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSspVVDfah1S0_UsYT5cgwtmpEx_nNbXdRCZW5Ul1c4ZM9Dm1uE4A&s" alt="" width="100px">
+          <img src=<%= @user_profile.image %> width="100px"/>
+          <%# <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSspVVDfah1S0_UsYT5cgwtmpEx_nNbXdRCZW5Ul1c4ZM9Dm1uE4A&s" alt="" width="100px"> %>
         </div>
         <div class="col-6 col-md-6">
-          <h3>johnoliver</h3>
-          <button type="button" class="btn btn-primary">Edit Profile</button>
+          <h3><%= @user_profile.username %></h3>
+            <%= link_to 'Edit Profile', edit_user_profile_path(@user_profile), class: "btn btn-primary" %>
         </div>
       </div>
     </div>
     <div class="col-12 col-md-8">
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">John Oliver</li>
-        <li class="list-group-item">79, 20-10, Anson Road, Singapore 654556.</li>
-        <li class="list-group-item">+65-556544</li>
+        <li class="list-group-item"><i class="fas fa-user mr-2"></i><%= @user_profile.first_name %> <%= @user_profile.last_name %></li>
+        <li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= @user_profile.address %></li>
+        <li class="list-group-item"><i class="fas fa-phone mr-2"></i><%= @user_profile.phone %></li>
+        <li class="list-group-item"><i class="fas fa-envelope mr-2"></i><%= @user_profile.user.email %></li>
       </ul>
     </div>
   </div>
@@ -60,7 +62,7 @@
             <div class="row">
               <div class="col">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" alt="..." src="https://cdn0.iconfinder.com/data/icons/medical-and-health-1-8/151/42-512.png">
+                  <img class="card-img-top" alt="..." src="https://icon-library.net/images/medical-clinic-icon/medical-clinic-icon-3.jpg">
                   <div class="card-body">
                     <p class="card-text text-center">Best Vet</p>
                   </div>
@@ -68,7 +70,7 @@
               </div>
               <div class="col">
                 <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" alt="..." src="https://cdn0.iconfinder.com/data/icons/medical-and-health-1-8/151/42-512.png">
+                  <img class="card-img-top" alt="..." src="https://icon-library.net/images/medical-clinic-icon/medical-clinic-icon-3.jpg">
                   <div class="card-body">
                     <p class="card-text text-center">Nice Vet</p>
                   </div>
@@ -82,39 +84,8 @@
 </div>
 
 
-<p id="notice"><%= notice %></p>
-<h1>User Dasbboard</h1>
-<p>
-  <strong>First name:</strong>
-  <%= @user_profile.first_name %>
-</p>
-<p>
-  <strong>Last name:</strong>
-  <%= @user_profile.last_name %>
-</p>
-<p>
-  <strong>Address:</strong>
-  <%= @user_profile.address %>
-</p>
-<p>
-  <strong>Phone:</strong>
-  <%= @user_profile.phone %>
-</p>
-<p>
-  <strong>Username:</strong>
-  <%= @user_profile.username %>
-</p>
-<p>
-  <strong>Image:</strong><br>
-  <img src=<%= @user_profile.image %> width="100px"/>
-</p>
-<p>
-  <strong>User:</strong><br>
-  User ID:<%= @user_profile.user.id %><br>
-  Email:<%= @user_profile.user.email %><br>
-</p>
-<%= link_to 'Edit User Profile', edit_user_profile_path(@user_profile) %> |
-<%= link_to 'Back', user_profiles_path %>
+<p id="notice"><%= notice %>
+  
 <hr>
 <p><strong>My Pets:</strong></p>
 <% @pets.each do |p| %>
