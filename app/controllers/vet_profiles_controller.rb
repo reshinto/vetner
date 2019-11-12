@@ -1,6 +1,6 @@
 class VetProfilesController < ApplicationController
   before_action :set_vet_profile, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_vet!
+  before_action :authenticate_vet!, only: [:edit, :update, :destroy]
 
   # GET /vet_profiles
   # GET /vet_profiles.json
