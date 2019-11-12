@@ -20,7 +20,6 @@ class VetProfilesController < ApplicationController
 
   # GET /vet_profiles/1/edit
   def edit
-    @vet_profile = VetProfile.find(params[:id])
   end
 
   # POST /vet_profiles
