@@ -11,6 +11,7 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles/1
   # GET /user_profiles/1.json
   def show
+    @pets = Pet.where(user_id: current_user.id)
   end
 
   # GET /user_profiles/new

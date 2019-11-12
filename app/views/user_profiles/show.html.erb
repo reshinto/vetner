@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<h1>User Dasbboard</h1>
 <p>
   <strong>First name:</strong>
   <%= @user_profile.first_name %>
@@ -31,9 +31,20 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @user_profile.user %>
+  <strong>User:</strong><br>
+  User ID:<%= @user_profile.user.id %><br>
+  Email:<%= @user_profile.user.email %><br>
 </p>
-
-<%= link_to 'Edit', edit_user_profile_path(@user_profile) %> |
+<%= link_to 'Edit User Profile', edit_user_profile_path(@user_profile) %> |
 <%= link_to 'Back', user_profiles_path %>
+
+<hr>
+<p><strong>My Pets:</strong></p>
+<% @pets.each do |p| %>
+<p>Pet ID:<%= p.id %></p>
+<p><%= p.name %></p><br/>
+<img src=<%= p.image %> alt="" width="100px"><br/>
+<%= link_to "Show pet", controller: "pets", action: "show", id: p %>
+<%= link_to "Edit pet", controller: "pets", action: "edit", id: p %>
+<% end %>
+<hr>
