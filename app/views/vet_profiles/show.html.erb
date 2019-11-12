@@ -58,8 +58,8 @@
   <% end %> 
 
   <div class="field">
-    <%= form.label :vet_id, 'Vet ID'%>
-    <%= form.text_field :vet_id, value:@vet_profile.vet_id %> 
+    <%# <%= form.label :vet_id, 'Vet ID'%> 
+    <%= form.hidden_field :vet_id, value:@vet_profile.vet_id %> 
   </div>
 
   <div class="actions">
