@@ -46,5 +46,18 @@
 <img src=<%= p.image %> alt="" width="100px"><br/>
 <%= link_to "Show pet", controller: "pets", action: "show", id: p %>
 <%= link_to "Edit pet", controller: "pets", action: "edit", id: p %>
-<% end %>
 <hr>
+<% end %>
+<p><strong>My Vets:</strong></p>
+<% @vet_profiles.each do |vp| %>
+<p>Vet Profile ID:<%= vp.id %></p>
+<img src=<%= vp.image %> alt="" width="100px"><br/>
+<p>Clinic: <%= vp.clinic_name %></p>
+<p>Address: <%= vp.address %></p>
+<p>Postal Code:<%= vp.postalcode %></p>
+<p>Phone: <%= vp.phone %></p>
+<p>Hours: <%= vp.hours %></p>
+<p>Services: <%= vp.services %></p>
+<%= link_to "Show vet profile", controller: "vet_profiles", action: "show", id: vp %>
+<hr>
+<% end %>
