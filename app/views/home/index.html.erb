@@ -1,2 +1,12 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+<div>
+  <% @vet_profiles.each do |vp| %>
+    <div>
+      <div>
+        <h3><%= vp.clinic_name %></h3>
+        <%= link_to 'Read More', vet_profile_path(vp) %> |
+      </div>
+    </div>
+  <% end %>
+</div>
