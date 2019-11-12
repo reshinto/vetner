@@ -25,7 +25,11 @@
         <td><%= vet_profile.phone %></td>
         <td><%= vet_profile.hours %></td>
         <td><%= vet_profile.services %></td>
-        <td><%= vet_profile.image %></td>
+        <% if vet_profile.image.attached? %>
+          <td><img src=<%= (url_for(vet_profile.image)) %> alt=""></td>
+        <% else %>
+          <td><img src=<%= image_url "defaultProfile.jpeg"%> alt=""></td>
+        <% end %>
         <td><%= link_to 'Show', vet_profile %></td>
         <td><%= link_to 'Edit', edit_vet_profile_path(vet_profile) %></td>
         <td><%= link_to 'Destroy', vet_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
