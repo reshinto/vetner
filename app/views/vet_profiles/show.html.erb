@@ -3,7 +3,11 @@
 <div>
   <p>
     <strong>Image:</strong>
-    <img src=<%= @vet_profile.image %> alt="">
+    <% if @vet_profile.image.attached? %>
+      <img src=<%= (url_for(@vet_profile.image)) %> alt="">
+    <% else %>
+      <img src=<%= image_url "defaultProfile.jpeg"%> alt="">
+    <% end %>
   </p>
   <p>
     <strong>Clinic name:</strong>
