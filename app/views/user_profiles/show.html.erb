@@ -1,35 +1,113 @@
+<div class="container" style="margin-top:70px">
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <div class="row">
+        <div class="col-6 col-md-6">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSspVVDfah1S0_UsYT5cgwtmpEx_nNbXdRCZW5Ul1c4ZM9Dm1uE4A&s" alt="" width="100px">
+        </div>
+        <div class="col-6 col-md-6">
+          <h3>johnoliver</h3>
+          <button type="button" class="btn btn-primary">Edit Profile</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">John Oliver</li>
+        <li class="list-group-item">79, 20-10, Anson Road, Singapore 654556.</li>
+        <li class="list-group-item">+65-556544</li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <ul class="nav nav-tabs" id="pet-vet-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#pet" role="tab" aria-controls="pet" aria-selected="true">Pet</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#vet" role="tab" aria-controls="vet" aria-selected="false">Vet</a>
+        </li>
+      </ul>
+      <!-- tab for pet: -->                 
+      <div class="tab-content" id="petVetTabContent">
+        <div class="tab-pane fade show active" id="pet" role="tabpanel" aria-labelledby="pet-tab">      
+          <div class="container mt-3">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" alt="..." src="https://img.favpng.com/5/2/3/computer-icons-scalable-vector-graphics-avatar-emoticon-png-favpng-209NAXaV1ZBQdYGrU7nNbMxpX.jpg">
+                  <div class="card-body">
+                    <p class="card-text text-center">Jo</p>
+                  </div>
+                </div>                 
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" alt="..." src="https://img.favpng.com/5/2/3/computer-icons-scalable-vector-graphics-avatar-emoticon-png-favpng-209NAXaV1ZBQdYGrU7nNbMxpX.jpg">
+                  <div class="card-body">
+                    <p class="card-text text-center">Mario</p>
+                  </div>
+                </div>                 
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- tab for vet: -->                 
+        <div class="tab-pane fade" id="vet" role="tabpanel" aria-labelledby="vet-tab">
+          <div class="container mt-3">
+            <div class="row">
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" alt="..." src="https://cdn0.iconfinder.com/data/icons/medical-and-health-1-8/151/42-512.png">
+                  <div class="card-body">
+                    <p class="card-text text-center">Best Vet</p>
+                  </div>
+                </div>                 
+              </div>
+              <div class="col">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" alt="..." src="https://cdn0.iconfinder.com/data/icons/medical-and-health-1-8/151/42-512.png">
+                  <div class="card-body">
+                    <p class="card-text text-center">Nice Vet</p>
+                  </div>
+                </div>                 
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <p id="notice"><%= notice %></p>
 <h1>User Dasbboard</h1>
 <p>
   <strong>First name:</strong>
   <%= @user_profile.first_name %>
 </p>
-
 <p>
   <strong>Last name:</strong>
   <%= @user_profile.last_name %>
 </p>
-
 <p>
   <strong>Address:</strong>
   <%= @user_profile.address %>
 </p>
-
 <p>
   <strong>Phone:</strong>
   <%= @user_profile.phone %>
 </p>
-
 <p>
   <strong>Username:</strong>
   <%= @user_profile.username %>
 </p>
-
 <p>
   <strong>Image:</strong><br>
   <img src=<%= @user_profile.image %> width="100px"/>
 </p>
-
 <p>
   <strong>User:</strong><br>
   User ID:<%= @user_profile.user.id %><br>
@@ -37,27 +115,27 @@
 </p>
 <%= link_to 'Edit User Profile', edit_user_profile_path(@user_profile) %> |
 <%= link_to 'Back', user_profiles_path %>
-
 <hr>
 <p><strong>My Pets:</strong></p>
 <% @pets.each do |p| %>
-<p>Pet ID:<%= p.id %></p>
-<p><%= p.name %></p><br/>
-<img src=<%= p.image %> alt="" width="100px"><br/>
-<%= link_to "Show pet", controller: "pets", action: "show", id: p %>
-<%= link_to "Edit pet", controller: "pets", action: "edit", id: p %>
-<hr>
+  <p>Pet ID:<%= p.id %></p>
+  <p><%= p.name %></p>
+  <br/>
+  <img src=<%= p.image %> alt="" width="100px"><br/>
+  <%= link_to "Show pet", controller: "pets", action: "show", id: p %>
+  <%= link_to "Edit pet", controller: "pets", action: "edit", id: p %>
+  <hr>
 <% end %>
 <p><strong>My Vets:</strong></p>
 <% @vet_profiles.each do |vp| %>
-<p>Vet Profile ID:<%= vp.id %></p>
-<img src=<%= vp.image %> alt="" width="100px"><br/>
-<p>Clinic: <%= vp.clinic_name %></p>
-<p>Address: <%= vp.address %></p>
-<p>Postal Code:<%= vp.postalcode %></p>
-<p>Phone: <%= vp.phone %></p>
-<p>Hours: <%= vp.hours %></p>
-<p>Services: <%= vp.services %></p>
-<%= link_to "Show vet profile", controller: "vet_profiles", action: "show", id: vp %>
-<hr>
+  <p>Vet Profile ID:<%= vp.id %></p>
+  <img src=<%= vp.image %> alt="" width="100px"><br/>
+  <p>Clinic: <%= vp.clinic_name %></p>
+  <p>Address: <%= vp.address %></p>
+  <p>Postal Code:<%= vp.postalcode %></p>
+  <p>Phone: <%= vp.phone %></p>
+  <p>Hours: <%= vp.hours %></p>
+  <p>Services: <%= vp.services %></p>
+  <%= link_to "Show vet profile", controller: "vet_profiles", action: "show", id: vp %>
+  <hr>
 <% end %>
