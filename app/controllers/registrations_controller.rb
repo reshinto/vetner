@@ -6,7 +6,8 @@ class RegistrationsController < Devise::RegistrationsController
       new_user_profile_path(id: input)
     elsif resource.is_a?(Vet)
       input = Vet.last.id
-      new_vet_profile_path(id: input)
+      VetProfile.create(:vet_id => input)
+      edit_vet_profile_path(id: input)
     else
       super
     end
