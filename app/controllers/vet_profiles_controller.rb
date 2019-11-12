@@ -67,7 +67,18 @@ class VetProfilesController < ApplicationController
   def add_vet_to_user
     # @vet_profile = VetProfile.new(vet_profile_params)
     # @vet_profile.vet_id = current_vet.id
+    puts "**************************"
+    puts "current_user.vets"
+    p current_user.vets
+    vet = Vet.find_by(id: add_vet_to_user_params[:vet_id])
+    puts "**************************"
+    puts "vet"
+    p vet
 
+    current_user.vets << vet
+    current_user.save(validate: false)
+    puts "****************************"
+    puts "save!!!!"
     # respond_to do |format|
     #   if @vet_profile.save
     #     format.html { redirect_to @vet_profile, notice: 'Vet profile was successfully created.' }
@@ -78,12 +89,12 @@ class VetProfilesController < ApplicationController
     #   end
     # end
 
-    puts "*********************"
-    puts "add_vet_to_user_params"
-    puts add_vet_to_user_params
-    puts "*********************"
-    puts "params[:id]"
-    puts params[:id]
+    # puts "*********************"
+    # puts "add_vet_to_user_params"
+    # puts add_vet_to_user_params
+    # puts "*********************"
+    # puts "params[:id]"
+    # puts params[:id]
 
     render plain: 'add vet to user!'
   end
