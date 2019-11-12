@@ -27,7 +27,11 @@
 
 <p>
   <strong>Image:</strong><br>
-  <img src=<%= @user_profile.image %> width="100px"/>
+  <% if @user_profile.image.attached? %>
+    <img src=<%= (url_for(@user_profile.image)) %> alt="">
+  <% else %>
+    <img src=<%= image_url "defaultProfile.jpeg"%> alt="">
+  <% end %>
 </p>
 
 <p>
