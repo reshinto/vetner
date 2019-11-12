@@ -14,16 +14,27 @@ User.create(email: "user1@email.com", password: "password")
 User.create(email: "user2@email.com", password: "password")
 User.create(email: "user3@email.com", password: "password")
 
-Vet.create(email: "vet1@email.com", password: "password")
-Vet.create(email: "vet2@email.com", password: "password")
-Vet.create(email: "vet3@email.com", password: "password")
-
 10.times do
   User.create!(
     email: Faker::Internet.safe_email,
     password: Faker::Internet.password(min_length: 8)
   )
 end
+
+17.times do |i|
+  UserProfile.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: Faker::Address.full_address,
+    phone: Faker::Number.number(digits: 10),
+    username: Faker::Games::Pokemon.name,
+    user_id: i+1,
+  )
+end
+
+Vet.create(email: "vet1@email.com", password: "password")
+Vet.create(email: "vet2@email.com", password: "password")
+Vet.create(email: "vet3@email.com", password: "password")
 
 10.times do
   Vet.create!(
@@ -42,17 +53,5 @@ end
     services: Faker::Company.catch_phrase,
     vet_id: i+1
     # image: Faker::Avatar.image
-  )
-end
-
-17.times do |i|
-  UserProfile.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    address: Faker::Address.full_address,
-    phone: Faker::Number.number(digits: 10),
-    username: Faker::Games::Pokemon.name,
-    user_id: i+1,
-    image: Faker::Avatar.image
   )
 end
