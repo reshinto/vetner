@@ -30,10 +30,5 @@
   <img src=<%= @user_profile.image %> width="100px"/>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @user_profile.user %>
-</p>
-
 <%= link_to 'Edit', edit_user_profile_path(@user_profile) %> |
 <%= link_to 'Back', user_profiles_path %>
