@@ -40,8 +40,8 @@ end
     phone: Faker::Number.number(digits: 10),
     hours: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     services: Faker::Company.catch_phrase,
-    vet_id: i+1,
-    image: Faker::Avatar.image
+    vet_id: i+1
+    # image: Faker::Avatar.image
   )
 end
 
