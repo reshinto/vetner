@@ -1,5 +1,5 @@
 class VetProfilesController < ApplicationController
-  before_action :set_vet_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_vet_profile, only: [:show, :edit, :update, :destroy, :add_vet_to_user]
   before_action :authenticate_vet!, only: [:edit, :update, :destroy]
 
   # GET /vet_profiles
@@ -63,6 +63,31 @@ class VetProfilesController < ApplicationController
     end
   end
 
+  # POST /vet_profiles/1/add_vet_to_user
+  def add_vet_to_user
+    # retrieve the vet object based on the vet_id passed from the form
+    vet = Vet.find_by(id: add_vet_to_user_params[:vet_id])
+    
+    # check if the vet is already in the user's list of vets
+    if current_user.vets and current_user.vets.map(&:id).include? vet.id
+      redirect_to @vet_profile, notice: 'Vet was already added previously.'
+    else
+      # add this vet to the list of vets of the user
+      current_user.vets << vet
+
+      # redirect back to the vet profile page, with a notice
+      respond_to do |format|
+        # if the current user is successfully saved
+        if current_user.save(validate: false)
+          format.html { redirect_to @vet_profile, notice: 'Vet was successfully added to user.'}
+        else
+          format.html { redirect_to @vet_profile, notice: 'Error adding vet to user.'}
+        end
+      end
+    end
+  end
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vet_profile
@@ -72,5 +97,9 @@ class VetProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def vet_profile_params
       params.require(:vet_profile).permit(:clinic_name, :address, :postalcode, :phone, :hours, :services, :image)
+    end
+
+    def add_vet_to_user_params
+      params.require(:add_vet_to_user).permit(:vet_id)
     end
 end
