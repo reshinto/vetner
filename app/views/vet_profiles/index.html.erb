@@ -1,3 +1,4 @@
+<div class="container">
 <% if notice %>
 <div class="row">
   <div class="col">
@@ -11,58 +12,35 @@
 </div>
 <% end %>
 
-<h1>Vet Profiles</h1>
+<h1>SVA Registered Veterinary Centres</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Clinic name</th>
-      <th>Address</th>
-      <th>Postalcode</th>
-      <th>Phone</th>
-      <th>Hours</th>
-      <th>Services</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @vet_profiles.each do |vet_profile| %>
-      <tr>
-        <td><%= vet_profile.clinic_name %></td>
-        <td><%= vet_profile.address %></td>
-        <td><%= vet_profile.postalcode %></td>
-        <td><%= vet_profile.phone %></td>
-        <td><%= vet_profile.hours %></td>
-        <td><%= vet_profile.services %></td>
-        <% if vet_profile.image.attached? %>
-          <td><img src=<%= (url_for(vet_profile.image)) %> alt=""></td>
-        <% else %>
-          <td><img src=<%= image_url "defaultProfile.jpeg"%> alt=""></td>
-        <% end %>
-        <td><%= vet_profile.id %></td>
-        <td><%= current_user.id %></td>
-
-        <td>
+<div class="row">
+  <% @vet_profiles.each do |vet_profile| %>
+	<div class="col-sm-4">
+    <div class="card">
+    <% if vet_profile.image.attached? %>
+      <img src=<%= (url_for(vet_profile.image)) %> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
+    <% else %>
+      <img src=<%= image_url "defaultProfile.jpeg"%> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
+    <% end %>
+			<div class="card-body">
+        <h5 class="card-title"><%= link_to vet_profile.clinic_name, vet_profile_path(id: vet_profile.vet_id) %></h5>
+        <p class="card-text"><%= vet_profile.address %><br>
+        	Singapore <%= vet_profile.postalcode %><br>
+        	Phone: <%= vet_profile.phone %><br>
+        	Hours: <%= vet_profile.hours %><br>
+        	Services: <%= vet_profile.services %><br>
         <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |form| %>
           <div class="field">
             <%= form.hidden_field :vet_id, value: vet_profile.vet_id %>
           </div>
-
           <div class="actions">
             <%= form.submit 'Add as vet' %>
           </div>
         <% end %>
-        </td>
-        <td><%= link_to 'Show', vet_profile %></td>
-        <td><%= link_to 'Edit', edit_vet_profile_path(vet_profile) %></td>
-        <td><%= link_to 'Destroy', vet_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Vet Profile', new_vet_profile_path %>
+  			</p>
+  		</div>
+  	</div>
+  </div>
+  <% end %>
+</div>
