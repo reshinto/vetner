@@ -41,8 +41,6 @@
         <% else %>
           <td><img src=<%= image_url "defaultProfile.jpeg"%> alt=""></td>
         <% end %>
-        <td><%= vet_profile.id %></td>
-        <td><%= current_user.id %></td>
 
         <td>
         <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |form| %>
