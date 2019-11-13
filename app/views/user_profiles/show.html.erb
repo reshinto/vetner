@@ -1,4 +1,4 @@
-<div class="container" style="margin-top:70px">
+<div class="container" style="margin-top: 5rem">
 
   <% if notice %>
   <div class="row">
@@ -18,9 +18,9 @@
       <div class="row">
         <div class="col-6 col-md-6">
           <% if @user_profile.image.attached? %>
-            <img src=<%= (url_for(@user_profile.image)) %> alt="" width="150px">
+            <img src=<%= (url_for(@user_profile.image)) %> alt=<%= @user_profile.username %> width="150px">
           <% else %>
-            <img src=<%= image_url "defaultProfile.jpeg"%> alt="" width="150px">
+            <img src=<%= image_url "defaultProfile.jpeg"%> alt=<%= @user_profile.username %> width="150px">
           <% end %>
         </div>
         <div class="col-6 col-md-6">

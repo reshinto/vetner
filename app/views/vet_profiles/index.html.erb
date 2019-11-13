@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-top: 5rem">
 <% if notice %>
 <div class="row">
   <div class="col">
@@ -12,32 +12,37 @@
 </div>
 <% end %>
 
-<h1>SVA Registered Veterinary Centres</h1>
+<h2>SVA Registered Veterinary Centres</h2>
 
 <div class="row">
   <% @vet_profiles.each do |vet_profile| %>
 	<div class="col-sm-4">
     <div class="card">
     <% if vet_profile.image.attached? %>
+    <a href="/vet_profile/<%= vet_profile.vet_id %>" >
       <img src=<%= (url_for(vet_profile.image)) %> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
+    </a>
     <% else %>
+    <a href="/vet_profile/<%= vet_profile.vet_id %>" >
       <img src=<%= image_url "defaultProfile.jpeg"%> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
+    </a>
     <% end %>
 			<div class="card-body">
         <h5 class="card-title"><%= link_to vet_profile.clinic_name, vet_profile_path(id: vet_profile.vet_id) %></h5>
         <p class="card-text"><%= vet_profile.address %><br>
         	Singapore <%= vet_profile.postalcode %><br>
         	Phone: <%= vet_profile.phone %><br>
-        	Hours: <%= vet_profile.hours %><br>
-        	Services: <%= vet_profile.services %><br>
-        <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |form| %>
-          <div class="field">
-            <%= form.hidden_field :vet_id, value: vet_profile.vet_id %>
-          </div>
-          <div class="actions">
-            <%= form.submit 'Add as vet' %>
-          </div>
-        <% end %>
+        	Hours: <%= vet_profile.hours %>
+        	<% if user_signed_in? %>
+	        <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |form| %>
+	          <div class="field">
+	            <%= form.hidden_field :vet_id, value: vet_profile.vet_id %>
+	          </div>
+	          <div class="actions">
+	            <%= form.submit 'Add as vet' %>
+	          </div>
+	        <% end %>
+	        <% end %>
   			</p>
   		</div>
   	</div>
