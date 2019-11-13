@@ -67,7 +67,7 @@ class VetProfilesController < ApplicationController
   def add_vet_to_user
     # retrieve the vet object based on the vet_id passed from the form
     vet = Vet.find_by(id: add_vet_to_user_params[:vet_id])
-    
+
     # check if the vet is already in the user's list of vets
     if current_user.vets and current_user.vets.map(&:id).include? vet.id
       redirect_to @vet_profile, notice: 'Vet was already added previously.'
@@ -86,7 +86,7 @@ class VetProfilesController < ApplicationController
       end
     end
   end
-  
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
