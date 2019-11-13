@@ -1,47 +1,68 @@
-<%= form_with(model: user_profile, local: true) do |form| %>
-  <% if user_profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user_profile.errors.count, "error") %> prohibited this user_profile from being saved:</h2>
-
-      <ul>
-      <% user_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="container" style="margin-top: 70px">
+  <div class="row">
+    <div class="col">
+      <%= form_with(model: user_profile, local: true) do |form| %>
+        <div class="form-group row">
+          <%= form.label :first_name, 'First Name', class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_field :first_name, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :last_name, 'Last Name', class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_field :last_name, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :address, 'Address', class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_area :address, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :phone, 'Phone', class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_field :phone, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= form.label :username, 'Username', class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_field :username, class: "form-control" %>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button">Profile Picture</button>
+          </div>
+          <div class="custom-file field">
+            <%= form.file_field :image, class: "custom-file-input" %>
+            <%= form.label :image, 'Choose a file', class: "custom-file-label" %>
+          </div>
+          <!-- script to replace the words "Choose a file" with the name of the file -->
+          <script>
+            $('#user_profile_image').on('change',function(){
+                //get the file name
+                var fileName = $(this)[0].files[0].name;
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            })
+          </script>
+        </div>
+        <p>
+          <% if user_profile.image.attached? %>
+            <img src=<%= (url_for(user_profile.image)) %> alt="" width="100px">
+          <% else %>
+            <img src=<%= image_url "defaultProfile.jpeg"%> alt="" width="100px">
+          <% end %>
+        </p>
+        <div class="form-group row">
+          <div class="col-sm-10">
+              <%= form.submit class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>      
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
   </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_area :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
