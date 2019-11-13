@@ -32,7 +32,7 @@
     <div class="col-12 col-md-8">
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><i class="fas fa-user mr-2"></i><%= @user_profile.first_name %> <%= @user_profile.last_name %></li>
-        <li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= @user_profile.address %></li>
+        <li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= "#{@user_profile.address}, #{@user_profile.country} #{@user_profile.postalcode}" %></li>
         <li class="list-group-item"><i class="fas fa-phone mr-2"></i><%= @user_profile.phone %></li>
         <li class="list-group-item"><i class="fas fa-envelope mr-2"></i><%= @user_profile.user.email %></li>
       </ul>
