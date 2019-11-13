@@ -5,8 +5,21 @@ class VetProfilesController < ApplicationController
   # GET /vet_profiles
   # GET /vet_profiles.json
   def index
-    @vet_profiles = VetProfile.all
-    @results = Geocoder.search("Lower Delta Road")
+    # if a params[:search] is received
+    if params[:search]
+      # call the model method search_by_clinic_name, defined in VetProfile model
+      @search_results_vet_profiles = VetProfile.search_by_clinic_name(params[:search])
+      # send the search results to the partial view _search-results.js.erb  
+      # located at views/user_profiles
+      respond_to do |format|
+        format.js { render partial: 'user_profiles/search-results'}
+      end
+    else
+      # render the view for list of vet profiles
+      @vet_profiles = VetProfile.all
+      @results = Geocoder.search("Lower Delta Road")
+    end
+
   end
 
   # GET /vet_profiles/1

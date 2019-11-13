@@ -1,0 +1,40 @@
+<div class="row my-2">
+  <% @search_results_vet_profiles.each do |vp| %>
+    <div class="col-12 col-md-6">
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="card-header bg-light">
+          <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vp.vet_id), local: true) do |f| %>
+            <%= f.hidden_field :vet_id, value: vp.vet_id %>
+            <%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
+              <i class="fas fa-plus-circle mr-2"></i>Add vet
+            <% end %>            
+          <% end %>
+        </div>      
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <% if vp.image.attached? %>
+              <img src=<%= (url_for(vp.image)) %> class="card-img" alt="" width="140px">
+            <% else %>
+              <img src=<%= image_url "defaultProfile.jpeg"%> class="card-img" alt="" width="140px">
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">
+              <%= link_to vp.clinic_name, vet_profile_path(vp), class: "text-primary" %>
+              </h5>
+              <p class="card-text">
+                <p><i class="fas fa-map-marker-alt mr-2"></i><%= vp.address %></p>
+                <p><i class="fas fa-phone mr-2"></i><%= vp.phone %></p>
+                <p><i class="far fa-clock mr-2"></i><%= vp.hours %></p>
+                <p><i class="fas fa-briefcase-medical mr-2"></i><%= vp.services %></p>
+                <%= link_to raw("<i class='fas fa-eye mr-3'></i>"), vet_profile_path(vp), class: "text-secondary", id: vp %>
+              </p>
+              <p class="card-text"><small class="text-muted">Last updated:<%= vp.updated_at.strftime("%c") %></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
