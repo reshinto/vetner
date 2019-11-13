@@ -36,6 +36,16 @@
     </div>
   </div>
   <div class="col-12 col-md-8 mt-3">
+
+    <% if @pet_records.count == 0 %>
+      <h3>No record found for <%= @pet.name%></h3>
+      <p>
+        <%= link_to 'Add a record now', new_pet_record_path, class: "text-primary" %>
+      </p>
+    <% else %>
+      <h3><%= @pet.name%>'s <%= "record".pluralize(@pet_records.count) %></h3>
+    <% end %>
+    <%= link_to raw("<i class='fas fa-plus-circle mr-2'></i> New"), new_pet_record_path, class: "btn btn-primary my-2" %>
     <div class="table-responsive">
       <table class="table">
         <thead class="thead-light">
@@ -44,27 +54,24 @@
             <th scope="col">Record</th>
             <th scope="col">Date</th>
             <th scope="col">Details</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Vaccination</td>
-            <td>31/12/2019</td>
-            <td>Had a nice vaccination</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Vaccination</td>
-            <td>31/12/2019</td>
-            <td>Had a nice vaccination</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Vaccination</td>
-            <td>31/12/2019</td>
-            <td>Had a nice vaccination</td>
-          </tr>
+
+          <% @pet_records.each_with_index do |pr, i| %>
+              <tr>
+                <th scope="row"><%= i+1 %></th>
+                <td><%= pr.title %></td>
+                <td><%= pr.date %></td>
+                <td><%= pr.content %></td>
+                <td>
+                  <%= link_to raw("<i class='fas fa-eye mr-3'></i>"), pet_record_path(pr), class: "text-secondary" %>
+                  <%= link_to raw("<i class='fas fa-edit mr-3'></i>"), edit_pet_record_path(pr), class: "text-secondary" %>
+                  <%= link_to raw("<i class='fas fa-trash-alt mr-3'></i>"), pet_record_path(pr), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-secondary" %>
+                </td>
+              </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

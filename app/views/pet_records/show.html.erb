@@ -39,4 +39,16 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col text-center my-2">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href=<%= user_profile_path(@pet_record.pet.user) %>>My Profile</a></li>
+          <li class="breadcrumb-item"><a href=<%= pet_path(@pet_record.pet) %>>My Pet's Profile</a></li>
+          <li class="breadcrumb-item active" aria-current="page">My Pet's Record</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
 </div>
