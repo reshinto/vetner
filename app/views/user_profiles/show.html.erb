@@ -1,67 +1,115 @@
-<p id="notice"><%= notice %></p>
-<h1>User Dasbboard</h1>
-<p>
-  <strong>First name:</strong>
-  <%= @user_profile.first_name %>
-</p>
+<div class="container" style="margin-top:70px">
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user_profile.last_name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user_profile.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user_profile.phone %>
-</p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @user_profile.username %>
-</p>
-
-<p>
-  <strong>Image:</strong><br>
-  <% if @user_profile.image.attached? %>
-    <img src=<%= (url_for(@user_profile.image)) %> alt="">
-  <% else %>
-    <img src=<%= image_url "defaultProfile.jpeg"%> alt="">
+  <% if notice %>
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <p id="notice" class="p-0 m-0"><%= notice %></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
   <% end %>
-</p>
 
-<p>
-  <strong>User:</strong><br>
-  User ID:<%= @user_profile.user.id %><br>
-  Email:<%= @user_profile.user.email %><br>
-</p>
-<%= link_to 'Edit User Profile', edit_user_profile_path(@user_profile) %> |
-<%= link_to 'Back', user_profiles_path %>
-
-<hr>
-<p><strong>My Pets:</strong></p>
-<% @pets.each do |p| %>
-<p>Pet ID:<%= p.id %></p>
-<p><%= p.name %></p><br/>
-<img src=<%= p.image %> alt="" width="100px"><br/>
-<%= link_to "Show pet", controller: "pets", action: "show", id: p %>
-<%= link_to "Edit pet", controller: "pets", action: "edit", id: p %>
-<hr>
-<% end %>
-<p><strong>My Vets:</strong></p>
-<% @vet_profiles.each do |vp| %>
-<p>Vet Profile ID:<%= vp.id %></p>
-<img src=<%= vp.image %> alt="" width="100px"><br/>
-<p>Clinic: <%= vp.clinic_name %></p>
-<p>Address: <%= vp.address %></p>
-<p>Postal Code:<%= vp.postalcode %></p>
-<p>Phone: <%= vp.phone %></p>
-<p>Hours: <%= vp.hours %></p>
-<p>Services: <%= vp.services %></p>
-<%= link_to "Show vet profile", controller: "vet_profiles", action: "show", id: vp %>
-<hr>
-<% end %>
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <div class="row">
+        <div class="col-6 col-md-6">
+          <img src=<%= @user_profile.image %> width="100px"/>
+          <%# <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSspVVDfah1S0_UsYT5cgwtmpEx_nNbXdRCZW5Ul1c4ZM9Dm1uE4A&s" alt="" width="100px"> %>
+        </div>
+        <div class="col-6 col-md-6">
+          <h3><%= @user_profile.username %></h3>
+          <%= link_to 'Edit Profile', edit_user_profile_path(@user_profile), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><i class="fas fa-user mr-2"></i><%= @user_profile.first_name %> <%= @user_profile.last_name %></li>
+        <li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= @user_profile.address %></li>
+        <li class="list-group-item"><i class="fas fa-phone mr-2"></i><%= @user_profile.phone %></li>
+        <li class="list-group-item"><i class="fas fa-envelope mr-2"></i><%= @user_profile.user.email %></li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col">
+      <ul class="nav nav-tabs" id="pet-vet-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#pet" role="tab" aria-controls="pet" aria-selected="true">Pet</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#vet" role="tab" aria-controls="vet" aria-selected="false">Vet</a>
+        </li>
+      </ul>
+      <!-- tab for pet: -->
+      <div class="tab-content" id="petVetTabContent">
+        <div class="tab-pane fade show active" id="pet" role="tabpanel" aria-labelledby="pet-tab">
+          <div class="container mt-3">
+            <div class="row">
+              <% @pets.each do |p| %>
+                <div class="col-12 col-md-6">
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        <img src=<%= p.image %> class="card-img" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            <%= link_to p.name, pet_path(p), class: "text-primary" %>
+                          </h5>
+                          <p class="card-text">
+                            <p>Born: <%= p.date_of_birth %></p>
+                            <p>Breed: <%= p.breed %></p>
+                            <%= link_to raw("<i class='fas fa-eye mr-3'></i>"), pet_path(p), class: "text-secondary" %>
+                            <%= link_to raw("<i class='fas fa-edit ml-3'></i>"), edit_pet_path(p), class: "text-secondary" %>
+                          </p>
+                          <p class="card-text"><small class="text-muted">Last updated: <%= p.updated_at.strftime("%c")  %></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <!-- tab for vet: -->
+        <div class="tab-pane fade" id="vet" role="tabpanel" aria-labelledby="vet-tab">
+          <div class="container mt-3">
+            <div class="row">
+              <% @vet_profiles.each do |vp| %>
+                <div class="col-12 col-md-6">
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        <img src=<%= vp.image %> class="card-img" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">
+                          <%= link_to vp.clinic_name, vet_profile_path(vp), class: "text-primary" %>   
+                          </h5>
+                          <p class="card-text">
+                            <p><i class="fas fa-map-marker-alt mr-2"></i><%= vp.address %></p>
+                            <p><i class="fas fa-phone mr-2"></i><%= vp.phone %></p>
+                            <p><i class="far fa-clock mr-2"></i><%= vp.hours %></p>
+                            <p><i class="fas fa-briefcase-medical mr-2"></i><%= vp.services %></p>
+                            <%= link_to raw("<i class='fas fa-eye mr-3'></i>"), vet_profile_path(vp), class: "text-secondary", id: vp %>
+                          </p>
+                          <p class="card-text"><small class="text-muted">Last updated:<%= vp.updated_at.strftime("%c") %></small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
