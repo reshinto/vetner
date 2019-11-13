@@ -1,37 +1,58 @@
-<%= form_with(model: pet_record, local: true) do |form| %>
-  <% if pet_record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pet_record.errors.count, "error") %> prohibited this pet_record from being saved:</h2>
+<div class="container" style="margin-top: 70px">
+  <div class="row">
+    <div class="col">
+      <%= form_with(model: pet_record, local: true) do |form| %>
+      <% if pet_record.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(pet_record.errors.count, "error") %> prohibited this pet_record from being saved:</h2>
 
-      <ul>
-      <% pet_record.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% pet_record.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+
+        <div class="form-group row">
+          <%= form.label :pet_id, 'Pet', class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%# <%= form.text_field :pet_id, class: "form-control" %>
+            <%= form.collection_select :pet_id, @pets, :id, :name, {:include_blank => 'Select pet...'}, {:class => 'form-control'} %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :title, 'Title', class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_field :title, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :date, 'Date', class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.date_select :date, {
+                :order => [:day, :month, :year], 
+                :start_year => 1990
+               }, 
+               {:class => "form-control my-2"} %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <%= form.label :content, 'Content', class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-10">
+            <%= form.text_area :content, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-10">
+              <%= form.submit class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>      
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pet_id %>
-    <%= form.text_field :pet_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
