@@ -58,7 +58,7 @@ class PetsController < ApplicationController
   def destroy
     @pet.destroy
     respond_to do |format|
-      format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
+      format.html { redirect_to user_profile_path(@pet.user), notice: 'Pet was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

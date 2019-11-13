@@ -30,7 +30,8 @@
         <li class="list-group-item"><i class="fas fa-birthday-cake mr-2"></i><%= @pet.date_of_birth %></li>
         <li class="list-group-item"><i class="fas fa-sitemap mr-2"></i><%= @pet.breed %></li>
         <li class="list-group-item">
-          <%= link_to raw("<i class='fas fa-edit mr-2'></i> Edit"), edit_pet_path(@pet), class: "btn btn-primary" %>
+          <%= link_to raw('<i class="fas fa-edit mr-2"></i> Edit'), edit_pet_path(@pet), class: "btn btn-primary mr-2" %>
+          <%= link_to raw('<i class="fas fa-heart-broken mr-2"></i> Remove'), pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
         </li>
       </ul>
     </div>
