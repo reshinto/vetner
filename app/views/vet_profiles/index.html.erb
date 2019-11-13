@@ -30,6 +30,20 @@
         <% else %>
           <td><img src=<%= image_url "defaultProfile.jpeg"%> alt=""></td>
         <% end %>
+        <td><%= vet_profile.id %></td>
+        <td><%= current_user.id %></td>
+
+        <td>
+        <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |form| %>
+          <div class="field">
+            <%= form.hidden_field :vet_id, value: vet_profile.vet_id %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit 'Add as vet' %>
+          </div>
+        <% end %>
+        </td>
         <td><%= link_to 'Show', vet_profile %></td>
         <td><%= link_to 'Edit', edit_vet_profile_path(vet_profile) %></td>
         <td><%= link_to 'Destroy', vet_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
