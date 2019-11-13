@@ -22,7 +22,11 @@
         <td><%= pet.pet_type %></td>
         <td><%= pet.date_of_birth %></td>
         <td><%= pet.breed %></td>
-        <td><%= pet.image %></td>
+        <% if pet.image.attached? %>
+          <td><img src=<%= (url_for(pet.image)) %> alt=""></td>
+        <% else %>
+          <td><img src=<%= image_url "defaultAnimal.png"%> alt=""></td>
+        <% end %>
         <td><%= pet.user %></td>
         <td><%= link_to 'Show', pet %></td>
         <td><%= link_to 'Edit', edit_pet_path(pet) %></td>

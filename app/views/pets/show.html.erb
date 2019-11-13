@@ -22,7 +22,11 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @pet.image %>
+  <% if @pet.image.attached? %>
+    <img src=<%= (url_for(@pet.image)) %> alt="">
+  <% else %>
+    <img src=<%= image_url "defaultAnimal.png"%> alt="">
+  <% end %>
 </p>
 
 <p>
