@@ -20,6 +20,11 @@
   </p>
 
   <p>
+    <strong>Country:</strong>
+    <%= @vet_profile.country %>
+  </p>
+
+  <p>
     <strong>Postalcode:</strong>
     <%= @vet_profile.postalcode %>
   </p>
@@ -33,6 +38,11 @@
   <p>
     <strong>Contacts:</strong>
     <%= @vet_profile.phone %>
+  </p>
+
+  <p>
+    <strong>Website:</strong>
+    <%= @vet_profile.website %>
   </p>
 
   <%= link_to 'Edit', edit_vet_profile_path(@vet_profile) %> |
