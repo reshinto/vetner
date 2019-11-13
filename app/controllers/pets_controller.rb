@@ -10,6 +10,7 @@ class PetsController < ApplicationController
   # GET /pets/1
   # GET /pets/1.json
   def show
+    @pet_records = PetRecord.where(pet_id: @pet.id)
   end
 
   # GET /pets/new

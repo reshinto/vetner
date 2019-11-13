@@ -58,7 +58,7 @@ class PetRecordsController < ApplicationController
   def destroy
     @pet_record.destroy
     respond_to do |format|
-      format.html { redirect_to pet_records_url, notice: 'Pet record was successfully destroyed.' }
+      format.html { redirect_to pet_path(@pet), notice: 'Pet record was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,6 +67,7 @@ class PetRecordsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_pet_record
       @pet_record = PetRecord.find(params[:id])
+      @pet = @pet_record.pet
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
