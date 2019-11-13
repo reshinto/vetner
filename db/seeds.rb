@@ -25,7 +25,9 @@ end
   UserProfile.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: "79 Anson Road Singapore, 079906",
+    address: "79 Anson Road",
+    country: "Singapore",
+    postalcode: "079906",
     phone: Faker::Number.number(digits: 10),
     username: Faker::Games::Pokemon.name,
     user_id: i+1,
@@ -47,7 +49,8 @@ end
   VetProfile.create!(
     clinic_name: Faker::Company.name,
     address: "18 Jalan Pari Burong",
-    postalcode: Faker::Address.postcode,
+    country: "Singapore",
+    postalcode: "488684",
     phone: Faker::Number.number(digits: 10),
     hours: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     services: Faker::Company.catch_phrase,

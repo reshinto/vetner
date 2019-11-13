@@ -13,12 +13,14 @@ class VetProfilesController < ApplicationController
   # GET /vet_profiles/1.json
   def show
     vet_profile = VetProfile.find(params[:id])
-    vetResults = Geocoder.search(vet_profile.address).first.coordinates
+    vetAddress = "#{vet_profile.address} #{vet_profile.country}"
+    vetResults = Geocoder.search(vetAddress).first.coordinates
     @vetLat = vetResults[0]
     @vetLong = vetResults[1]
     if current_user
       user_profile = UserProfile.find(current_user.id)
-      userResults = Geocoder.search(user_profile.address).first.coordinates
+      address = "#{user_profile.address} #{user_profile.country}"
+      userResults = Geocoder.search(address).first.coordinates
       puts userResults
       @userLat = userResults[0]
       @userLong = userResults[1]
