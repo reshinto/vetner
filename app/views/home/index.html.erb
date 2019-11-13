@@ -1,12 +1,59 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="jumbotron-fluid">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<%= image_tag 'cat.jpg', class: "d-block w-100" %>
+				<div class="container">
+					<div class="carousel-caption text-left">
+						<h1>Find Registered Vets.</h1>
+						<p>Partnering petowners to Singapore Veterinary Association registered veterinary centres. Find a vet with the services you require.</p>
+						<p><a class="btn btn-lg btn-info" href="/vet_profiles" role="button">Find A Vet</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<%= image_tag 'pug.jpg', class: "d-block w-100" %>
+				<div class="container">
+					<div class="carousel-caption">
+						<h1>Access Your Pet Records Anywhere.</h1>
+						<p>Register an account and have your pet's health record digitally available no matter where you are. Authorize access to a vet to view your pet's past medical history.</p>
+						<p><%= link_to 'Register An Account', new_user_registration_url, class: "btn btn-lg btn-info" %></p>
+					</div>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<%= image_tag 'vet_clinics.jpg', class: "d-block w-100" %>
+				<div class="container">
+					<div class="carousel-caption text-right">
+						<h1>View Client's Pet Records.</h1>
+						<p>Vet dashboard to easily view your clients' pet's health records.</p>
+						<p><%= link_to 'Register Your Vet Clinic', new_vet_registration_url, class: "btn btn-lg btn-info" %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</div>
 <div>
-  <% @vet_profiles.each do |vp| %>
-    <div>
-      <div>
-        <h3><%= vp.clinic_name %></h3>
-        <%= link_to 'Read More', vet_profile_path(vp) %> |
-      </div>
-    </div>
-  <% end %>
+	<% @vet_profiles.each do |vp| %>
+		<div>
+			<div>
+				<h3><%= vp.clinic_name %></h3>
+				<%= link_to 'Read More', vet_profile_path(vp) %> |
+			</div>
+		</div>
+	<% end %>
 </div>

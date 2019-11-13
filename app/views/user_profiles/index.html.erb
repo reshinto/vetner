@@ -23,7 +23,11 @@
         <td><%= user_profile.address %></td>
         <td><%= user_profile.phone %></td>
         <td><%= user_profile.username %></td>
-        <td><%= user_profile.image %></td>
+        <% if user_profile.image.attached? %>
+          <td><img src=<%= (url_for(user_profile.image)) %> alt=""></td>
+        <% else %>
+          <td><img src=<%= image_url "defaultProfile.jpeg"%> alt=""></td>
+        <% end %>
         <td><%= link_to 'Show', user_profile %></td>
         <td><%= link_to 'Edit', edit_user_profile_path(user_profile) %></td>
         <td><%= link_to 'Destroy', user_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>

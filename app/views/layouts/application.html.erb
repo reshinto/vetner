@@ -10,61 +10,13 @@
 		<%= javascript_include_tag 'application' %>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-			<a class="navbar-brand" href="/">Vetner</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<% if user_signed_in? %>
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<%= link_to 'Your Profile', user_profile_url(id: current_user.id), class: "nav-link" %>
-					</li>
-					<li class="nav-item">
-						<%= link_to 'Log Out', destroy_user_session_url, method: :delete, class: "nav-link" %>
-					</li>
-				</ul>
-				<% elsif vet_signed_in? %>
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<%= link_to 'Clinic Profile', vet_profile_url(id: current_vet.id), class: "nav-link" %>
-					</li>
-					<li class="nav-item">
-						<%= link_to 'Vet Log Out', destroy_vet_session_url, method: :delete, class: "nav-link" %>
-					</li>
-				</ul>
-				<% else %>
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
-						<div class="dropdown-menu">
-							<%= link_to 'New Pet Owner', new_user_registration_url, class: "dropdown-item" %>
-							<%= link_to 'New Vet Clinic', new_vet_registration_url, class: "dropdown-item" %>
-						</div>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-						<div class="dropdown-menu">
-							<%= link_to 'As Pet Owner', new_user_session_url, class: "dropdown-item" %>
-							<%= link_to 'As Vet Clinic', new_vet_session_url, class: "dropdown-item" %>
-						</div>
-					</li>
-				</ul>
-				<% end %>
-				<form class="form-inline mt-2 mt-md-0">
-					<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form>
-			</div>
-		</nav>
+		<header>
+			<%= render "/layouts/navbar" %>
+		</header>
 		<main role="main">
-			<div class="container">
-				<%= yield %>
-			</div>
+			<%= yield %>
 		</main>
-
-		<footer class="footer">
+		<footer>
 			<div class="container">
 				<span class="text-muted">Vetner &copy; 2019</span>
 				<p class="float-right"><a href="#">Back to top</a></p>

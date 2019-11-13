@@ -83,11 +83,17 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     erubi (1.9.0)
     execjs (2.7.0)
     faker (2.7.0)
       i18n (>= 1.6, < 1.8)
     ffi (1.11.2)
+    font-awesome-sass (5.11.2)
+      sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -259,7 +265,9 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   devise
+  dotenv-rails
   faker
+  font-awesome-sass (~> 5.11.2)
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
