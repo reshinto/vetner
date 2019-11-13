@@ -96,7 +96,11 @@
                   <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                       <div class="col-md-4">
-                        <img src=<%= vp.image %> class="card-img" alt="...">
+                        <% if vp.image.attached? %>
+                          <img src=<%= (url_for(vp.image)) %> class="card-img" alt="" width="140px">
+                        <% else %>
+                          <img src=<%= image_url "defaultProfile.jpeg"%> class="card-img" alt="" width="140px">
+                        <% end %>
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
