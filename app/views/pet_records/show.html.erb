@@ -1,24 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="margin-top: 70px">
+  <!-- show the notice after saving -->
+  <% if notice %>
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <p id="notice" class="p-0 m-0"><%= notice %></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @pet_record.title %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @pet_record.date %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @pet_record.content %>
-</p>
-
-<p>
-  <strong>Pet:</strong>
-  <%= @pet_record.pet %>
-</p>
-
-<%= link_to 'Edit', edit_pet_record_path(@pet_record) %> |
-<%= link_to 'Back', pet_records_path %>
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <strong><%= @pet_record.title.capitalize  %></strong>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Name:</strong><br>
+            <%= @pet_record.pet.name %>
+          </li>
+          <li class="list-group-item">
+            <strong>Date:</strong><br>
+            <%= @pet_record.date %>
+          </li>
+          <li class="list-group-item">
+            <strong>Details:</strong><br>
+            <%= @pet_record.content %>
+          </li>
+          <li class="list-group-item">
+            <%= link_to raw("<i class='fas fa-edit mr-2'></i> Edit"), edit_pet_record_path(@pet_record), class: "btn btn-primary" %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

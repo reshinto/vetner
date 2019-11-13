@@ -15,10 +15,12 @@ class PetRecordsController < ApplicationController
   # GET /pet_records/new
   def new
     @pet_record = PetRecord.new
+    @pets = Pet.where(user_id: current_user.id)
   end
 
   # GET /pet_records/1/edit
   def edit
+    @pets = Pet.where(user_id: current_user.id)
   end
 
   # POST /pet_records
