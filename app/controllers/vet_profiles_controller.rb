@@ -110,7 +110,7 @@ class VetProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vet_profile_params
-      params.require(:vet_profile).permit(:clinic_name, :address, :postalcode, :phone, :hours, :services, :image)
+      params.require(:vet_profile).permit(:clinic_name, :address, :postalcode, :phone, :hours, :services, :image, :country, :website)
     end
 
     def add_vet_to_user_params
