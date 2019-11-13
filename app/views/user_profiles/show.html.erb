@@ -17,8 +17,11 @@
     <div class="col-12 col-md-4">
       <div class="row">
         <div class="col-6 col-md-6">
-          <img src=<%= @user_profile.image %> width="100px"/>
-          <%# <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSspVVDfah1S0_UsYT5cgwtmpEx_nNbXdRCZW5Ul1c4ZM9Dm1uE4A&s" alt="" width="100px"> %>
+          <% if @user_profile.image.attached? %>
+            <img src=<%= (url_for(@user_profile.image)) %> alt="" width="150px">
+          <% else %>
+            <img src=<%= image_url "defaultProfile.jpeg"%> alt="" width="150px">
+          <% end %>
         </div>
         <div class="col-6 col-md-6">
           <h3><%= @user_profile.username %></h3>
@@ -50,13 +53,18 @@
       <div class="tab-content" id="petVetTabContent">
         <div class="tab-pane fade show active" id="pet" role="tabpanel" aria-labelledby="pet-tab">
           <div class="container mt-3">
+            <%= link_to 'New Pet', new_pet_path %>
             <div class="row">
               <% @pets.each do |p| %>
                 <div class="col-12 col-md-6">
                   <div class="card mb-3" style="max-width: 540px;">
                     <div class="row no-gutters">
                       <div class="col-md-4">
-                        <img src=<%= p.image %> class="card-img" alt="...">
+                        <% if p.image.attached? %>
+                          <img src=<%= (url_for(p.image)) %> class="card-img" alt="" width="140px">
+                        <% else %>
+                          <img src=<%= image_url "defaultAnimal.png"%> class="card-img" alt="" width="140px">
+                        <% end %>
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
@@ -93,7 +101,7 @@
                       <div class="col-md-8">
                         <div class="card-body">
                           <h5 class="card-title">
-                          <%= link_to vp.clinic_name, vet_profile_path(vp), class: "text-primary" %>   
+                          <%= link_to vp.clinic_name, vet_profile_path(vp), class: "text-primary" %>
                           </h5>
                           <p class="card-text">
                             <p><i class="fas fa-map-marker-alt mr-2"></i><%= vp.address %></p>
