@@ -49,7 +49,8 @@ end
   VetProfile.create!(
     clinic_name: Faker::Company.name,
     address: "18 Jalan Pari Burong",
-    postalcode: Faker::Address.postcode,
+    country: "Singapore",
+    postalcode: "488684",
     phone: Faker::Number.number(digits: 10),
     hours: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     services: Faker::Company.catch_phrase,
