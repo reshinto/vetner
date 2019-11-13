@@ -8,7 +8,7 @@
         </div>
         <div class="col-6 col-md-6">
           <h3><%= @user_profile.username %></h3>
-            <%= link_to 'Edit Profile', edit_user_profile_path(@user_profile), class: "btn btn-primary" %>
+          <%= link_to 'Edit Profile', edit_user_profile_path(@user_profile), class: "btn btn-primary" %>
         </div>
       </div>
     </div>
@@ -32,31 +32,38 @@
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#vet" role="tab" aria-controls="vet" aria-selected="false">Vet</a>
         </li>
       </ul>
-      <!-- tab for pet: -->                 
+      <!-- tab for pet: -->
       <div class="tab-content" id="petVetTabContent">
-        <div class="tab-pane fade show active" id="pet" role="tabpanel" aria-labelledby="pet-tab">      
+        <div class="tab-pane fade show active" id="pet" role="tabpanel" aria-labelledby="pet-tab">
           <div class="container mt-3">
             <div class="row">
-              <div class="col">
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" alt="..." src="https://img.favpng.com/5/2/3/computer-icons-scalable-vector-graphics-avatar-emoticon-png-favpng-209NAXaV1ZBQdYGrU7nNbMxpX.jpg">
-                  <div class="card-body">
-                    <p class="card-text text-center">Jo</p>
+              <% @pets.each do |p| %>
+                <div class="col">
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        <img src=<%= p.image %> class="card-img" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= p.name %></h5>
+                          <p class="card-text">
+                            <p>Born: <%= p.date_of_birth %></p>
+                            <p>Breed: <%= p.breed %></p>
+                            <%= link_to raw("<i class='fas fa-eye mr-3'></i>"), {controller: "pets", action: "show"}, class: "text-secondary", id: p %>
+                            <%= link_to raw("<i class='fas fa-edit ml-3'></i>"), {controller: "pets", action: "edit"}, class: "text-secondary", id: p %>
+                          </p>
+                          <p class="card-text"><small class="text-muted">Last updated <%= p.updated_at %></small></p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>                 
-              </div>
-              <div class="col">
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" alt="..." src="https://img.favpng.com/5/2/3/computer-icons-scalable-vector-graphics-avatar-emoticon-png-favpng-209NAXaV1ZBQdYGrU7nNbMxpX.jpg">
-                  <div class="card-body">
-                    <p class="card-text text-center">Mario</p>
-                  </div>
-                </div>                 
-              </div>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
-        <!-- tab for vet: -->                 
+        <!-- tab for vet: -->
         <div class="tab-pane fade" id="vet" role="tabpanel" aria-labelledby="vet-tab">
           <div class="container mt-3">
             <div class="row">
@@ -66,7 +73,7 @@
                   <div class="card-body">
                     <p class="card-text text-center">Best Vet</p>
                   </div>
-                </div>                 
+                </div>
               </div>
               <div class="col">
                 <div class="card" style="width: 18rem;">
@@ -74,39 +81,25 @@
                   <div class="card-body">
                     <p class="card-text text-center">Nice Vet</p>
                   </div>
-                </div>                 
+                </div>
               </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-
-<p id="notice"><%= notice %>
-  
-<hr>
-<p><strong>My Pets:</strong></p>
-<% @pets.each do |p| %>
-  <p>Pet ID:<%= p.id %></p>
-  <p><%= p.name %></p>
-  <br/>
-  <img src=<%= p.image %> alt="" width="100px"><br/>
-  <%= link_to "Show pet", controller: "pets", action: "show", id: p %>
-  <%= link_to "Edit pet", controller: "pets", action: "edit", id: p %>
-  <hr>
-<% end %>
-<p><strong>My Vets:</strong></p>
-<% @vet_profiles.each do |vp| %>
-  <p>Vet Profile ID:<%= vp.id %></p>
-  <img src=<%= vp.image %> alt="" width="100px"><br/>
-  <p>Clinic: <%= vp.clinic_name %></p>
-  <p>Address: <%= vp.address %></p>
-  <p>Postal Code:<%= vp.postalcode %></p>
-  <p>Phone: <%= vp.phone %></p>
-  <p>Hours: <%= vp.hours %></p>
-  <p>Services: <%= vp.services %></p>
-  <%= link_to "Show vet profile", controller: "vet_profiles", action: "show", id: vp %>
-  <hr>
-<% end %>
+  <p id="notice"><%= notice %>
+    <p><strong>My Vets:</strong></p>
+    <% @vet_profiles.each do |vp| %>
+      <p>Vet Profile ID:<%= vp.id %></p>
+      <img src=<%= vp.image %> alt="" width="100px"><br/>
+      <p>Clinic: <%= vp.clinic_name %></p>
+      <p>Address: <%= vp.address %></p>
+      <p>Postal Code:<%= vp.postalcode %></p>
+      <p>Phone: <%= vp.phone %></p>
+      <p>Hours: <%= vp.hours %></p>
+      <p>Services: <%= vp.services %></p>
+      <%= link_to "Show vet profile", controller: "vet_profiles", action: "show", id: vp %>
+      <hr>
+    <% end %>
