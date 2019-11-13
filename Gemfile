@@ -71,3 +71,5 @@ gem 'devise'
 
 # Admin dashboard
 gem 'rails_admin'
+
+gem 'geocoder'

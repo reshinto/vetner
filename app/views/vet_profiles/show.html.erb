@@ -24,6 +24,12 @@
     <%= @vet_profile.postalcode %>
   </p>
 
+  <% if user_signed_in? %>
+    <iframe src=<%="https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&marker=latLng:#{@userLat},#{@userLong}!colour:red&marker=latLng:#{@vetLat},#{@vetLong}!colour:lightblue&popupWidth=200" %> height="450" width="450" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+  <% else %>
+    <iframe src=<%="https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&marker=latLng:#{@vetLat},#{@vetLong}!colour:lightblue&popupWidth=200" %> height="450" width="450" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+  <% end %>
+
   <p>
     <strong>Contacts:</strong>
     <%= @vet_profile.phone %>
@@ -48,7 +54,7 @@
 <hr>
 <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path, local: true) do |form| %>
   <div class="field">
-    <%= form.hidden_field :vet_id, value:@vet_profile.vet_id %> 
+    <%= form.hidden_field :vet_id, value:@vet_profile.vet_id %>
   </div>
 
   <div class="actions">
