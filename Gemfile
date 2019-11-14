@@ -53,9 +53,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  # Generate Fake data
-  gem 'faker'
-
   gem 'dotenv-rails'
 end
 
@@ -77,3 +74,6 @@ gem 'devise'
 gem 'rails_admin'
 
 gem 'geocoder'
+
+# Generate Fake data
+gem 'faker'
