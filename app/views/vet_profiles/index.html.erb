@@ -26,7 +26,7 @@
   <!-- loop through vet profiles and render each one of them as a card -->
   <% @vet_profiles.each do |vet_profile| %>
 	<div class="col-sm-4">
-    <div class="card">    
+    <div class="card">
     <!-- show the uploaded profile image if there is one -->
     <% if vet_profile.image.attached? %>
     <a href="/vet_profile/<%= vet_profile.vet_id %>" >
@@ -35,7 +35,7 @@
     <% else %>
     <!-- show the default profile image if user has not yet uploaded a profile image -->
     <a href="/vet_profile/<%= vet_profile.vet_id %>" >
-      <img src=<%= image_url "defaultProfile.jpeg"%> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
+      <img src=<%= image_url "defaultVet.svg"%> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
     </a>
     <% end %>
 
@@ -63,7 +63,7 @@
                 <%= f.hidden_field :vet_id, value: vet_profile.vet_id %>
                 <%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
                   <i class="fas fa-plus-circle mr-2"></i>Add vet
-                <% end %>            
+                <% end %>
               <% end %>
             <% end %>
           <% else %>
@@ -73,14 +73,14 @@
               <%= f.hidden_field :vet_id, value: vet_profile.vet_id %>
               <%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
                 <i class="fas fa-plus-circle mr-2"></i>Add vet
-              <% end %>            
+              <% end %>
             <% end %>
           <% end %>
           <!-- end of conditional logic check for showing the "add vet" button -->
           <!-- ******************************************************************************* -->
 
 
-            
+
 	        <% end %>
   			</p>
   		</div>
