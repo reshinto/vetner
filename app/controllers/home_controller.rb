@@ -1,7 +1,18 @@
 class HomeController < ApplicationController
 
   def index
-    @vet_profiles = VetProfile.all
+    # if a params[:search] is received
+    if params[:search]
+      # call the model method search_by_clinic_name, defined in VetProfile model
+      @search_results_vet_profiles = VetProfile.search_by_clinic_name(params[:search])
+      # send the search results to the partial view _search-results.js.erb
+      # located at views/user_profiles
+      respond_to do |format|
+        format.js { render partial: 'layouts/search-results'}
+      end
+    else
+      @vet_profiles = VetProfile.all
+    end
   end
 
   def show
