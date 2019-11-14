@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :pets
   resources :pet_records
   post '/vet_profiles/:id/add_vet_to_user' => 'vet_profiles#add_vet_to_user', as: 'add_vet_to_user'
+  post '/vet_profiles/:id/remove_vet_from_user' => 'vet_profiles#remove_vet_from_user', as: 'remove_vet_from_user'
 end

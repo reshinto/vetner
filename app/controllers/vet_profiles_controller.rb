@@ -1,5 +1,7 @@
 class VetProfilesController < ApplicationController
-  before_action :set_vet_profile, only: [:show, :edit, :update, :destroy, :add_vet_to_user]
+  before_action :set_vet_profile, 
+  only: [:show, :edit, :update, :destroy, :add_vet_to_user, :remove_vet_from_user]
+
   before_action :authenticate_vet!, only: [:edit, :update, :destroy]
 
   # GET /vet_profiles
@@ -114,6 +116,29 @@ class VetProfilesController < ApplicationController
     end
   end
 
+  # POST /vet_profiles/1/remove_vet_from_user
+  def remove_vet_from_user
+    # retrieve the vet object based on the vet_id passed from the form
+    # this is the vet to be removed from the user's list of vets
+    vet = Vet.find_by(id: remove_vet_from_user_params[:vet_id])
+
+    # check if the user has vets AND
+    # the vet to be removed is indeed in the user's list of vets
+    if current_user.vets and current_user.vets.map(&:id).include? vet.id
+
+      # delete the vet from the user's list of vets
+      current_user.vets.delete(vet)
+
+      redirect_to @vet_profile, notice: 'Vet has been removed.'
+      
+    else
+      # if the vet to be removed is NOT in the user's list of vets
+      # then there is nothing to be removed
+
+      redirect_to @vet_profile, notice: 'Error removing vet.'
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -128,5 +153,9 @@ class VetProfilesController < ApplicationController
 
     def add_vet_to_user_params
       params.require(:add_vet_to_user).permit(:vet_id)
+    end
+
+    def remove_vet_from_user_params
+      params.require(:remove_vet_from_user).permit(:vet_id)
     end
 end
