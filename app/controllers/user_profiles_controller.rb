@@ -45,10 +45,17 @@ class UserProfilesController < ApplicationController
   # PATCH/PUT /user_profiles/1
   # PATCH/PUT /user_profiles/1.json
   def update
+    require "open-uri"
     respond_to do |format|
       if @user_profile.update(user_profile_params)
         format.html { redirect_to @user_profile, notice: 'User profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_profile }
+
+        result = JSON.load(open("https://developers.onemap.sg/commonapi/search?searchVal=#{@user_profile.postalcode}&returnGeom=Y&getAddrDetails=Y"))
+        userLat = result["results"][0]["LATITUDE"]
+        userLong = result["results"][0]["LONGITUDE"]
+        address = result["results"][0]["ADDRESS"]
+        @user_profile.update(:address => address, :userLat => userLat, :userLong => userLong)
       else
         format.html { render :edit }
         format.json { render json: @user_profile.errors, status: :unprocessable_entity }
@@ -74,6 +81,6 @@ class UserProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_profile_params
-      params.require(:user_profile).permit(:first_name, :last_name, :address, :phone, :username, :image, :country, :postalcode, :unit)
+      params.require(:user_profile).permit(:first_name, :last_name, :address, :phone, :username, :image, :postalcode, :unit)
     end
 end
