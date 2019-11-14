@@ -16,9 +16,14 @@
     <%= form.text_area :clinic_name %>
   </div>
 
+  <%# <div class="field"> %>
+  <%#   <%= form.label :address, "Street address" %1> %>
+  <%#   <%= form.text_area :address %1> %>
+  <%# </div> %>
+
   <div class="field">
-    <%= form.label :address, "Street address" %>
-    <%= form.text_area :address %>
+    <%= form.label :postalcode %>
+    <%= form.text_field :postalcode %>
   </div>
 
   <div class="field">
@@ -26,15 +31,10 @@
     <%= form.text_field :unit %>
   </div>
 
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="field">
-    <%= form.label :postalcode %>
-    <%= form.text_field :postalcode %>
-  </div>
+  <%# <div class="field"> %>
+  <%#   <%= form.label :country %1> %>
+  <%#   <%= form.text_field :country %1> %>
+  <%# </div> %>
 
   <div class="field">
     <%= form.label :phone %>

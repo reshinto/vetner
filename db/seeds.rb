@@ -23,10 +23,11 @@ end
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     address: "79 Anson Road",
-    country: "Singapore",
     postalcode: "079906",
     phone: Faker::Number.number(digits: 10),
     username: Faker::Games::Pokemon.name,
+    userLat: coordinates[0],
+    userLong: coordinates[1],
     user_id: i+1,
   )
 end
@@ -58,6 +59,7 @@ end
 #     vet_id: i+1
 #   )
 # end
+
 
 vets = [
   [

@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 5rem">
+<div class="container custom-scroll" style="margin-top: 5rem">
 	<% if notice %>
 	<div class="row">
 		<div class="col">
@@ -18,12 +18,12 @@
 			<% if @vet_profile.image.attached? %>
 				<img src=<%= (url_for(@vet_profile.image)) %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
 			<% else %>
-				<img src=<%= image_url "defaultProfile.jpeg" %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
+				<img src=<%= image_url "defaultVet.svg" %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
 			<% end %>
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><strong><%= @vet_profile.clinic_name %></strong></li>
-        <li class="list-group-item"><%= "#{@vet_profile.address} #{@vet_profile.unit} #{@vet_profile.country} #{@vet_profile.postalcode}" %></li>
+        <li class="list-group-item"><%= "#{@vet_profile.address} #{@vet_profile.unit}" %></li>
 				<li class="list-group-item">Phone: <%= @vet_profile.phone %></li>
 				<li class="list-group-item">Website: <%= @vet_profile.website %></li>
 			</ul>
@@ -46,7 +46,7 @@
 					<%= f.hidden_field :vet_id, value: @vet_profile.vet_id %>
 					<%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
 					<i class="fas fa-plus-circle mr-2"></i>Add vet
-					<% end %>            
+					<% end %>
 				<% end %>
 				<% end %>
 			<% else %>
@@ -56,7 +56,7 @@
 				<%= f.hidden_field :vet_id, value: @vet_profile.vet_id %>
 				<%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
 					<i class="fas fa-plus-circle mr-2"></i>Add vet
-				<% end %>            
+				<% end %>
 				<% end %>
 			<% end %>
 			<!-- end of conditional logic check for showing the "add vet" button -->

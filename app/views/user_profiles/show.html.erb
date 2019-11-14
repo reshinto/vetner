@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 5rem">
+<div class="container custom-scroll" style="margin-top: 5rem">
 
   <% if notice %>
   <div class="row">
@@ -20,7 +20,7 @@
           <% if @user_profile.image.attached? %>
             <img src=<%= (url_for(@user_profile.image)) %> alt=<%= @user_profile.username %> width="150px">
           <% else %>
-            <img src=<%= image_url "defaultProfile.jpeg"%> alt=<%= @user_profile.username %> width="150px">
+            <img src=<%= image_url "defaultProfile.svg"%> alt=<%= @user_profile.username %> width="150px">
           <% end %>
         </div>
         <div class="col-6 col-md-6">
@@ -32,7 +32,7 @@
     <div class="col-12 col-md-8">
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><i class="fas fa-user mr-2"></i><%= @user_profile.first_name %> <%= @user_profile.last_name %></li>
-        <li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= "#{@user_profile.address} #{@user_profile.unit}, #{@user_profile.country} #{@user_profile.postalcode}" %></li>
+        <li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= "#{@user_profile.address} #{@user_profile.unit}" %></li>
         <li class="list-group-item"><i class="fas fa-phone mr-2"></i><%= @user_profile.phone %></li>
         <li class="list-group-item"><i class="fas fa-envelope mr-2"></i><%= @user_profile.user.email %></li>
       </ul>
@@ -49,11 +49,14 @@
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#vet" role="tab" aria-controls="vet" aria-selected="false">Vet</a>
         </li>
       </ul>
+
       <!-- tab for pet: -->
       <div class="tab-content" id="petVetTabContent">
         <div class="tab-pane fade show active" id="pet" role="tabpanel" aria-labelledby="pet-tab">
           <div class="container mt-3">
+            <!-- button to add new pet -->
             <%= link_to raw('<i class="fas fa-plus-circle mr-2"></i>new pet'), new_pet_path, class: "btn btn-primary my-2" %>
+            <!-- list of pet cards -->
             <div class="row">
               <% @pets.each do |p| %>
                 <div class="col-12 col-md-6">
@@ -63,7 +66,7 @@
                         <% if p.image.attached? %>
                           <img src=<%= (url_for(p.image)) %> class="card-img" alt="" width="140px">
                         <% else %>
-                          <img src=<%= image_url "defaultAnimal.png"%> class="card-img" alt="" width="140px">
+                          <img src=<%= image_url "defaultAnimal.svg"%> class="card-img" alt="" width="140px">
                         <% end %>
                       </div>
                       <div class="col-md-8">
@@ -85,22 +88,26 @@
                   </div>
                 </div>
               <% end %>
-            </div>
-          </div>
-        </div>
+            </div> <!-- end of pet cards row -->
+          </div> <!-- end of pet cards container -->
+        </div> <!-- end of pet tab pane -->
+
         <!-- tab for vet: -->
         <div class="tab-pane fade" id="vet" role="tabpanel" aria-labelledby="vet-tab">
           <div class="container mt-3">
+            <!-- search bar for searching vets-->
             <div class="row my-2">
               <div class="col">
                 <%= form_tag(vet_profiles_path, method: "get", remote: true, class: "form-inline") do %>
-                  <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control mr-sm-2" %>
                   <%= submit_tag "Search", class:"btn btn-outline-primary my-2 my-sm-0" %>
                 <% end %>
+                <!-- search results will be appended here-->
                 <div id="search-results"></div>
               </div>
             </div>
 
+            <!-- list of vet cards -->
             <div class="row">
               <% @vet_profiles.each do |vp| %>
                 <div class="col-12 col-md-6">
@@ -110,7 +117,7 @@
                         <% if vp.image.attached? %>
                           <img src=<%= (url_for(vp.image)) %> class="card-img" alt="" width="140px">
                         <% else %>
-                          <img src=<%= image_url "defaultProfile.jpeg"%> class="card-img" alt="" width="140px">
+                          <img src=<%= image_url "defaultVet.svg"%> class="card-img" alt="" width="140px">
                         <% end %>
                       </div>
                       <div class="col-md-8">
@@ -137,7 +144,10 @@
                   </div>
                 </div>
               <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+            </div>  <!-- end of vet card -->
+          </div> <!-- end of vet cards container -->
+        </div> <!-- end of vet tab pane -->
+      </div> <!-- end of pet and vet tab content -->
+     </div> <!-- end of row -->
+    </div> <!-- end of col -->
+</div> <!-- end of main container -->
