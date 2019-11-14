@@ -30,9 +30,9 @@
   </p>
 
   <% if user_signed_in? %>
-    <iframe src=<%="https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&marker=latLng:#{@userLat},#{@userLong}!colour:red&marker=latLng:#{@vetLat},#{@vetLong}!colour:lightblue&popupWidth=200" %> height="450" width="450" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+    <iframe src=<%= @address %> height="450" width="450" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
   <% else %>
-    <iframe src=<%="https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&marker=latLng:#{@vetLat},#{@vetLong}!colour:lightblue&popupWidth=200" %> height="450" width="450" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+    <iframe src=<%= @address %> height="450" width="450" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
   <% end %>
 
   <p>
