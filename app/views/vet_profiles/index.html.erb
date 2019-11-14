@@ -11,12 +11,11 @@
       </div>
     </div>
     <% end %>
-
-    <div>
+    <div class="row justify-content-center align-items-end">
       <% if user_signed_in? %>
-        <iframe src=<%= @address %> height="450" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+        <iframe src=<%= @address %> height="450" width="78%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
       <% else %>
-        <iframe src=<%= @address %> height="450" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+        <iframe src=<%= @address %> height="450" width="78%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
       <% end %>
     </div>
 
