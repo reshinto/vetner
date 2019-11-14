@@ -18,7 +18,7 @@
 			<% if @vet_profile.image.attached? %>
 				<img src=<%= (url_for(@vet_profile.image)) %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
 			<% else %>
-				<img src=<%= image_url "defaultVet.svg" %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
+				<img src=<%= image_url "defaultVet.png" %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
 			<% end %>
 			</div>
 			<ul class="list-group list-group-flush">

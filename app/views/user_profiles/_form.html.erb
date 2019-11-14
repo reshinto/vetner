@@ -54,6 +54,31 @@
             <%= form.text_field :username, class: "form-control" %>
           </div>
         </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button">Profile Picture</button>
+          </div>
+          <div class="custom-file field">
+            <%= form.file_field :image, class: "custom-file-input" %>
+            <%= form.label :image, 'Choose a file', class: "custom-file-label" %>
+          </div>
+          <!-- script to replace the words "Choose a file" with the name of the file -->
+          <script>
+            $('#user_profile_image').on('change',function(){
+                //get the file name
+                var fileName = $(this)[0].files[0].name;
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            })
+          </script>
+        </div>
+        <p>
+          <% if user_profile.image.attached? %>
+            <img src=<%= (url_for(user_profile.image)) %> alt="" width="100px">
+          <% else %>
+            <img src=<%= image_url "defaultProfile.png"%> alt="" width="100px">
+          <% end %>
+        </p>
         <div class="form-group row">
           <div class="col-sm-10">
               <%= form.submit class: "btn btn-primary" %>
