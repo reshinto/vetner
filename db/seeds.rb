@@ -45,6 +45,8 @@ Vet.create(email: "vet3@email.com", password: "password")
   )
 end
 
+coordinates = Geocoder.search("18 Jalan Pari Burong Singapore").first.coordinates
+
 13.times do |i|
   VetProfile.create!(
     clinic_name: Faker::Company.name,
@@ -54,7 +56,8 @@ end
     phone: Faker::Number.number(digits: 10),
     hours: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     services: Faker::Company.catch_phrase,
+    vetLat: coordinates[0],
+    vetLong: coordinates[1],
     vet_id: i+1
-    # image: Faker::Avatar.image
   )
 end

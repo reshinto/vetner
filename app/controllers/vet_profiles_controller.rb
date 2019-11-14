@@ -4,6 +4,8 @@ class VetProfilesController < ApplicationController
 
   before_action :authenticate_vet!, only: [:edit, :update, :destroy]
 
+  @@baseOnemapUrl = "https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15"
+
   # GET /vet_profiles
   # GET /vet_profiles.json
   def index
@@ -11,7 +13,7 @@ class VetProfilesController < ApplicationController
     if params[:search]
       # call the model method search_by_clinic_name, defined in VetProfile model
       @search_results_vet_profiles = VetProfile.search_by_clinic_name(params[:search])
-      # send the search results to the partial view _search-results.js.erb  
+      # send the search results to the partial view _search-results.js.erb
       # located at views/user_profiles
       respond_to do |format|
         format.js { render partial: 'user_profiles/search-results'}
@@ -19,7 +21,23 @@ class VetProfilesController < ApplicationController
     else
       # render the view for list of vet profiles
       @vet_profiles = VetProfile.all
-      @results = Geocoder.search("Lower Delta Road")
+      vetPositions = ""
+      @vet_profiles.each do |vp|
+        vetPositions += "&marker=latLng:#{vp.vetLat},#{vp.vetLong}!colour:lightblue"
+      end
+      if current_user
+        user_profile = UserProfile.find(current_user.id)
+        address = "#{user_profile.address} #{user_profile.country}"
+        userResults = Geocoder.search(address).first.coordinates
+        puts userResults
+        userLat = userResults[0]
+        userLong = userResults[1]
+        userPosition = "&marker=latLng:#{userLat},#{userLong}!colour:red"
+        @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPositions}"
+      else
+        @address = "#{@@baseOnemapUrl}#{vetPositions}"
+        puts @address
+      end
     end
 
   end
@@ -27,18 +45,18 @@ class VetProfilesController < ApplicationController
   # GET /vet_profiles/1
   # GET /vet_profiles/1.json
   def show
-    vet_profile = VetProfile.find(params[:id])
-    vetAddress = "#{vet_profile.address} #{vet_profile.country}"
-    vetResults = Geocoder.search(vetAddress).first.coordinates
-    @vetLat = vetResults[0]
-    @vetLong = vetResults[1]
+    @vet_profile = VetProfile.find(params[:id])
+    vetPosition = "&marker=latLng:#{@vet_profile.vetLat},#{@vet_profile.vetLong}!colour:lightblue"
     if current_user
       user_profile = UserProfile.find(current_user.id)
       address = "#{user_profile.address} #{user_profile.country}"
       userResults = Geocoder.search(address).first.coordinates
-      puts userResults
-      @userLat = userResults[0]
-      @userLong = userResults[1]
+      userLat = userResults[0]
+      userLong = userResults[1]
+      userPosition = "&marker=latLng:#{userLat},#{userLong}!colour:red"
+      @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPosition}"
+    else
+      @address = "#{@@baseOnemapUrl}#{vetPosition}"
     end
   end
 
@@ -75,6 +93,11 @@ class VetProfilesController < ApplicationController
       if @vet_profile.update(vet_profile_params)
         format.html { redirect_to @vet_profile, notice: 'Vet profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @vet_profile }
+
+        coordinates = Geocoder.search("#{@vet_profile.address} #{@vet_profile.country}").first.coordinates
+        vetLat = coordinates[0]
+        vetLong = coordinates[1]
+        @vet_profile.update(:vetLat => vetLat, :vetLong => vetLong)
       else
         format.html { render :edit }
         format.json { render json: @vet_profile.errors, status: :unprocessable_entity }
