@@ -1,5 +1,5 @@
 class VetProfilesController < ApplicationController
-  before_action :set_vet_profile, 
+  before_action :set_vet_profile,
   only: [:show, :edit, :update, :destroy, :add_vet_to_user, :remove_vet_from_user]
 
   before_action :authenticate_vet!, only: [:edit, :update, :destroy]
@@ -153,7 +153,7 @@ class VetProfilesController < ApplicationController
       current_user.vets.delete(vet)
 
       redirect_to @vet_profile, notice: 'Vet has been removed.'
-      
+
     else
       # if the vet to be removed is NOT in the user's list of vets
       # then there is nothing to be removed
@@ -171,7 +171,7 @@ class VetProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vet_profile_params
-      params.require(:vet_profile).permit(:clinic_name, :address, :postalcode, :phone, :hours, :services, :image, :country, :website)
+      params.require(:vet_profile).permit(:clinic_name, :address, :unit, :postalcode, :phone, :hours, :services, :image, :country, :website)
     end
 
     def add_vet_to_user_params
