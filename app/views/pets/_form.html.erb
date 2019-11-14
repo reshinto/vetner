@@ -54,7 +54,7 @@
           <% if pet.image.attached? %>
             <img src=<%= (url_for(pet.image)) %> alt="" width="100px">
           <% else %>
-            <img src=<%= image_url "defaultAnimal.svg"%> alt="" width="100px">
+            <img src=<%= image_url 'defaultAnimal.png' %> alt="" width="100px">
           <% end %>
         </p>
         <div class="form-group row">

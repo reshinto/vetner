@@ -22,23 +22,22 @@
 
     <h2>SVA Registered Veterinary Centres</h2>
 
-    <div class="row">
-      <!-- loop through vet profiles and render each one of them as a card -->
-      <% @vet_profiles.each do |vet_profile| %>
-      <div class="col-sm-4">
-        <div class="card">
-        <!-- show the uploaded profile image if there is one -->
-        <% if vet_profile.image.attached? %>
-        <a href="/vet_profile/<%= vet_profile.vet_id %>" >
-          <img src=<%= (url_for(vet_profile.image)) %> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
-        </a>
-        <% else %>
-        <!-- show the default profile image if user has not yet uploaded a profile image -->
-        <a href="/vet_profile/<%= vet_profile.vet_id %>" >
-          <img src=<%= image_url "defaultVet.svg"%> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
-        </a>
-        <% end %>
-
+ <div class="row">
+  <!-- loop through vet profiles and render each one of them as a card -->
+  <% @vet_profiles.each do |vet_profile| %>
+	<div class="col-sm-4">
+    <div class="card">
+    <!-- show the uploaded profile image if there is one -->
+    <% if vet_profile.image.attached? %>
+    <a href="/vet_profile/<%= vet_profile.vet_id %>" >
+      <img src=<%= (url_for(vet_profile.image)) %> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
+    </a>
+    <% else %>
+    <!-- show the default profile image if user has not yet uploaded a profile image -->
+    <a href="/vet_profile/<%= vet_profile.vet_id %>" >
+      <img src=<%= image_url "defaultVet.png"%> class="card-img-top" alt=<%= vet_profile.clinic_name %>>
+    </a>
+    <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to vet_profile.clinic_name, vet_profile_path(id: vet_profile.vet_id) %></h5>
             <p class="card-text"><%= "#{vet_profile.address} #{vet_profile.unit}" %><br>
