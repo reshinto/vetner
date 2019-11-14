@@ -1,48 +1,79 @@
-<div class="row my-2">
-  <% @search_results_vet_profiles.each do |vp| %>
-    <div class="col-12 col-md-6">
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="card-header bg-light">
-          <% current_user_vet_profiles = current_user.vets.map(&:vet_profile) %>
-          <% current_user_vet_ids = current_user_vet_profiles.map do |vp| vp.map(&:id) end.flatten(1) %>
-          <!-- if the vet profile has already been included-->
-          <% if current_user_vet_ids.include? vp.id %>
-            <span class="badge badge-pill badge-info p-2"><i class="fas fa-check-circle mr-2"></i>Added</span>
-          <% else %>
-            <!-- show the button to add vet -->
-            <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vp.vet_id), local: true) do |f| %>
-              <%= f.hidden_field :vet_id, value: vp.vet_id %>
-              <%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
-                <i class="fas fa-plus-circle mr-2"></i>Add vet
-              <% end %>            
-            <% end %>
-          <% end %>
-        </div>      
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <% if vp.image.attached? %>
-              <img src=<%= (url_for(vp.image)) %> class="card-img" alt="" width="140px">
-            <% else %>
-              <img src=<%= image_url "defaultProfile.jpeg"%> class="card-img" alt="" width="140px">
-            <% end %>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">
-              <%= link_to vp.clinic_name, vet_profile_path(vp), class: "text-primary" %>
-              </h5>
-              <p class="card-text">
-                <p><i class="fas fa-map-marker-alt mr-2"></i><%= vp.address %></p>
-                <p><i class="fas fa-phone mr-2"></i><%= vp.phone %></p>
-                <p><i class="far fa-clock mr-2"></i><%= vp.hours %></p>
-                <p><i class="fas fa-briefcase-medical mr-2"></i><%= vp.services %></p>
-                <%= link_to raw("<i class='fas fa-eye mr-3'></i>"), vet_profile_path(vp), class: "text-secondary", id: vp %>
-              </p>
-              <p class="card-text"><small class="text-muted">Last updated:<%= vp.updated_at.strftime("%c") %></small></p>
+<div class="modal fade" id="searchVetResultsModal" tabindex="-1" role="dialog" aria-labelledby="searchVetResultsModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchVetResultsModalTitle">Search results</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <!-- search bar for searching vets-->
+          <div class="row my-2">
+            <div class="col">
+              <%= form_tag(vet_profiles_path, method: "get", remote: true, class: "form-inline") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control mr-sm-2" %>
+                <%= submit_tag "Search", class:"btn btn-outline-primary my-2 my-sm-0" %>
+              <% end %>
+              <div id="search-results"></div>
             </div>
           </div>
+
+          <div class="row my-2">
+            <% @search_results_vet_profiles.each do |vp| %>
+              <div class="col-12 col-md-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                  <div class="card-header bg-light">
+                    <% current_user_vet_profiles = current_user.vets.map(&:vet_profile) %>
+                    <% current_user_vet_ids = current_user_vet_profiles.map do |vp| vp.map(&:id) end.flatten(1) %>
+                    <!-- if the vet profile has already been included-->
+                    <% if current_user_vet_ids.include? vp.id %>
+                      <span class="badge badge-pill badge-info p-2"><i class="fas fa-check-circle mr-2"></i>Added</span>
+                    <% else %>
+                      <!-- show the button to add vet -->
+                      <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vp.vet_id), local: true) do |f| %>
+                        <%= f.hidden_field :vet_id, value: vp.vet_id %>
+                        <%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
+                          <i class="fas fa-plus-circle mr-2"></i>Add vet
+                        <% end %>            
+                      <% end %>
+                    <% end %>
+                  </div>      
+                  <div class="row no-gutters">
+                    <div class="col-4 col-md-4">
+                      <% if vp.image.attached? %>
+                        <img src=<%= (url_for(vp.image)) %> class="card-img m-2" alt="" width="50">
+                      <% else %>
+                        <img src=<%= image_url "defaultProfile.svg"%> class="card-img m-2" alt="" width="50">
+                      <% end %>
+                    </div>
+                    <div class="col-8 col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                        <%= link_to vp.clinic_name, vet_profile_path(vp), class: "text-primary" %>
+                        </h5>
+                        <p class="card-text">
+                          <p><i class="fas fa-map-marker-alt mr-2"></i><%= vp.address %></p>
+                          <p><i class="fas fa-phone mr-2"></i><%= vp.phone %></p>
+                          <p><i class="far fa-clock mr-2"></i><%= vp.hours %></p>
+                          <p><i class="fas fa-briefcase-medical mr-2"></i><%= vp.services %></p>
+                        </p>
+                        <p class="card-text"><small class="text-muted">Last updated:<%= vp.updated_at.strftime("%c") %></small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>        
         </div>
       </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>

@@ -49,11 +49,14 @@
           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#vet" role="tab" aria-controls="vet" aria-selected="false">Vet</a>
         </li>
       </ul>
+
       <!-- tab for pet: -->
       <div class="tab-content" id="petVetTabContent">
         <div class="tab-pane fade show active" id="pet" role="tabpanel" aria-labelledby="pet-tab">
           <div class="container mt-3">
+            <!-- button to add new pet -->
             <%= link_to raw('<i class="fas fa-plus-circle mr-2"></i>new pet'), new_pet_path, class: "btn btn-primary my-2" %>
+            <!-- list of pet cards -->
             <div class="row">
               <% @pets.each do |p| %>
                 <div class="col-12 col-md-6">
@@ -85,22 +88,26 @@
                   </div>
                 </div>
               <% end %>
-            </div>
-          </div>
-        </div>
+            </div> <!-- end of pet cards row -->
+          </div> <!-- end of pet cards container -->
+        </div> <!-- end of pet tab pane -->
+
         <!-- tab for vet: -->
         <div class="tab-pane fade" id="vet" role="tabpanel" aria-labelledby="vet-tab">
           <div class="container mt-3">
+            <!-- search bar for searching vets-->
             <div class="row my-2">
               <div class="col">
                 <%= form_tag(vet_profiles_path, method: "get", remote: true, class: "form-inline") do %>
-                  <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control mr-sm-2" %>
                   <%= submit_tag "Search", class:"btn btn-outline-primary my-2 my-sm-0" %>
                 <% end %>
+                <!-- search results will be appended here-->
                 <div id="search-results"></div>
               </div>
             </div>
 
+            <!-- list of vet cards -->
             <div class="row">
               <% @vet_profiles.each do |vp| %>
                 <div class="col-12 col-md-6">
@@ -137,61 +144,10 @@
                   </div>
                 </div>
               <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-4">.col-md-4</div>
-            <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
-            <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
-          </div>
-          <div class="row">
-            <div class="col-sm-9">
-              Level 1: .col-sm-9
-              <div class="row">
-                <div class="col-8 col-sm-6">
-                  Level 2: .col-8 .col-sm-6
-                </div>
-                <div class="col-4 col-sm-6">
-                  Level 2: .col-4 .col-sm-6
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+            </div>  <!-- end of vet card -->
+          </div> <!-- end of vet cards container -->
+        </div> <!-- end of vet tab pane -->
+      </div> <!-- end of pet and vet tab content -->
+     </div> <!-- end of row -->
+    </div> <!-- end of col -->
+</div> <!-- end of main container -->
