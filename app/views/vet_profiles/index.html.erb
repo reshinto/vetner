@@ -42,14 +42,17 @@
         	Phone: <%= vet_profile.phone %><br>
         	Hours: <%= vet_profile.hours %>
         	<% if user_signed_in? %>
-	        <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |form| %>
-	          <div class="field">
-	            <%= form.hidden_field :vet_id, value: vet_profile.vet_id %>
-	          </div>
-	          <div class="actions">
-	            <%= form.submit 'Add as vet' %>
-	          </div>
-	        <% end %>
+
+            <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |form| %>
+              <div class="field">
+                <%= form.hidden_field :vet_id, value: vet_profile.vet_id %>
+              </div>
+              <div class="actions">
+                <%= form.submit 'Add as vet' %>
+              </div>
+            <% end %>
+
+            
 	        <% end %>
   			</p>
   		</div>

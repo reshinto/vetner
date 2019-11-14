@@ -28,16 +28,24 @@
 				<li class="list-group-item">Phone: <%= @vet_profile.phone %></li>
 				<li class="list-group-item">Website: <%= @vet_profile.website %></li>
 			</ul>
-			<div class="col text-center">
-			<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path, local: true) do |form| %>
-				<div class="field">
-					<%= form.hidden_field :vet_id, value:@vet_profile.vet_id %>
+			<% if user_signed_in? %>
+
+				<div class="col text-center">
+
+				
+					<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path, local: true) do |form| %>
+						<div class="field">
+							<%= form.hidden_field :vet_id, value:@vet_profile.vet_id %>
+						</div>
+						<div class="actions">
+							<%= form.submit 'Add as vet', class: "btn btn-info btn-lg" %>
+						</div>
+					<% end %>
+
+
 				</div>
-				<div class="actions">
-					<%= form.submit 'Add as vet', class: "btn btn-info btn-lg" %>
-				</div>
+
 			<% end %>
-			</div>
 		</div>
 		<div class="col-md-8">
 			<div class="col text-center">
