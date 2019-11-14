@@ -27,19 +27,18 @@ class VetProfilesController < ApplicationController
       end
       if current_user
         user_profile = UserProfile.find(current_user.id)
-        address = "#{user_profile.address} #{user_profile.country}"
-        userResults = Geocoder.search(address).first.coordinates
-        puts userResults
-        userLat = userResults[0]
-        userLong = userResults[1]
-        userPosition = "&marker=latLng:#{userLat},#{userLong}!colour:red"
+        # address = "#{user_profile.address} #{user_profile.country}"
+        # userResults = Geocoder.search(address).first.coordinates
+        # puts userResults
+        # userLat = userResults[0]
+        # userLong = userResults[1]
+        userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!colour:red"
         @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPositions}"
       else
         @address = "#{@@baseOnemapUrl}#{vetPositions}"
         puts @address
       end
     end
-
   end
 
   # GET /vet_profiles/1
@@ -49,11 +48,11 @@ class VetProfilesController < ApplicationController
     vetPosition = "&marker=latLng:#{@vet_profile.vetLat},#{@vet_profile.vetLong}!colour:lightblue"
     if current_user
       user_profile = UserProfile.find(current_user.id)
-      address = "#{user_profile.address} #{user_profile.country}"
-      userResults = Geocoder.search(address).first.coordinates
-      userLat = userResults[0]
-      userLong = userResults[1]
-      userPosition = "&marker=latLng:#{userLat},#{userLong}!colour:red"
+      # address = "#{user_profile.address} #{user_profile.country}"
+      # userResults = Geocoder.search(address).first.coordinates
+      # userLat = userResults[0]
+      # userLong = userResults[1]
+      userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!colour:red"
       @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPosition}"
     else
       @address = "#{@@baseOnemapUrl}#{vetPosition}"
@@ -89,15 +88,17 @@ class VetProfilesController < ApplicationController
   # PATCH/PUT /vet_profiles/1
   # PATCH/PUT /vet_profiles/1.json
   def update
+    require "open-uri"
     respond_to do |format|
       if @vet_profile.update(vet_profile_params)
         format.html { redirect_to @vet_profile, notice: 'Vet profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @vet_profile }
 
-        coordinates = Geocoder.search("#{@vet_profile.address} #{@vet_profile.country}").first.coordinates
-        vetLat = coordinates[0]
-        vetLong = coordinates[1]
-        @vet_profile.update(:vetLat => vetLat, :vetLong => vetLong)
+        result = JSON.load(open("https://developers.onemap.sg/commonapi/search?searchVal=#{@vet_profile.postalcode}&returnGeom=Y&getAddrDetails=Y"))
+        vetLat = result["results"][0]["LATITUDE"]
+        vetLong = result["results"][0]["LONGITUDE"]
+        address = result["results"][0]["ADDRESS"]
+        @vet_profile.update(:address => address, :vetLat => vetLat, :vetLong => vetLong)
       else
         format.html { render :edit }
         format.json { render json: @vet_profile.errors, status: :unprocessable_entity }
@@ -171,7 +172,7 @@ class VetProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vet_profile_params
-      params.require(:vet_profile).permit(:clinic_name, :address, :unit, :postalcode, :phone, :hours, :services, :image, :country, :website)
+      params.require(:vet_profile).permit(:clinic_name, :address, :unit, :postalcode, :phone, :hours, :services, :image, :website)
     end
 
     def add_vet_to_user_params

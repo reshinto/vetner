@@ -41,7 +41,7 @@
 
 			<div class="card-body">
         <h5 class="card-title"><%= link_to vet_profile.clinic_name, vet_profile_path(id: vet_profile.vet_id) %></h5>
-        <p class="card-text"><%= "#{vet_profile.address} #{vet_profile.unit} #{vet_profile.country} #{vet_profile.postalcode}" %><br>
+        <p class="card-text"><%= "#{vet_profile.address} #{vet_profile.unit}" %><br>
         	Phone: <%= vet_profile.phone %><br>
         	Hours: <%= vet_profile.hours %>
         	<% if user_signed_in? %>
