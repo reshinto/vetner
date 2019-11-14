@@ -91,6 +91,16 @@
         <!-- tab for vet: -->
         <div class="tab-pane fade" id="vet" role="tabpanel" aria-labelledby="vet-tab">
           <div class="container mt-3">
+            <div class="row my-2">
+              <div class="col">
+                <%= form_tag(vet_profiles_path, method: "get", remote: true, class: "form-inline") do %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
+                  <%= submit_tag "Search", class:"btn btn-outline-primary my-2 my-sm-0" %>
+                <% end %>        
+                <div id="search-results"></div>
+              </div>
+            </div>
+
             <div class="row">
               <% @vet_profiles.each do |vp| %>
                 <div class="col-12 col-md-6">
