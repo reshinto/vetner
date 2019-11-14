@@ -1,73 +1,60 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="margin-top: 5rem">
+	<% if notice %>
+	<div class="row">
+		<div class="col">
+			<div class="alert alert-info alert-dismissible fade show" role="alert">
+				<p id="notice" class="p-0 m-0"><%= notice %></p>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<% end %>
 
+	<div class="row">
+		<div class="col-md-4">
+			<div class="col">
+			<% if @vet_profile.image.attached? %>
+				<img src=<%= (url_for(@vet_profile.image)) %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
+			<% else %>
+				<img src=<%= image_url "defaultProfile.jpeg" %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
+			<% end %>
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item"><strong><%= @vet_profile.clinic_name %></strong></li>
+				<li class="list-group-item"><%= @vet_profile.address %></li>
+				<li class="list-group-item"><%= @vet_profile.country %> <%= @vet_profile.postalcode %></li>
+				<li class="list-group-item">Phone: <%= @vet_profile.phone %></li>
+				<li class="list-group-item">Website: <%= @vet_profile.website %></li>
+			</ul>
+			<div class="col text-center">
+			<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path, local: true) do |form| %>
+				<div class="field">
+					<%= form.hidden_field :vet_id, value:@vet_profile.vet_id %>
+				</div>
+				<div class="actions">
+					<%= form.submit 'Add as vet', class: "btn btn-info btn-lg" %>
+				</div>
+			<% end %>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="col text-center">
+			<% if user_signed_in? %>
+				<iframe src=<%="https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&marker=latLng:#{@userLat},#{@userLong}!colour:red&marker=latLng:#{@vetLat},#{@vetLong}!colour:lightblue&popupWidth=200" %> height="450" width="auto" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+			<% else %>
+				<iframe src=<%="https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&marker=latLng:#{@vetLat},#{@vetLong}!colour:lightblue&popupWidth=200" %> height="450" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+			<% end %>
+			</div>
+			<p>
+				<strong>Opening Hours:</strong>
+				<%= @vet_profile.hours %>
+			</p>
+			<p>
+				<strong>Services:</strong>
+				<%= @vet_profile.services %>
+			</p>
+		</div>
+	</div>
 <div>
-  <p>
-    <strong>Image:</strong>
-    <% if @vet_profile.image.attached? %>
-      <img src=<%= (url_for(@vet_profile.image)) %> alt="">
-    <% else %>
-      <img src=<%= image_url "defaultProfile.jpeg"%> alt="">
-    <% end %>
-  </p>
-  <p>
-    <strong>Clinic name:</strong>
-    <%= @vet_profile.clinic_name %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= @vet_profile.address %>
-  </p>
-
-  <p>
-    <strong>Country:</strong>
-    <%= @vet_profile.country %>
-  </p>
-
-  <p>
-    <strong>Postalcode:</strong>
-    <%= @vet_profile.postalcode %>
-  </p>
-
-  <% if user_signed_in? %>
-    <iframe src=<%="https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&marker=latLng:#{@userLat},#{@userLong}!colour:red&marker=latLng:#{@vetLat},#{@vetLong}!colour:lightblue&popupWidth=200" %> height="450" width="450" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-  <% else %>
-    <iframe src=<%="https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&marker=latLng:#{@vetLat},#{@vetLong}!colour:lightblue&popupWidth=200" %> height="450" width="450" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-  <% end %>
-
-  <p>
-    <strong>Contacts:</strong>
-    <%= @vet_profile.phone %>
-  </p>
-
-  <p>
-    <strong>Website:</strong>
-    <%= @vet_profile.website %>
-  </p>
-
-  <%= link_to 'Edit', edit_vet_profile_path(@vet_profile) %> |
-  <%= link_to 'Back', vet_profiles_path %>
-</div>
-
-<div>
-  <p>
-    <strong>Hours:</strong>
-    <%= @vet_profile.hours %>
-  </p>
-
-  <p>
-    <strong>Services:</strong>
-    <%= @vet_profile.services %>
-  </p>
-</div>
-
-<hr>
-<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path, local: true) do |form| %>
-  <div class="field">
-    <%= form.hidden_field :vet_id, value:@vet_profile.vet_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Add as vet' %>
-  </div>
-<% end %>
