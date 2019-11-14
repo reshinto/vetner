@@ -3,11 +3,19 @@
     <div class="col-12 col-md-6">
       <div class="card mb-3" style="max-width: 540px;">
         <div class="card-header bg-light">
-          <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vp.vet_id), local: true) do |f| %>
-            <%= f.hidden_field :vet_id, value: vp.vet_id %>
-            <%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
-              <i class="fas fa-plus-circle mr-2"></i>Add vet
-            <% end %>            
+          <% current_user_vet_profiles = current_user.vets.map(&:vet_profile) %>
+          <% current_user_vet_ids = current_user_vet_profiles.map do |vp| vp.map(&:id) end.flatten(1) %>
+          <!-- if the vet profile has already been included-->
+          <% if current_user_vet_ids.include? vp.id %>
+            <span class="badge badge-pill badge-info p-2"><i class="fas fa-check-circle mr-2"></i>Added</span>
+          <% else %>
+            <!-- show the button to add vet -->
+            <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vp.vet_id), local: true) do |f| %>
+              <%= f.hidden_field :vet_id, value: vp.vet_id %>
+              <%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
+                <i class="fas fa-plus-circle mr-2"></i>Add vet
+              <% end %>            
+            <% end %>
           <% end %>
         </div>      
         <div class="row no-gutters">
