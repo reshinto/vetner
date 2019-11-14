@@ -19,13 +19,13 @@
           <%= form.label :date_of_birth, 'Date of birth', class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= form.date_select :date_of_birth, {
-                :order => [:day, :month, :year], 
+                :order => [:day, :month, :year],
                 :start_year => 1990
-               }, 
+               },
                {:class => "form-control my-2"} %>
           </div>
         </div>
-        
+
         <div class="form-group row">
           <%= form.label :breed, 'Breed', class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
@@ -54,7 +54,7 @@
           <% if pet.image.attached? %>
             <img src=<%= (url_for(pet.image)) %> alt="" width="100px">
           <% else %>
-            <img src=<%= image_url "defaultAnimal.png"%> alt="" width="100px">
+            <img src=<%= image_url "defaultAnimal.svg"%> alt="" width="100px">
           <% end %>
         </p>
         <div class="form-group row">
@@ -62,7 +62,7 @@
               <%= form.submit class: "btn btn-primary" %>
           </div>
         </div>
-      <% end %>      
+      <% end %>
     </div>
   </div>
 </div>

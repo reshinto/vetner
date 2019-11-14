@@ -17,7 +17,7 @@
         <% if @pet.image.attached? %>
           <img src=<%= (url_for(@pet.image)) %> alt="" class="card-img-top">
         <% else %>
-          <img src=<%= image_url "defaultAnimal.png"%> alt="" class="card-img-top">
+          <img src=<%= image_url "defaultAnimal.svg"%> alt="" class="card-img-top">
         <% end %>
         <%# <img src="..." class="card-img-top" alt="..."> %>
         <div class="card-body">
