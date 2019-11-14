@@ -32,7 +32,7 @@
     <div class="col-12 col-md-8">
       <ul class="list-group list-group-flush">
         <li class="list-group-item"><i class="fas fa-user mr-2"></i><%= @user_profile.first_name %> <%= @user_profile.last_name %></li>
-        <li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= "#{@user_profile.address}, #{@user_profile.country} #{@user_profile.postalcode}" %></li>
+        <li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= "#{@user_profile.address} #{@user_profile.unit}, #{@user_profile.country} #{@user_profile.postalcode}" %></li>
         <li class="list-group-item"><i class="fas fa-phone mr-2"></i><%= @user_profile.phone %></li>
         <li class="list-group-item"><i class="fas fa-envelope mr-2"></i><%= @user_profile.user.email %></li>
       </ul>
@@ -96,7 +96,7 @@
                 <%= form_tag(vet_profiles_path, method: "get", remote: true, class: "form-inline") do %>
                   <%= text_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-sm-2" %>
                   <%= submit_tag "Search", class:"btn btn-outline-primary my-2 my-sm-0" %>
-                <% end %>        
+                <% end %>
                 <div id="search-results"></div>
               </div>
             </div>
@@ -127,7 +127,7 @@
                               <%= f.hidden_field :vet_id, value: vp.vet_id %>
                               <%= button_tag(type: 'submit', class: "btn btn-danger shadow-lg", data: { confirm: 'Are you sure you want to remove this vet?' }) do %>
                                 <i class="fas fa-minus-circle mr-2"></i>Remove vet
-                              <% end %>            
+                              <% end %>
                             <% end %>
                           </p>
                           <p class="card-text"><small class="text-muted">Last updated:<%= vp.updated_at.strftime("%c") %></small></p>

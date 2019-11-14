@@ -5,7 +5,7 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles
   # GET /user_profiles.json
   def index
-    @user_profiles = UserProfile.all
+    redirect_to root_path
   end
 
   # GET /user_profiles/1
@@ -74,6 +74,6 @@ class UserProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_profile_params
-      params.require(:user_profile).permit(:first_name, :last_name, :address, :phone, :username, :image, :country, :postalcode)
+      params.require(:user_profile).permit(:first_name, :last_name, :address, :phone, :username, :image, :country, :postalcode, :unit)
     end
 end

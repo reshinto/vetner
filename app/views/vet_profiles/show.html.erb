@@ -23,8 +23,7 @@
 			</div>
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><strong><%= @vet_profile.clinic_name %></strong></li>
-				<li class="list-group-item"><%= @vet_profile.address %></li>
-				<li class="list-group-item"><%= @vet_profile.country %> <%= @vet_profile.postalcode %></li>
+        <li class="list-group-item"><%= "#{@vet_profile.address} #{@vet_profile.unit} #{@vet_profile.country} #{@vet_profile.postalcode}" %></li>
 				<li class="list-group-item">Phone: <%= @vet_profile.phone %></li>
 				<li class="list-group-item">Website: <%= @vet_profile.website %></li>
 			</ul>
