@@ -13,9 +13,27 @@
  */
 @import "bootstrap";
 
+body {
+  overflow: hidden;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: white;
+}
+
 main {
 	margin-top: 3rem;
 }
+
+.custom-scroll {
+  height: 90vh;
+  width: 100vw;
+  overflow-y: scroll;
+}
+
 
 .carousel-caption {
     top: 0;
