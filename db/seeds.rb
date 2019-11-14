@@ -21,15 +21,18 @@ User.create(email: "user3@email.com", password: "password")
   )
 end
 
+coordinates = Geocoder.search("79 Anson Road Singapore").first.coordinates
+
 17.times do |i|
   UserProfile.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     address: "79 Anson Road",
-    country: "Singapore",
     postalcode: "079906",
     phone: Faker::Number.number(digits: 10),
     username: Faker::Games::Pokemon.name,
+    userLat: coordinates[0],
+    userLong: coordinates[1],
     user_id: i+1,
   )
 end
@@ -51,7 +54,6 @@ coordinates = Geocoder.search("18 Jalan Pari Burong Singapore").first.coordinate
   VetProfile.create!(
     clinic_name: Faker::Company.name,
     address: "18 Jalan Pari Burong",
-    country: "Singapore",
     postalcode: "488684",
     phone: Faker::Number.number(digits: 10),
     hours: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
