@@ -1,1 +1,7 @@
 $("#search-results").html("<%= escape_javascript(render :partial => 'user_profiles/results') %>");
+
+<!-- https://stackoverflow.com/questions/11519660/twitter-bootstrap-modal-backdrop-doesnt-disappear -->
+<!-- remove the modal backdrop manually -->
+$('.modal-backdrop').remove();
+
+$('#searchVetResultsModal').modal('show')
