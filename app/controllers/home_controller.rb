@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index
     @vet_profiles = VetProfile.all
   end

@@ -1,4 +1,4 @@
-<div class="container" style="margin-top:70px">
+<div class="container" style="margin-top: 5rem">
 
   <% if notice %>
   <div class="row">
@@ -18,9 +18,9 @@
       <div class="row">
         <div class="col-6 col-md-6">
           <% if @user_profile.image.attached? %>
-            <img src=<%= (url_for(@user_profile.image)) %> alt="" width="150px">
+            <img src=<%= (url_for(@user_profile.image)) %> alt=<%= @user_profile.username %> width="150px">
           <% else %>
-            <img src=<%= image_url "defaultProfile.jpeg"%> alt="" width="150px">
+            <img src=<%= image_url "defaultProfile.jpeg"%> alt=<%= @user_profile.username %> width="150px">
           <% end %>
         </div>
         <div class="col-6 col-md-6">
@@ -123,7 +123,12 @@
                             <p><i class="fas fa-phone mr-2"></i><%= vp.phone %></p>
                             <p><i class="far fa-clock mr-2"></i><%= vp.hours %></p>
                             <p><i class="fas fa-briefcase-medical mr-2"></i><%= vp.services %></p>
-                            <%= link_to raw("<i class='fas fa-eye mr-3'></i>"), vet_profile_path(vp), class: "text-secondary", id: vp %>
+                            <%= form_with(scope: :remove_vet_from_user, url: remove_vet_from_user_path(vp.vet_id), local: true) do |f| %>
+                              <%= f.hidden_field :vet_id, value: vp.vet_id %>
+                              <%= button_tag(type: 'submit', class: "btn btn-danger shadow-lg", data: { confirm: 'Are you sure you want to remove this vet?' }) do %>
+                                <i class="fas fa-minus-circle mr-2"></i>Remove vet
+                              <% end %>            
+                            <% end %>
                           </p>
                           <p class="card-text"><small class="text-muted">Last updated:<%= vp.updated_at.strftime("%c") %></small></p>
                         </div>
