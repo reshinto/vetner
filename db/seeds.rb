@@ -18,16 +18,21 @@ User.create(email: "simyen@email.com", password: "password", admin: true)
   )
 end
 
+result = JSON.load(open("https://developers.onemap.sg/commonapi/search?searchVal=079906&returnGeom=Y&getAddrDetails=Y"))
+lat = result["results"][0]["LATITUDE"]
+long = result["results"][0]["LONGITUDE"]
+address = result["results"][0]["ADDRESS"]
+
 14.times do |i|
   UserProfile.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: "79 Anson Road",
+    address: address,
     postalcode: "079906",
-    phone: Faker::Number.number(digits: 10),
+    phone: "31589593",
     username: Faker::Games::Pokemon.name,
-    userLat: coordinates[0],
-    userLong: coordinates[1],
+    userLat: lat,
+    userLong: long,
     user_id: i+1,
   )
 end
@@ -758,7 +763,6 @@ vets.each_with_index do |vet, index|
     clinic_name: vet[0],
     address: address,
     unit: vet[2],
-    country: "Singapore",
     postalcode: vet[3],
     phone: vet[4],
     website: vet[5],
