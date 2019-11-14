@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_015224) do
+ActiveRecord::Schema.define(version: 2019_11_14_034732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_015224) do
     t.text "website"
     t.string "vetLat"
     t.string "vetLong"
+    t.string "unit"
     t.index ["vet_id"], name: "index_vet_profiles_on_vet_id"
   end
 
