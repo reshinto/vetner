@@ -7,14 +7,14 @@
             <img src=<%= (url_for(user_profile.image)) %> alt="" width="100" class="my-2">
           <% else %>
 
-            <img src=<%= image_url "defaultProfile.svg" %> alt="">
-            
+            <img src=<%= image_url "defaultProfile.png" %> alt="">
+
           <% end %>
-                  
+
         <div class="input-group mb-3">
           <div class="custom-file">
             <%= form.file_field :image, class: "custom-file-input" %>
-            <%= form.label :image, 'Choose a file', class: "custom-file-label" %> 
+            <%= form.label :image, 'Choose a file', class: "custom-file-label" %>
           </div>
         </div>
 
