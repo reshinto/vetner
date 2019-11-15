@@ -77,3 +77,6 @@ gem 'geocoder'
 
 # Generate Fake data
 gem 'faker'
+
+gem 'mail_form'
+gem 'simple_form'
