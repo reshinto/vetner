@@ -1,5 +1,7 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]  
+  before_action :authenticate_user!
+
   # GET /pets
   # GET /pets.json
   def index
@@ -58,7 +60,7 @@ class PetsController < ApplicationController
   def destroy
     @pet.destroy
     respond_to do |format|
-      format.html { redirect_to user_profile_path(@pet.user), notice: 'Pet was successfully destroyed.' }
+      format.html { redirect_to user_profile_path(@pet.user), notice: 'Pet was successfully removed.' }
       format.json { head :no_content }
     end
   end

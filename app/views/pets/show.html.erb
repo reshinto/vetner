@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 70px">
+<div class="container" style="margin-top: 2rem; margin-bottom: 2rem;">
   <% if notice %>
     <div class="row">
       <div class="col">
@@ -12,14 +12,13 @@
     </div>
   <% end %>
   <div class="row">
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
       <div class="card mx-auto" style="width: 18rem;">
         <% if @pet.image.attached? %>
           <img src=<%= (url_for(@pet.image)) %> alt="" class="card-img-top">
         <% else %>
           <img src=<%= image_url 'defaultAnimal.png' %> alt="" class="card-img-top">
         <% end %>
-        <%# <img src="..." class="card-img-top" alt="..."> %>
         <div class="card-body">
           <h5 class="card-title">
             <i class="fas fa-paw mr-2"></i><%= @pet.name %>
@@ -31,29 +30,28 @@
         <li class="list-group-item"><i class="fas fa-sitemap mr-2"></i><%= @pet.breed %></li>
         <li class="list-group-item">
           <%= link_to raw('<i class="fas fa-edit mr-2"></i> Edit'), edit_pet_path(@pet), class: "btn btn-primary mr-2" %>
-          <%= link_to raw('<i class="fas fa-heart-broken mr-2"></i> Remove'), pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+          <%= link_to raw('<i class="fas fa-heart-broken mr-2"></i> Remove'), pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
         </li>
       </ul>
     </div>
   </div>
-  <div class="col-12 col-md-8 mt-3">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3">
 
     <% if @pet_records.count == 0 %>
-      <h3>No record found for <%= @pet.name%></h3>
-      <p>
-        <%= link_to 'Add a record now', new_pet_record_path, class: "text-primary" %>
-      </p>
+      <div class="alert alert-primary" role="alert">
+        <i class="fas fa-info-circle mr-2"></i>No record found for <%= @pet.name%>.
+      </div>    
     <% else %>
       <h3><%= @pet.name%>'s <%= "record".pluralize(@pet_records.count) %></h3>
     <% end %>
-    <%= link_to raw("<i class='fas fa-plus-circle mr-2'></i> New"), new_pet_record_path, class: "btn btn-primary my-2" %>
+    <%= link_to raw("<i class='fas fa-plus-circle mr-2'></i> New"), new_pet_record_path(id: @pet.id), class: "btn btn-primary my-2" %>
     <div class="table-responsive">
       <table class="table">
         <thead class="thead-light">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Record</th>
-            <th scope="col">Date</th>
+            <th scope="col" class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Date</th>
             <th scope="col">Details</th>
             <th scope="col"></th>
           </tr>
@@ -63,13 +61,17 @@
           <% @pet_records.each_with_index do |pr, i| %>
               <tr>
                 <th scope="row"><%= i+1 %></th>
-                <td><%= pr.title %></td>
-                <td><%= pr.date %></td>
-                <td><%= pr.content %></td>
                 <td>
-                  <%= link_to raw("<i class='fas fa-eye mr-3'></i>"), pet_record_path(pr), class: "text-secondary" %>
-                  <%= link_to raw("<i class='fas fa-edit mr-3'></i>"), edit_pet_record_path(pr), class: "text-secondary" %>
-                  <%= link_to raw("<i class='fas fa-trash-alt mr-3'></i>"), pet_record_path(pr), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-secondary" %>
+                  <%= link_to pr.title, pet_record_path(pr) %>     
+                </td>
+                <td class="d-none d-sm-block d-md-block d-lg-block d-xl-block"><%= pr.date %></td>
+                <td><div class="pet-record-details"><%= pr.content %></div></td>
+                <td>
+                  <div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                    <%= link_to raw("<i class='fas fa-eye mr-3'></i>"), pet_record_path(pr), class: "text-secondary" %>
+                    <%= link_to raw("<i class='fas fa-edit mr-3'></i>"), edit_pet_record_path(pr), class: "text-secondary" %>
+                    <%= link_to raw("<i class='fas fa-trash-alt mr-3'></i>"), pet_record_path(pr), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-secondary" %>                  
+                  </div>
                 </td>
               </tr>
           <% end %>
