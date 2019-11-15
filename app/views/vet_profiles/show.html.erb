@@ -14,18 +14,18 @@
 
 	<div class="row">
 		<div class="col-md-4">
-			<div class="col">
+<!-- 			<div class="col">
 			<% if @vet_profile.image.attached? %>
 				<img src=<%= (url_for(@vet_profile.image)) %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
 			<% else %>
 				<img src=<%= image_url "defaultVet.png" %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
 			<% end %>
-			</div>
+			</div> -->
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item"><strong><%= @vet_profile.clinic_name %></strong></li>
-				<li class="list-group-item"><%= "#{@vet_profile.address} #{@vet_profile.unit}" %></li>
-				<li class="list-group-item">Phone: <%= @vet_profile.phone %></li>
-				<li class="list-group-item">Website: <%= @vet_profile.website %></li>
+				<li class="list-group-item"><i class="fas fa-clinic-medical"></i> <strong><%= @vet_profile.clinic_name %></strong></li>
+				<li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i> <%= "#{@vet_profile.address} #{@vet_profile.unit}" %></li>
+				<li class="list-group-item"><i class="fas fa-phone mr-2"></i> <%= @vet_profile.phone %></li>
+				<li class="list-group-item"><i class="fas fa-globe"></i> <a href="http://<%= @vet_profile.website %>" target=”_blank”><%= @vet_profile.website %></a></li>
 			</ul>
 			<div class="col text-center">
 				<% if user_signed_in? %>
@@ -40,13 +40,13 @@
 					<!-- if a particular vet profile's vet id is found in the array of vet ids -->
 					<% if current_user_vet_ids.include? @vet_profile.id %>
 					<!-- show the "added" badge -->
-					<span class="badge badge-pill badge-info p-2"><i class="fas fa-check-circle mr-2"></i>Added to My Vets</span>
+					<span class="btn btn-info shadow-lg"><i class="fas fa-check-circle mr-2"></i>My Vet</span>
 					<% else %>
 					<!-- show the "add vet" button  -->
 					<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(@vet_profile.vet_id), local: true) do |f| %>
 						<%= f.hidden_field :vet_id, value: @vet_profile.vet_id %>
 						<%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
-						<i class="fas fa-plus-circle mr-2"></i>Add vet
+						<i class="fas fa-plus-circle mr-2"></i>Add As My Vet
 						<% end %>
 					<% end %>
 					<% end %>
@@ -56,7 +56,7 @@
 					<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(@vet_profile.vet_id), local: true) do |f| %>
 					<%= f.hidden_field :vet_id, value: @vet_profile.vet_id %>
 					<%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
-						<i class="fas fa-plus-circle mr-2"></i>Add vet
+						<i class="fas fa-plus-circle mr-2"></i>Add As My Vet
 					<% end %>
 					<% end %>
 				<% end %>
@@ -73,14 +73,14 @@
 				<iframe src=<%= @address %> height="450" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 			<% end %>
 			</div>
-			<p>
+<!-- 			<p>
 				<strong>Opening Hours:</strong>
 				<%= @vet_profile.hours %>
 			</p>
 			<p>
 				<strong>Services:</strong>
 				<%= @vet_profile.services %>
-			</p>
+			</p> -->
 		</div>
 	</div>
 <div>
