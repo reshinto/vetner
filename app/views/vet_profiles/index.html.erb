@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 1rem; margin-bottom: 2rem;">
 	<% if notice %>
 	<div class="row">
 		<div class="col">
@@ -14,84 +14,91 @@
 	</div>
 	<% end %>
 	<div class="row justify-content-center align-items-end">
-		<% if user_signed_in? %>
-		<iframe src=<%=@address %> height="450" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-		<% else %>
-		<iframe src=<%=@address %> height="450" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-		<% end %>
+		<h2>SVA Registered Veterinary Centres</h2>
 	</div>
-	<h2>SVA Registered Veterinary Centres</h2>
-	<div class="row justify-content-center align-items-end">
-		<!-- loop through vet profiles and render each one of them as a card -->
-		<% @vet_profiles.each do |vet_profile| %>
-		<div class="col-sm-6 col-md-4 col-lg-3">
-			<div class="card">
-				<!-- show the uploaded profile image if there is one -->
-<!--            <% if vet_profile.image.attached? %>
-				<a href="/vet_profiles/<%= vet_profile.vet_id %>">
-					<img src=<%=(url_for(vet_profile.image)) %> class="card-img" alt=
-						<%= vet_profile.clinic_name %>>
-				</a>
-				<% else %> -->
-				<!-- show the default profile image if user has not yet uploaded a profile image -->
-<!--            <a href="/vet_profiles/<%= vet_profile.vet_id %>">
-					<img src=<%=image_url "defaultVet.png" %> class="card-img" alt=
-						<%= vet_profile.clinic_name %>>
-				</a>
-				<% end %> -->
-				<div class="card-body">
-					<h5 class="card-title"><i class="fas fa-clinic-medical"></i>
-						<%= link_to vet_profile.clinic_name, vet_profile_path(id: vet_profile.vet_id) %>
-					</h5>
-					<p class="card-text">
-						<i class="fas fa-map-marker-alt mr-2"></i>
-						<%= vet_profile.address %><br>
-						<%= vet_profile.unit %><br>
-						<i class="fas fa-phone mr-2"></i>
-						<%= vet_profile.phone %><br>
-<!--        <i class="far fa-clock mr-2">
-						<%= vet_profile.hours %> -->
-						</p>
-						<div class="col text-center">
-							<% if user_signed_in? %>
-								<!-- ******************************************************************************* -->
-								<!-- start of conditional logic check for showing the "add vet" button -->
-								<!-- if the current user has already added a vet before -->
-								<% if current_user.vets %>
-									<!-- check if a particular vet profile is found in the current user's list of vets -->
-									<!-- retrieve an array of vet ids of the current user's vets -->
-									<% current_user_vet_profiles = current_user.vets.map(&:vet_profile) %>
-									<% current_user_vet_ids = current_user_vet_profiles.map do |vp| vp.map(&:id) end.flatten(1) %>
-									<!-- if a particular vet profile's vet id is found in the array of vet ids -->
-									<% if current_user_vet_ids.include? vet_profile.id %>
-										<!-- show the "added" badge -->
-										<span class="btn btn-info shadow-lg"><i class="fas fa-check-circle mr-2"></i>My Vet</span>
-									<% else %>
-										<!-- show the "add vet" button  -->
-										<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |f| %>
-										<%= f.hidden_field :vet_id, value: vet_profile.vet_id %>
-											<%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
-												<i class="fas fa-plus-circle mr-2"></i>Add Vet
+	<div class="row">
+		<div class="col-12 col-md-5">
+			<span class="align-middle">
+			<% if user_signed_in? %>
+			<iframe src=<%=@address %> height="85%" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+			<% else %>
+			<iframe src=<%=@address %> height="85%" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+			<% end %>
+			</span>
+		</div>
+		<div class="col-12 col-md-7 custom-scroll">
+			<div class="row justify-content-center align-items-end">
+				<!-- loop through vet profiles and render each one of them as a card -->
+				<% @vet_profiles.each do |vet_profile| %>
+				<div class="col-12 col-md-6 col-lg-4">
+					<div class="card">
+						<!-- show the uploaded profile image if there is one -->
+		<!--            <% if vet_profile.image.attached? %>
+						<a href="/vet_profiles/<%= vet_profile.vet_id %>">
+							<img src=<%=(url_for(vet_profile.image)) %> class="card-img" alt=
+								<%= vet_profile.clinic_name %>>
+						</a>
+						<% else %> -->
+						<!-- show the default profile image if user has not yet uploaded a profile image -->
+		<!--            <a href="/vet_profiles/<%= vet_profile.vet_id %>">
+							<img src=<%=image_url "defaultVet.png" %> class="card-img" alt=
+								<%= vet_profile.clinic_name %>>
+						</a>
+						<% end %> -->
+						<div class="card-body">
+							<h5 class="card-title"><i class="fas fa-clinic-medical"></i>
+								<%= link_to vet_profile.clinic_name, vet_profile_path(id: vet_profile.vet_id) %>
+							</h5>
+							<p class="card-text">
+								<i class="fas fa-map-marker-alt mr-2"></i>
+								<%= vet_profile.address %><br>
+								<%= vet_profile.unit %><br>
+								<i class="fas fa-phone mr-2"></i>
+								<%= vet_profile.phone %><br>
+		<!--        <i class="far fa-clock mr-2">
+								<%= vet_profile.hours %> -->
+								</p>
+								<div class="col text-center">
+									<% if user_signed_in? %>
+										<!-- ******************************************************************************* -->
+										<!-- start of conditional logic check for showing the "add vet" button -->
+										<!-- if the current user has already added a vet before -->
+										<% if current_user.vets %>
+											<!-- check if a particular vet profile is found in the current user's list of vets -->
+											<!-- retrieve an array of vet ids of the current user's vets -->
+											<% current_user_vet_profiles = current_user.vets.map(&:vet_profile) %>
+											<% current_user_vet_ids = current_user_vet_profiles.map do |vp| vp.map(&:id) end.flatten(1) %>
+											<!-- if a particular vet profile's vet id is found in the array of vet ids -->
+											<% if current_user_vet_ids.include? vet_profile.id %>
+												<!-- show the "added" badge -->
+												<span class="btn btn-info shadow-lg"><i class="fas fa-check-circle mr-2"></i>My Vet</span>
+											<% else %>
+												<!-- show the "add vet" button  -->
+												<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |f| %>
+												<%= f.hidden_field :vet_id, value: vet_profile.vet_id %>
+													<%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
+														<i class="fas fa-plus-circle mr-2"></i>Add Vet
+													<% end %>
+												<% end %>
+											<% end %>
+										<% else %>
+											<!-- if the user's list of vets is empty -->
+											<!-- show the "add vet" button -->
+											<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |f| %>
+												<%= f.hidden_field :vet_id, value: vet_profile.vet_id %>
+												<%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
+													<i class="fas fa-plus-circle mr-2"></i>Add Vet
+												<% end %>
 											<% end %>
 										<% end %>
-									<% end %>
-								<% else %>
-									<!-- if the user's list of vets is empty -->
-									<!-- show the "add vet" button -->
-									<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), local: true) do |f| %>
-										<%= f.hidden_field :vet_id, value: vet_profile.vet_id %>
-										<%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
-											<i class="fas fa-plus-circle mr-2"></i>Add Vet
-										<% end %>
-									<% end %>
-								<% end %>
-								<!-- end of conditional logic check for showing the "add vet" button -->
-								<!-- ******************************************************************************* -->
-							<% end %></span>
+										<!-- end of conditional logic check for showing the "add vet" button -->
+										<!-- ******************************************************************************* -->
+									<% end %></span>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
+				<% end %>
 			</div>
-		<% end %>
-	</div>
+		</div>
 </div>
