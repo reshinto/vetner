@@ -49,12 +49,16 @@
 			</li>
 		</ul>
 		<% end %>
-		<!-- search for vet, require partials-->
-		<%= form_tag(vet_profiles_path, method: "get", remote: true, class: "form-inline mt-2 mt-md-0") do %>
+		<%# <form class="form-inline mt-2 mt-md-0">
+			<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form> %>
+		<!-- search bar for searching vets-->
+		<%= form_tag(root_path, method: "get", remote: true, class: "form-inline mt-2 mt-md-0") do %>
 			<%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control mr-sm-2" %>
-			<%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+			<%= submit_tag "Search", class:"btn btn-outline-success my-2 my-sm-0" %>
 		<% end %>
 		<!-- search results will be appended here-->
-		<div id="search-results"></div>
+		<%# <div id="search-results"></div> %>
 	</div>
 </nav>
