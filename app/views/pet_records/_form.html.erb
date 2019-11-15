@@ -25,7 +25,7 @@
         <div class="form-group row">
           <%= form.label :title, 'Title', class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
-            <%= form.text_field :title, class: "form-control" %>
+            <%= form.text_field :title, class: "form-control", required: true %>
           </div>
         </div>
 
@@ -43,7 +43,7 @@
         <div class="form-group row">
           <%= form.label :content, 'Content', class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
-            <%= form.text_area :content, class: "form-control" %>
+            <%= form.text_area :content, class: "form-control", rows:"10", required: true%>
           </div>
         </div>
 
