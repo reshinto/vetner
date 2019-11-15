@@ -4,7 +4,7 @@ class VetProfilesController < ApplicationController
 
   before_action :authenticate_vet!, only: [:edit, :update, :destroy]
 
-  @@baseOnemapUrl = "https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15"
+  @@baseOnemapUrl = "https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&width=1000&height=450"
 
   # GET /vet_profiles
   # GET /vet_profiles.json
