@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 70px">
+<div class="container" style="margin-top: 1rem; margin-bottom: 3rem;">
   <div class="row">
     <div class="col">
       <%= form_with(model: pet, local: true) do |form| %>
@@ -26,7 +26,7 @@
         <div class="form-group row">
           <%= form.label :pet_type, 'Type', class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
-            <%= form.select :pet_type, options_for_select([["Cat", "Cat"], ["Dog", "Dog"]]), {include_blank: 'Select'}, {required: true, autofocus: true, class: 'form-control'} %>
+            <%= form.select :pet_type, options_for_select([["Cat", "Cat"], ["Dog", "Dog"]], selected: pet.pet_type), {include_blank: 'Select'}, {required: true, autofocus: false, class: 'form-control'} %>
           </div>
         </div>
 
