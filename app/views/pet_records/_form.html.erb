@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 70px">
+<div class="container" style="margin-top: 2rem; margin-bottom: 2rem;">
   <div class="row">
     <div class="col">
       <%= form_with(model: pet_record, local: true) do |form| %>
@@ -17,8 +17,8 @@
         <div class="form-group row">
           <%= form.label :pet_id, 'Pet', class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
-            <%# <%= form.text_field :pet_id, class: "form-control" %>
-            <%= form.collection_select :pet_id, @pets, :id, :name, {:include_blank => 'Select pet...'}, {:class => 'form-control'} %>
+            <input type="text" name="pet_name" value=<%= @pet.name %> class="form-control" disabled />
+            <%= form.hidden_field :pet_id, value: @pet.id, :readonly => true %>
           </div>
         </div>
 
