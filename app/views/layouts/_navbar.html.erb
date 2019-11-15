@@ -45,10 +45,6 @@
 				<%= link_to 'Contact Us', contacts_url, class: "nav-link" %>
 			</li>
 		</ul>
-		<%# <form class="form-inline mt-2 mt-md-0">
-			<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form> %>
 		<!-- search bar for searching vets-->
 		<%= form_tag(root_path, method: "get", remote: true, class: "form-inline mt-2 mt-md-0") do %>
 			<%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control mr-sm-2" %>
