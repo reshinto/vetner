@@ -23,7 +23,7 @@ class VetProfilesController < ApplicationController
       @vet_profiles = VetProfile.all
       vetPositions = ""
       @vet_profiles.each do |vp|
-        vetPositions += "&marker=latLng:#{vp.vetLat},#{vp.vetLong}!colour:lightblue"
+        vetPositions += "&marker=latLng:#{vp.vetLat},#{vp.vetLong}!icon:fa-plus!colour:lightblue"
       end
       if current_user
         user_profile = UserProfile.find(current_user.id)
@@ -32,7 +32,7 @@ class VetProfilesController < ApplicationController
         # puts userResults
         # userLat = userResults[0]
         # userLong = userResults[1]
-        userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!colour:red"
+        userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
         @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPositions}"
       else
         @address = "#{@@baseOnemapUrl}#{vetPositions}"
@@ -45,14 +45,14 @@ class VetProfilesController < ApplicationController
   # GET /vet_profiles/1.json
   def show
     @vet_profile = VetProfile.find(params[:id])
-    vetPosition = "&marker=latLng:#{@vet_profile.vetLat},#{@vet_profile.vetLong}!colour:lightblue"
+    vetPosition = "&marker=latLng:#{@vet_profile.vetLat},#{@vet_profile.vetLong}!icon:fa-plus!colour:lightblue"
     if current_user
       user_profile = UserProfile.find(current_user.id)
       # address = "#{user_profile.address} #{user_profile.country}"
       # userResults = Geocoder.search(address).first.coordinates
       # userLat = userResults[0]
       # userLong = userResults[1]
-      userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!colour:red"
+      userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
       @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPosition}"
     else
       @address = "#{@@baseOnemapUrl}#{vetPosition}"
