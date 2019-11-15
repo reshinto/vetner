@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 5rem">
+<div class="container-fluid" style="margin-top: 3rem">
 	<% if notice %>
 	<div class="row">
 		<div class="col">
@@ -14,7 +14,7 @@
 
 	<div class="row">
 		<div class="col-md-4">
-<!-- 			<div class="col">
+<!--      <div class="col">
 			<% if @vet_profile.image.attached? %>
 				<img src=<%= (url_for(@vet_profile.image)) %> alt=<%= @vet_profile.clinic_name %> class="img-fluid">
 			<% else %>
@@ -23,9 +23,9 @@
 			</div> -->
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item"><i class="fas fa-clinic-medical"></i> <strong><%= @vet_profile.clinic_name %></strong></li>
-				<li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i> <%= "#{@vet_profile.address} #{@vet_profile.unit}" %></li>
-				<li class="list-group-item"><i class="fas fa-phone mr-2"></i> <%= @vet_profile.phone %></li>
-				<li class="list-group-item"><i class="fas fa-globe"></i> <a href="http://<%= @vet_profile.website %>" target=”_blank”><%= @vet_profile.website %></a></li>
+				<li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= "#{@vet_profile.address} #{@vet_profile.unit}" %></li>
+				<li class="list-group-item"><i class="fas fa-phone mr-2"></i><%= @vet_profile.phone %></li>
+				<li class="list-group-item"><i class="fas fa-globe"></i>&nbsp&nbsp<a href="http://<%= @vet_profile.website %>" target=”_blank”><%= @vet_profile.website %></a></li>
 			</ul>
 			<div class="col text-center">
 				<% if user_signed_in? %>
@@ -73,7 +73,7 @@
 				<iframe src=<%= @address %> height="450" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 			<% end %>
 			</div>
-<!-- 			<p>
+<!--      <p>
 				<strong>Opening Hours:</strong>
 				<%= @vet_profile.hours %>
 			</p>

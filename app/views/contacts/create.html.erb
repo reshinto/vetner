@@ -1,0 +1,17 @@
+<div class="jumbotron text-center">
+  <% flash.each do |key, value| %>
+    <div>
+      <%= value %>
+    </div>
+  <% end %>
+  <a href="https://vetner.herokuapp.com">Redirect to Home Page</a>
+</div>
+<script>
+  setTimeout(() => {
+    if (window.location.href === "http://localhost:3000/contacts") {
+      window.location.href = "http://localhost:3000";
+    } else {
+      window.location.href = "https://vetner.herokuapp.com";
+    }
+  }, 4000)
+</script>
