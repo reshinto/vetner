@@ -12,7 +12,8 @@ class VetProfilesController < ApplicationController
   # GET /vet_profiles
   # GET /vet_profiles.json
   def index
-    # if a params[:search] is received
+    require "open-uri"
+    # # if a params[:search] is received
     if params[:search]
       # search for vet profiles using the model method `search_vet_profiles`
       # passing in the search parameters, `params[:search]`
