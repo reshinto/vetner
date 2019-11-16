@@ -1,0 +1,68 @@
+<div class="container" style="margin-top: 2rem; margin-bottom: 2rem;">
+	<% if notice %>
+	<div class="row">
+		<div class="col">
+			<div class="alert alert-info alert-dismissible fade show" role="alert">
+				<p id="notice" class="p-0 m-0"><%= notice %></p>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	<div class="row">
+		<!-- tab for vet_profile: -->
+		<div class="col-12 col-md-4">
+			<div class="card mx-auto">
+<!--        <% if @vet_profile.image.attached? %>
+					<img src=<%= (url_for(@vet_profile.image)) %> class= "card-img-top" alt=<%= @vet_profile.clinic_name %> >
+				<% else %>
+					<img src=<%= image_url "defaultVet.png" %> class= "card-img-top" alt=<%= @vet_profile.clinic_name %> >
+				<% end %> -->
+				<div class="card-body">
+					<h5 class="card-title">
+						<i class="fas fa-clinic-medical"></i> <%= @vet_profile.clinic_name %>
+					</h5>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= "#{@vet_profile.address} #{@vet_profile.unit}" %></li>
+					<li class="list-group-item"><i class="fas fa-phone mr-2"></i><%= @vet_profile.phone %></li>
+					<li class="list-group-item"><i class="fas fa-globe"></i>&nbsp&nbsp<a href="http://<%= @vet_profile.website %>" target=”_blank”><%= @vet_profile.website %></a></li>
+				</ul>
+				<div class="col text-center">
+					<%= link_to raw('<i class="fas fa-edit mr-2"></i>Edit Profile'), edit_vet_profile_path(@vet_profile), class: "btn btn-info" %>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-8 mt-3">
+		<% if @user_profiles.count == 0 %>
+			<div class="alert alert-primary" role="alert">
+				<i class="fas fa-info-circle mr-2"></i>No record found for <%= @vet_profile.clinic_name %>.
+			</div>
+		<% end %>
+			<div class="table-responsive">
+				<table class="table">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Client</th>
+							<th scope="col">Phone</th>
+<!--              <th scope="col">Pet Type</th>
+							<th scope="col">Pet Name</th> -->
+						</tr>
+					</thead>
+					<tbody>
+					<% @user_profiles.each_with_index do |profile, i| %>
+						<tr>
+							<th scope="row"><%= i+1 %></th>
+							<td><%= link_to profile.username, user_profile_path(profile) %></td>
+							<td><%= profile.phone %></td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

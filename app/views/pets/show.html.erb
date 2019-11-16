@@ -13,7 +13,7 @@
 	<% end %>
 	<div class="row">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-			<div class="card mx-auto" style="width: 18rem;">
+			<div class="card mx-auto">
 				<% if @pet.image.attached? %>
 					<img src=<%= (url_for(@pet.image)) %> alt="" class="card-img-top">
 				<% else %>
@@ -33,11 +33,9 @@
 					<%= link_to raw('<i class="fas fa-edit mr-2"></i> Edit'), edit_pet_path(@pet), class: "btn btn-primary mr-2" %>
 					<%= link_to raw('<i class="fas fa-heart-broken mr-2"></i> Remove'), pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 				</div>
-
+			</div>
 		</div>
-	</div>
-	<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3">
-
+		<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3">
 		<% if @pet_records.count == 0 %>
 			<div class="alert alert-primary" role="alert">
 				<i class="fas fa-info-circle mr-2"></i>No record found for <%= @pet.name%>.

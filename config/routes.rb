@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   post '/vet_profiles/:id/remove_vet_from_user' => 'vet_profiles#remove_vet_from_user', as: 'remove_vet_from_user'
   get '/contacts', to: 'contacts#new'
   resources :contacts, only: [:new, :create]
+  get '/vets/:id' => 'vets#show' , as: 'vet'
 end
