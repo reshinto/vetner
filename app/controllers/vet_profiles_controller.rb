@@ -43,16 +43,12 @@ class VetProfilesController < ApplicationController
           vetPositions += ""
         end
       end
-      @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPositions}"
-    else
-      @address = "#{@@baseOnemapUrl}#{vetPositions}"
     end
   end
 
   # GET /vet_profiles/1
   # GET /vet_profiles/1.json
   def show
-    require "open-uri"
     @vet_profile = VetProfile.find(params[:id])
     @vetLat = @vet_profile.vetLat
     @vetLong = @vet_profile.vetLong
@@ -62,6 +58,7 @@ class VetProfilesController < ApplicationController
       @userLong = user_profile.userLong
       distanceparams = "/privateapi/routingsvc/route?start=#{@userLat},#{@userLong}&end=#{@vetLat},#{@vetLong}&routeType=walk&token=#{@@token}"
       if @@distData["#{distanceparams}"] == nil
+        require "open-uri"
         result = JSON.load(open("#{@@base_url}#{distanceparams}"))
         @distance = result["route_summary"]["total_distance"]
         @@distData["#{distanceparams}"] = @distance

@@ -72,7 +72,7 @@
 
 
 <script>
-  var center = L.bounds([parseFloat('<%= @vetLat %>'), parseFloat('<%= @vetLong %>')], [parseFloat('<%= @userLat %>'), parseFloat('<%= @userLong %>')]).getCenter();
+  var center = L.bounds([<%= @vetLat %>, <%= @vetLong %>], [<%= @userLat %>, <%= @userLong %>]).getCenter();
   var vetsMap = L.map('vetsMap').setView([center.x, center.y], 12);
 
   var oneMap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
@@ -89,7 +89,7 @@
   var openStreetMap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
   // var openStreetMap = L.tileLayer('https://api.mapbox.com/styles/v1/myvetner/ck31pugs60xp31cnv5u199bij/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: parseInt('<%= @distance %>') > 13000 ? 11 : 15,
+      maxZoom: <%= @distance %> > 13000 ? 11 : 15,
       // these styles can be used if using the api endpoint of
       // https://api.tiles.mapbox.com/v4/{id}/ ... ...
       id: 'mapbox.streets',
