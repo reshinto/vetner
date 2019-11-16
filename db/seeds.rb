@@ -840,7 +840,7 @@ vets.each_with_index do |vet, index|
 
   Vet.create(email: "vet#{index+1}@email.com", password: "password")
 
-  result = JSON.load(open("https://developers.onemap.sg/commonapi/search?searchVal=#{vet[3]}&returnGeom=Y&getAddrDetails=Y"))
+  result = JSON.load(open("https://developers.onemap.sg/commonapi/search?searchVal=#{vet[4]}&returnGeom=Y&getAddrDetails=Y"))
   vetLat = result["results"][0]["LATITUDE"]
   vetLong = result["results"][0]["LONGITUDE"]
   address = result["results"][0]["ADDRESS"]
