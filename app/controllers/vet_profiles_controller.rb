@@ -54,16 +54,23 @@ class VetProfilesController < ApplicationController
   def show
     require "open-uri"
     @vet_profile = VetProfile.find(params[:id])
-    vetPosition = "&marker=latLng:#{@vet_profile.vetLat},#{@vet_profile.vetLong}#{@vet_profile.popupdetails}!icon:fa-plus!colour:lightblue"
+    @vetLat = @vet_profile.vetLat
+    @vetLong = @vet_profile.vetLong
     if current_user
       user_profile = UserProfile.find(current_user.id)
-      userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
-      distanceparams = "/privateapi/routingsvc/route?start=#{user_profile.userLat},#{user_profile.userLong}&end=#{@vet_profile.vetLat},#{@vet_profile.vetLong}&routeType=walk&token=#{@@token}"
-      @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPosition}"
-      result = JSON.load(open("#{@@base_url}#{distanceparams}"))
-      @distance = result["route_summary"]["total_distance"]
+      @userLat = user_profile.userLat
+      @userLong = user_profile.userLong
+      distanceparams = "/privateapi/routingsvc/route?start=#{@userLat},#{@userLong}&end=#{@vetLat},#{@vetLong}&routeType=walk&token=#{@@token}"
+      if @@distData["#{distanceparams}"] == nil
+        result = JSON.load(open("#{@@base_url}#{distanceparams}"))
+        @distance = result["route_summary"]["total_distance"]
+        @@distData["#{distanceparams}"] = @distance
+      else
+        @distance = @@distData["#{distanceparams}"]
+      end
     else
-      @address = "#{@@baseOnemapUrl}#{vetPosition}"
+      @userLat = @vetLat
+      @userLong = @vetLong
     end
   end
 
