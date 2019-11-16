@@ -23,7 +23,7 @@ class VetProfilesController < ApplicationController
       @vet_profiles = VetProfile.all
       vetPositions = ""
       @vet_profiles.each do |vp|
-        vetPositions += "&marker=latLng:#{vp.vetLat},#{vp.vetLong}!icon:fa-plus!colour:lightblue"
+        vetPositions += "&marker=latLng:#{vp.vetLat},#{vp.vetLong}#{vp.popupdetails}!icon:fa-plus!colour:lightblue"
       end
       if current_user
         user_profile = UserProfile.find(current_user.id)
@@ -45,7 +45,7 @@ class VetProfilesController < ApplicationController
   # GET /vet_profiles/1.json
   def show
     @vet_profile = VetProfile.find(params[:id])
-    vetPosition = "&marker=latLng:#{@vet_profile.vetLat},#{@vet_profile.vetLong}!icon:fa-plus!colour:lightblue"
+    vetPosition = "&marker=latLng:#{@vet_profile.vetLat},#{@vet_profile.vetLong}#{@vet_profile.popupdetails}!icon:fa-plus!colour:lightblue"
     if current_user
       user_profile = UserProfile.find(current_user.id)
       # address = "#{user_profile.address} #{user_profile.country}"
