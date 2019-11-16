@@ -9,46 +9,50 @@
 			<li class="nav-item">
 				<%= link_to 'Find A Vet', vet_profiles_url, class: "nav-link" %>
 			</li>
-      <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'My Profile', user_profile_url(id: current_user.id), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Log Out', destroy_user_session_url, method: :delete, class: "nav-link" %>
-        </li>
-      <% elsif vet_signed_in? %>
-        <li class="nav-item">
-          <%= link_to 'Find A Vet', vet_profiles_url, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Clinic Profile', vet_profile_url(id: current_vet.id), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Vet Log Out', destroy_vet_session_url, method: :delete, class: "nav-link" %>
-        </li>
-      <% else %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
-          <div class="dropdown-menu">
-            <%= link_to 'New Pet Owner', new_user_registration_url, class: "dropdown-item" %>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-          <div class="dropdown-menu">
-            <%= link_to 'As Pet Owner', new_user_session_url, class: "dropdown-item" %>
-            <%= link_to 'As Vet Clinic', new_vet_session_url, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% end %>
+			<% if user_signed_in? %>
+				<li class="nav-item">
+					<%= link_to 'My Profile', user_profile_url(id: current_user.id), class: "nav-link" %>
+				</li>
+				<li class="nav-item">
+					<%= link_to 'Log Out', destroy_user_session_url, method: :delete, class: "nav-link" %>
+				</li>
+			<% elsif vet_signed_in? %>
+				<li class="nav-item">
+					<%= link_to 'Find A Vet', vet_profiles_url, class: "nav-link" %>
+				</li>
+				<li class="nav-item">
+					<%= link_to 'Clinic Profile', vet_profile_url(id: current_vet.id), class: "nav-link" %>
+				</li>
+				<li class="nav-item">
+					<%= link_to 'Vet Log Out', destroy_vet_session_url, method: :delete, class: "nav-link" %>
+				</li>
+			<% else %>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
+					<div class="dropdown-menu">
+						<%= link_to 'New Pet Owner', new_user_registration_url, class: "dropdown-item" %>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+					<div class="dropdown-menu">
+						<%= link_to 'As Pet Owner', new_user_session_url, class: "dropdown-item" %>
+						<%= link_to 'As Vet Clinic', new_vet_session_url, class: "dropdown-item" %>
+					</div>
+				</li>
+			<% end %>
 			<li class="nav-item">
 				<%= link_to 'Contact Us', contacts_url, class: "nav-link" %>
 			</li>
 		</ul>
 		<!-- search bar for searching vets-->
 		<%= form_tag(root_path, method: "get", remote: true, class: "form-inline mt-2 mt-md-0") do %>
-			<%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control mr-sm-2" %>
-			<%= submit_tag "Search", class:"btn btn-outline-success my-2 my-sm-0" %>
+		<div class="input-group">
+			<%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control bg-none border-0" %>
+			<div class="input-group-append border-0">
+			<%= submit_tag "Search", class:"input-group-btn btn btn-outline-info" %>
+			</div>
+		</div>
 		<% end %>
 		<!-- search results will be appended here-->
 		<%# <div id="search-results"></div> %>
