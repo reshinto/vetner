@@ -11,33 +11,27 @@ class VetProfilesController < ApplicationController
   def index
     # if a params[:search] is received
     if params[:search]
-      # call the model method search_vet_profiles, defined in VetProfile model
-      @search_results_vet_profiles = VetProfile.search_vet_profiles(params[:search])
-      # send the search results to the partial view _search-results.js.erb
-      # located at views/user_profiles
-      respond_to do |format|
-        format.js { render partial: 'user_profiles/search-results'}
-      end
+      # search for vet profiles using the model method `search_vet_profiles`
+      # passing in the search parameters, `params[:search]`
+      # this method is implemented using the pg_search gem 
+      @vet_profiles = VetProfile.search_vet_profiles(params[:search])
     else
-      # render the view for list of vet profiles
+      # otherwise, retrive all vet profiles
       @vet_profiles = VetProfile.all
-      vetPositions = ""
-      @vet_profiles.each do |vp|
-        vetPositions += "&marker=latLng:#{vp.vetLat},#{vp.vetLong}!icon:fa-plus!colour:lightblue"
-      end
-      if current_user
-        user_profile = UserProfile.find(current_user.id)
-        # address = "#{user_profile.address} #{user_profile.country}"
-        # userResults = Geocoder.search(address).first.coordinates
-        # puts userResults
-        # userLat = userResults[0]
-        # userLong = userResults[1]
-        userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
-        @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPositions}"
-      else
-        @address = "#{@@baseOnemapUrl}#{vetPositions}"
-        puts @address
-      end
+    end
+
+    # prepare the query strings required for OneMap API
+    vetPositions = ""
+    @vet_profiles.each do |vp|
+      vetPositions += "&marker=latLng:#{vp.vetLat},#{vp.vetLong}!icon:fa-plus!colour:lightblue"
+    end
+
+    if current_user
+      user_profile = UserProfile.find(current_user.id)
+      userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
+      @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPositions}"
+    else
+      @address = "#{@@baseOnemapUrl}#{vetPositions}"
     end
   end
 
@@ -132,7 +126,7 @@ class VetProfilesController < ApplicationController
       respond_to do |format|
         # if the current user is successfully saved
         if current_user.save(validate: false)
-          format.html { redirect_to @vet_profile, notice: 'Vet was successfully added to user.'}
+          format.html { redirect_to @vet_profile, notice: 'Vet added to My Vets.'}
         else
           format.html { redirect_to @vet_profile, notice: 'Error adding vet to user.'}
         end
