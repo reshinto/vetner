@@ -27,10 +27,11 @@
 			</span>
 		</div>
 		<div class="col-12 col-md-7 custom-scroll">
-			<div class="row justify-content-center align-items-end">
+<!-- 			<div class="row justify-content-center align-items-end"> # changed to card columns -->
+			<div class="card-columns">
 				<!-- loop through vet profiles and render each one of them as a card -->
 				<% @vet_profiles.each do |vet_profile| %>
-				<div class="col-12 col-md-6 col-lg-4">
+<!-- 				<div class="col-12 col-md-6 col-lg-4"> # changed to card columns -->
 					<div class="card">
 						<!-- show the uploaded profile image if there is one -->
 		<!--            <% if vet_profile.image.attached? %>
@@ -97,7 +98,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+<!-- 					</div> -->
 				<% end %>
 			</div>
 		</div>
