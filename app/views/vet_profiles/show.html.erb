@@ -11,13 +11,13 @@
         </div>
     </div>
     <% end %>
-
     <div class="row">
         <div class="col-md-4 d-flex flex-column">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fas fa-clinic-medical"></i> <strong><%= @vet_profile.clinic_name %></strong></li>
                 <li class="list-group-item"><i class="fas fa-map-marker-alt mr-2"></i><%= "#{@vet_profile.address} #{@vet_profile.unit}" %></li>
                 <li class="list-group-item"><i class="fas fa-phone mr-2"></i><%= @vet_profile.phone %></li>
+                <li class="list-group-item"><i class="fas fa-drafting-compass mr-2"></i><%= "#{@distance.to_f/ 1000} km" %></li>
                 <li class="list-group-item"><i class="fas fa-globe"></i>&nbsp&nbsp<a href="http://<%= @vet_profile.website %>" target=”_blank”><%= @vet_profile.website %></a></li>
             </ul>
                 <% if user_signed_in? %>
