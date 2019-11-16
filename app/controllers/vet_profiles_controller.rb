@@ -16,7 +16,6 @@ class VetProfilesController < ApplicationController
     if params[:search]
       # search for vet profiles using the model method `search_vet_profiles`
       # passing in the search parameters, `params[:search]`
-      # this method is implemented using the pg_search gem
       @vet_profiles = VetProfile.search_vet_profiles(params[:search])
     else
       # otherwise, retrive all vet profiles
@@ -25,7 +24,6 @@ class VetProfilesController < ApplicationController
 
     # prepare the query strings required for OneMap API
     vetPositions = ""
-
     if current_user
       user_profile = UserProfile.find(current_user.id)
       userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
@@ -141,7 +139,7 @@ class VetProfilesController < ApplicationController
       respond_to do |format|
         # if the current user is successfully saved
         if current_user.save(validate: false)
-          format.html { redirect_to @vet_profile, notice: 'Vet was successfully added to user.'}
+          format.html { redirect_to @vet_profile, notice: 'Vet added to My Vets.'}
         else
           format.html { redirect_to @vet_profile, notice: 'Error adding vet to user.'}
         end

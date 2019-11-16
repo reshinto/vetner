@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-	<a class="navbar-brand" href="/"><i class="fas fa-heartbeat"></i>Vetner</a>
+	<a class="navbar-brand" href="/"><i class="fas fa-heartbeat mr-2"></i>Vetner</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -46,11 +46,9 @@
 			</li>
 		</ul>
 		<!-- search bar for searching vets-->
-		<%= form_tag(root_path, method: "get", remote: true, class: "form-inline mt-2 mt-md-0") do %>
+		<%= form_tag(vet_profiles_path, method: "get", local: true, class: "form-inline mt-2 mt-md-0") do %>
 			<%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control mr-sm-2" %>
 			<%= submit_tag "Search", class:"btn btn-outline-success my-2 my-sm-0" %>
 		<% end %>
-		<!-- search results will be appended here-->
-		<%# <div id="search-results"></div> %>
 	</div>
 </nav>
