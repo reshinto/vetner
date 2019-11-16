@@ -13,70 +13,53 @@
       </div>
     </div>
   <% end %>
+
   <div class="row justify-content-center align-items-end">
-    <h2>SVA Registered Veterinary Centres</h2>
+    <div id="vetsMap" style="height:500px; width: 98vw; border-radius: 1rem;"></div>
   </div>
-  <div class="row">
-    <div class="col-12 col-md-5">
-      <span class="align-middle">
-        <% if user_signed_in? %>
-          <iframe src=<%=@address %> height="85%" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-        <% else %>
-          <iframe src=<%=@address %> height="85%" width="100%" scrolling="no" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-        <% end %>
-      </span>
-    </div>
-    <div class="col-12 col-md-7 custom-scroll">
-      <% if @vet_profiles.length == 0 %>
-        <div class="alert alert-warning" role="alert">
-          No result found.
-        </div>
-      <% end %>
-      <div class="row">
-      <%# <div class="row justify-content-center align-items-end"> %>
-        <!-- loop through vet profiles and render each one of them as a card -->
-        <% @vet_profiles.each do |vet_profile| %>
-          <div class="col-12 col-md-6 col-lg-4 my-2">
-            <div class="card h-100">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title text-center">
-                  <i class="fas fa-clinic-medical mr-1"></i>
-                  <%= link_to vet_profile.clinic_name, vet_profile_path(id: vet_profile.vet_id) %>
-                </h5>
-                <p class="card-text">
-                  <i class="fas fa-map-marker-alt mr-2"></i>
-                  <%= vet_profile.address %><br>
-                  <%= vet_profile.unit %><br>
-                  <i class="fas fa-phone mr-2"></i>
-                  <a href=<%= "tel:+65-#{vet_profile.phone}" %>><%= vet_profile.phone %></a>
-                </p>
-                  <% if user_signed_in? %>
-                    <!-- ******************************************************************-->
-                    <!-- start of conditional logic check for showing the "add vet" button -->
-                    <!-- if the current user has already added a vet before -->
-                    <% if current_user.vets %>
-                      <!-- check if a vet profile is found in the current user's list of vets -->
-                      <!-- retrieve an array of vet ids of the current user's vets -->
-                      <% current_user_vet_profiles = current_user.vets.map(&:vet_profile) %>
-                      <% current_user_vet_ids = current_user_vet_profiles.map do |vp| vp.map(&:id) end.flatten(1) %>
-                      <!-- if a vet profile's vet id is found in the array of vet ids -->
-                      <% if current_user_vet_ids.include? vet_profile.id %>
-                        <!-- show the "added" button -->
-                        <div class="mt-auto text-center">
-                            <button class="btn btn-info" disabled><i class="fas fa-check-circle mr-2"></i>Added to My Vets</button> 
-                        </div>
-                      <% else %>
-                        <!-- show the "add vet" button  -->
-                        <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), html: {class: 'mt-auto align-self-center'}, local: true) do |f| %>
-                          <%= f.hidden_field :vet_id, value: vet_profile.vet_id %>
-                          <%= button_tag(type: 'submit', class: "btn btn-success") do %>
-                            <i class="fas fa-plus-circle mr-2"></i>Add Vet
-                          <% end %>
-                        <% end %>
-                      <% end %>
+
+  <h2>SVA Registered Veterinary Centres</h2>
+
+    <%# <div class="col-12 col-md-7 custom-scroll"> %>
+    <% if @vet_profiles.length == 0 %>
+      <div class="alert alert-warning my-2" role="alert">
+        No result found.
+      </div>
+    <% end %>
+    <div class="row justify-content-center align-items-end">
+      <!-- loop through vet profiles and render each one of them as a card -->
+      <% @vet_profiles.each do |vet_profile| %>
+        <div class="col-12 col-md-6 col-lg-4 my-2">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-center">
+                <i class="fas fa-clinic-medical mr-1"></i>
+                <%= link_to vet_profile.clinic_name, vet_profile_path(id: vet_profile.vet_id) %>
+              </h5>
+              <p class="card-text">
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                <%= vet_profile.address %><br>
+                <%= vet_profile.unit %><br>
+                <i class="fas fa-phone mr-2"></i>
+                <a href=<%= "tel:+65-#{vet_profile.phone}" %>><%= vet_profile.phone %></a>
+              </p>
+                <% if user_signed_in? %>
+                  <!-- ******************************************************************-->
+                  <!-- start of conditional logic check for showing the "add vet" button -->
+                  <!-- if the current user has already added a vet before -->
+                  <% if current_user.vets %>
+                    <!-- check if a vet profile is found in the current user's list of vets -->
+                    <!-- retrieve an array of vet ids of the current user's vets -->
+                    <% current_user_vet_profiles = current_user.vets.map(&:vet_profile) %>
+                    <% current_user_vet_ids = current_user_vet_profiles.map do |vp| vp.map(&:id) end.flatten(1) %>
+                    <!-- if a vet profile's vet id is found in the array of vet ids -->
+                    <% if current_user_vet_ids.include? vet_profile.id %>
+                      <!-- show the "added" button -->
+                      <div class="mt-auto text-center">
+                          <button class="btn btn-info" disabled><i class="fas fa-check-circle mr-2"></i>Added to My Vets</button>
+                      </div>
                     <% else %>
-                      <!-- if the user's list of vets is empty -->
-                      <!-- show the "add vet" button -->
+                      <!-- show the "add vet" button  -->
                       <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), html: {class: 'mt-auto align-self-center'}, local: true) do |f| %>
                         <%= f.hidden_field :vet_id, value: vet_profile.vet_id %>
                         <%= button_tag(type: 'submit', class: "btn btn-success") do %>
@@ -84,13 +67,132 @@
                         <% end %>
                       <% end %>
                     <% end %>
-                    <!-- end of conditional logic check for showing the "add vet" button -->
-                    <!--**************************************************************** -->
-                  <% end %></span>
-            </div>
+                  <% else %>
+                    <!-- if the user's list of vets is empty -->
+                    <!-- show the "add vet" button -->
+                    <%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(vet_profile.vet_id), html: {class: 'mt-auto align-self-center'}, local: true) do |f| %>
+                      <%= f.hidden_field :vet_id, value: vet_profile.vet_id %>
+                      <%= button_tag(type: 'submit', class: "btn btn-success") do %>
+                        <i class="fas fa-plus-circle mr-2"></i>Add Vet
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <!-- end of conditional logic check for showing the "add vet" button -->
+                  <!--**************************************************************** -->
+                <% end %></span>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
+
+
+<script>
+  var center = L.bounds([1.56073, 104.11475], [1.16, 103.502]).getCenter();
+  var vetsMap = L.map('vetsMap').setView([center.x, center.y], 12);
+
+  var oneMap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
+    detectRetina: true,
+    maxZoom: 18,
+    minZoom: 11,
+    //Do not remove this attribution
+    attribution: '<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data &copy; contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+  });
+
+  // using mapbox style in leaflet:
+  // https://docs.mapbox.com/studio-manual/overview/publish-your-style/#mapboxjs-and-leaflet
+
+  var openStreetMap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+  // var openStreetMap = L.tileLayer('https://api.mapbox.com/styles/v1/myvetner/ck31pugs60xp31cnv5u199bij/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 15,
+      // these styles can be used if using the api endpoint of
+      // https://api.tiles.mapbox.com/v4/{id}/ ... ...
+      id: 'mapbox.streets',
+      // id: 'mapbox.outdoors',
+      // id: 'mapbox.dark',
+      // id: 'mapbox.light',
+      // id: 'mapbox.satellite',
+      // id: 'mapbox.satellite+streets',
+
+      // styles created using mapbox studio:
+      // for api endpoint of:
+      // https://api.mapbox.com/styles/v1/ ... ...
+      // the style id has to be inside the api querystring
+      // mapbox://styles/myvetner/ck31pugs60xp31cnv5u199bij
+      // mapbox://styles/myvetner/ck31pzphd1lq81cogrqeuo2ty
+      accessToken: '<%= ENV["MAPBOXTOKEN"] %>'
+  });
+
+
+  // oneMap.addTo(vetsMap);
+  openStreetMap.addTo(vetsMap);
+
+  fetch('/vet_profiles.json')
+    .then(
+      function(response) {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
+
+        // Examine the text in the response
+        response.json().then(function(data) {
+          // console.log(data);
+
+          // https://github.com/jseppi/Leaflet.MakiMarkers
+          // https://labs.mapbox.com/maki-icons/
+          L.MakiMarkers.accessToken = '<%= ENV["MAPBOXTOKEN"] %>';
+          let icon = L.MakiMarkers.icon({icon: "hospital", color: "#cc66ff", size: "m"});
+
+          data.forEach( vet => {
+            let marker = L.marker([vet.vetLat, vet.vetLong], {icon: icon}).addTo(vetsMap);
+            marker.bindPopup(
+              `<h6 class="text-primary">
+                <a href='/vet_profiles/${vet.id}' target="_blank">${vet.clinic_name}</a>
+              </h6>`
+            );
+          });
+
+        });
+      }
+    )
+    .catch(function(err) {
+      console.log('Fetch Error :-S', err);
+    });
+</script>
+
+
+<% if user_signed_in? %>
+  <script>
+    let userId = <%= current_user.id %>;
+    fetch(`/user_profiles/${userId}.json`)
+      .then(
+        function(response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+            return;
+          }
+
+          // Examine the text in the response
+          response.json().then(function(data) {
+
+            // https://github.com/jseppi/Leaflet.MakiMarkers
+            // https://labs.mapbox.com/maki-icons/
+            L.MakiMarkers.accessToken = '<%= ENV["MAPBOXTOKEN"] %>';
+            let icon = L.MakiMarkers.icon({icon: "heart", color: "#E31515", size: "m"});
+
+            let marker = L.marker([data.userLat, data.userLong], {icon: icon}).addTo(vetsMap);
+            marker.bindPopup("<h6 class='text-danger'>Home</h6>");
+          });
+        }
+      )
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+  </script>
+<% end %>
+
