@@ -12,11 +12,11 @@ class VetProfilesController < ApplicationController
   # GET /vet_profiles
   # GET /vet_profiles.json
   def index
-    # if a params[:search] is received
+    require "open-uri"
+    # # if a params[:search] is received
     if params[:search]
       # search for vet profiles using the model method `search_vet_profiles`
       # passing in the search parameters, `params[:search]`
-      # this method is implemented using the pg_search gem
       @vet_profiles = VetProfile.search_vet_profiles(params[:search])
     else
       # otherwise, retrive all vet profiles
@@ -25,7 +25,6 @@ class VetProfilesController < ApplicationController
 
     # prepare the query strings required for OneMap API
     vetPositions = ""
-
     if current_user
       user_profile = UserProfile.find(current_user.id)
       userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
