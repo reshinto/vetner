@@ -5,9 +5,7 @@ class VetProfilesController < ApplicationController
   before_action :authenticate_vet!, only: [:edit, :update, :destroy]
 
   @@base_url = "https://developers.onemap.sg"
-  @@baseOnemapUrl = "https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&width=1000&height=450"
   @@token = ENV["ONEMAPTOKEN"]
-  @@distData = Hash.new
 
   # GET /vet_profiles
   # GET /vet_profiles.json
@@ -24,35 +22,19 @@ class VetProfilesController < ApplicationController
     end
 
     # prepare the query strings required for OneMap API
-    vetPositions = ""
+    # vetPositions = ""
     if current_user
       user_profile = UserProfile.find(current_user.id)
-      userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
-      @vet_profiles.each do |vp|
-        distanceparams = "/privateapi/routingsvc/route?start=#{user_profile.userLat},#{user_profile.userLong}&end=#{vp.vetLat},#{vp.vetLong}&routeType=walk&token=#{@@token}"
-        if @@distData["#{distanceparams}"] == nil
-          result = JSON.load(open("#{@@base_url}#{distanceparams}"))
-          distance = result["route_summary"]["total_distance"]
-          @@distData["#{distanceparams}"] = distance
-        else
-          distance = @@distData["#{distanceparams}"]
-        end
-        if distance <= 5000
-          vetPositions += "&marker=latLng:#{vp.vetLat},#{vp.vetLong}#{vp.popupdetails}!icon:fa-plus!colour:lightblue"
-        else
-          vetPositions += ""
-        end
-      end
-      @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPositions}"
+      @user_lat = user_profile.userLat
+      @user_long = user_profile.userLong
     else
-      @address = "#{@@baseOnemapUrl}#{vetPositions}"
+      @user_lat = 0;
     end
   end
 
   # GET /vet_profiles/1
   # GET /vet_profiles/1.json
   def show
-    require "open-uri"
     @vet_profile = VetProfile.find(params[:id])
     @vetLat = @vet_profile.vetLat
     @vetLong = @vet_profile.vetLong
@@ -60,14 +42,6 @@ class VetProfilesController < ApplicationController
       user_profile = UserProfile.find(current_user.id)
       @userLat = user_profile.userLat
       @userLong = user_profile.userLong
-      distanceparams = "/privateapi/routingsvc/route?start=#{@userLat},#{@userLong}&end=#{@vetLat},#{@vetLong}&routeType=walk&token=#{@@token}"
-      if @@distData["#{distanceparams}"] == nil
-        result = JSON.load(open("#{@@base_url}#{distanceparams}"))
-        @distance = result["route_summary"]["total_distance"]
-        @@distData["#{distanceparams}"] = @distance
-      else
-        @distance = @@distData["#{distanceparams}"]
-      end
     else
       @userLat = @vetLat
       @userLong = @vetLong
