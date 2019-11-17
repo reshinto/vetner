@@ -31,6 +31,7 @@
 					<li class="list-group-item"><i class="fas fa-globe"></i>&nbsp&nbsp<a href="http://<%= @vet_profile.website %>" target=”_blank”><%= @vet_profile.website %></a></li>
 				</ul>
 				<div class="col text-center">
+					<%= link_to raw('<i class="fas fa-eye mr-2"></i>View Profile'), vet_profile_path(@vet_profile), class: "btn btn-primary" %>
 					<%= link_to raw('<i class="fas fa-edit mr-2"></i>Edit Profile'), edit_vet_profile_path(@vet_profile), class: "btn btn-info" %>
 				</div>
 			</div>
