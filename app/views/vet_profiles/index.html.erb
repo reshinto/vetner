@@ -33,13 +33,15 @@
         No result found.
       </div>
     <% end %>
-    <div class="row justify-content-center align-items-end">
+<!--     <div class="row justify-content-center align-items-end"> -->
+    <div class="card-columns">
       <!-- loop through vet profiles and render each one of them as a card -->
       <% @vet_profiles.each do |vet_profile| %>
-        <div class="col-12 col-md-6 col-lg-4 my-2">
-          <div class="card h-100">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title text-center">
+<!--         <div class="col-12 col-md-6 col-lg-4 my-2">
+          <div class="card h-100"> -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
                 <i class="fas fa-clinic-medical mr-1"></i>
                 <%= link_to vet_profile.clinic_name, vet_profile_path(id: vet_profile.vet_id) %>
               </h5>
@@ -86,13 +88,15 @@
                   <% end %>
                   <!-- end of conditional logic check for showing the "add vet" button -->
                   <!--**************************************************************** -->
-                <% end %></span>
-          </div>
+                </div>
+              </div>
+            <% end %>
+<!--           </div>
         </div>
-      </div>
+      </div> -->
     <% end %>
   </div>
-</div>
+<!-- </div> -->
 
 <script>
 var slider = document.getElementById("myRange");
