@@ -37,7 +37,7 @@
 			</div>
 		</div>
 		<div class="col-12 col-md-8 mt-3">
-		<% if @user_profiles.count == 0 %>
+		<% if @pets.count == 0 %>
 			<div class="alert alert-primary" role="alert">
 				<i class="fas fa-info-circle mr-2"></i>No record found for <%= @vet_profile.clinic_name %>.
 			</div>
@@ -49,16 +49,18 @@
 							<th scope="col">#</th>
 							<th scope="col">Client</th>
 							<th scope="col">Phone</th>
-<!--              <th scope="col">Pet Type</th>
-							<th scope="col">Pet Name</th> -->
+							<th scope="col">Pet Type</th>
+							<th scope="col">Pet Name</th>
 						</tr>
 					</thead>
 					<tbody>
-					<% @user_profiles.each_with_index do |profile, i| %>
+					<% @pets.each_with_index do |pet, i| %>
 						<tr>
 							<th scope="row"><%= i+1 %></th>
-							<td><%= link_to profile.username, user_profile_path(profile) %></td>
-							<td><%= profile.phone %></td>
+							<td><%= pet.user.user_profile[0].username %></td>
+							<td><%= pet.user.user_profile[0].phone %></td>
+							<td><%= pet.pet_type %></td>
+							<td><%= link_to pet.name, pet_path(pet) %></td>
 						</tr>
 					<% end %>
 					</tbody>

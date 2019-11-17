@@ -24,7 +24,11 @@
 					<div class="carousel-caption text-left">
 						<h1>Access Your Pet Records Anywhere.</h1>
 						<p>Register an account and have your pet's health record digitally available no matter where you are.<br>Authorize access for a vet to view your pet's past medical history.<br>No more worries about missing any details on your vet visits.</p>
-						<p><%= link_to 'Register An Account', new_user_registration_url, class: "btn btn-lg btn-info" %></p>
+						<% if user_signed_in? %>
+							<p><%= link_to 'My Profile', user_profile_url(id: current_user.id), class: "btn btn-lg btn-success" %>
+						<% else %>
+							<p><%= link_to 'Register An Account', new_user_registration_url, class: "btn btn-lg btn-info" %></p>
+						<% end %>
 					</div>
 				</div>
 			</div>
@@ -34,7 +38,11 @@
 					<div class="carousel-caption text-left">
 						<h1>View Client Records.</h1>
 						<p>Vet dashboard to easily view your client records.<br>Update your clinic's details and reach more petowners nearby you.</p>
-						<p><%= link_to 'Register Your Vet Clinic', new_vet_registration_url, class: "btn btn-lg btn-info" %></p>
+						<% if vet_signed_in? %>
+							<p><%= link_to 'Your Clinic Dashboard', vet_url(id: current_vet.id), class: "btn btn-lg btn-success" %></p>
+						<% else %>
+							<p><%= link_to 'Register Your Vet Clinic', contacts_url, class: "btn btn-lg btn-info" %></p>
+						<% end %>
 					</div>
 				</div>
 			</div>
@@ -51,50 +59,50 @@
 </div>
 
 <script>
-  sessionStorage.setItem("distData", "");
-  var distData;
+	sessionStorage.setItem("distData", "");
+	var distData;
 </script>
 
 <% if user_signed_in? %>
-  <% @vet_profiles.each do |vp| %>
-    <script>
-      //let userId = <%= current_user.id %>;
-      var base_url = "https://developers.onemap.sg";
-      var token = '<%= ENV["ONEMAPTOKEN"] %>'
-      var vetLat = "<%= vp.vetLat %>"
-      var vetLong = "<%= vp.vetLong %>"
-      var userLat = "<%= @userLat %>"
-      var userLong = "<%= @userLong %>"
-      var distanceparams = `/privateapi/routingsvc/route?start=${userLat},${userLong}&end=${vetLat},${vetLong}&routeType=walk&token=${token}`
-      fetch(`${base_url}${distanceparams}`)
-        .then(
-          function(response) {
-            if (response.status !== 200) {
-              console.log('Looks like there was a problem. Status Code: ' +
-                response.status);
-              return;
-            }
+	<% @vet_profiles.each do |vp| %>
+		<script>
+			//let userId = <%= current_user.id %>;
+			var base_url = "https://developers.onemap.sg";
+			var token = '<%= ENV["ONEMAPTOKEN"] %>'
+			var vetLat = "<%= vp.vetLat %>"
+			var vetLong = "<%= vp.vetLong %>"
+			var userLat = "<%= @userLat %>"
+			var userLong = "<%= @userLong %>"
+			var distanceparams = `/privateapi/routingsvc/route?start=${userLat},${userLong}&end=${vetLat},${vetLong}&routeType=walk&token=${token}`
+			fetch(`${base_url}${distanceparams}`)
+				.then(
+					function(response) {
+						if (response.status !== 200) {
+							console.log('Looks like there was a problem. Status Code: ' +
+								response.status);
+							return;
+						}
 
-            // Examine the text in the response
-            response.json().then(function(data) {
-              if (sessionStorage.getItem("distData") === "")
-                distData = {};
-              else
-                distData = JSON.parse(sessionStorage.getItem("distData"));
-              // console.log(distData)
-              var vetId = <%= vp.id %>
-              if (sessionStorage.getItem("maxDist") < data.route_summary.total_distance) {
-                sessionStorage.setItem("maxDist", data.route_summary.total_distance);
-              }
-              distData[`${vetId}`] = data.route_summary.total_distance;
-              sessionStorage.setItem("distData", JSON.stringify(distData));
-              // console.log(JSON.parse(sessionStorage.getItem("distData")));
-            });
-          }
-        )
-        .catch(function(err) {
-          console.log('Fetch Error :-S', err);
-        });
-    </script>
-  <% end %>
+						// Examine the text in the response
+						response.json().then(function(data) {
+							if (sessionStorage.getItem("distData") === "")
+								distData = {};
+							else
+								distData = JSON.parse(sessionStorage.getItem("distData"));
+							// console.log(distData)
+							var vetId = <%= vp.id %>
+							if (sessionStorage.getItem("maxDist") < data.route_summary.total_distance) {
+								sessionStorage.setItem("maxDist", data.route_summary.total_distance);
+							}
+							distData[`${vetId}`] = data.route_summary.total_distance;
+							sessionStorage.setItem("distData", JSON.stringify(distData));
+							// console.log(JSON.parse(sessionStorage.getItem("distData")));
+						});
+					}
+				)
+				.catch(function(err) {
+					console.log('Fetch Error :-S', err);
+				});
+		</script>
+	<% end %>
 <% end %>

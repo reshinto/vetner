@@ -24,6 +24,7 @@ class VetProfilesController < ApplicationController
         @search_params = ''
         @vet_profiles = VetProfile.all
       end
+      
     else
       @user_lat = 0;
       if params[:search]
@@ -89,7 +90,7 @@ class VetProfilesController < ApplicationController
         format.html { redirect_to @vet_profile, notice: 'Vet profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @vet_profile }
 
-        result = JSON.load(open("#{@base_url}/commonapi/search?searchVal=#{@vet_profile.postalcode}&returnGeom=Y&getAddrDetails=Y"))
+        result = JSON.load(open("https://developers.onemap.sg/commonapi/search?searchVal=#{@vet_profile.postalcode}&returnGeom=Y&getAddrDetails=Y"))
         vetLat = result["results"][0]["LATITUDE"]
         vetLong = result["results"][0]["LONGITUDE"]
         address = result["results"][0]["ADDRESS"]

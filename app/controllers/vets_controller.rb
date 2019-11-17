@@ -7,8 +7,7 @@ class VetsController < ApplicationController
     @vet = Vet.find(params[:id])
     @vet_profile = VetProfile.find(@vet.id)
     user_ids = current_vet.users.map(&:id)
-    @user_profiles = UserProfile.where(user_id: user_ids)
-    # @pets = Pet.where(user_id: user_ids)
+    @pets = Pet.where(user_id: user_ids)
   end
 
   private
