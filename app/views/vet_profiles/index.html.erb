@@ -132,7 +132,22 @@
   // oneMap.addTo(vetsMap);
   openStreetMap.addTo(vetsMap);
 
-  fetch('/vet_profiles.json')
+  let searchParams = "<%= @search_params %>";
+  let queryString = "";
+
+  console.log("*** searchParams ***", searchParams);
+
+  if (searchParams) {
+    console.log("*** queryString is NOT empty!!!");
+    queryString = `?utf8=%E2%9C%93&search=${searchParams}&commit=Search`;
+    console.log("*** queryString ***", queryString);
+  } else {
+    console.log("*** queryString is EMPTY1!!!");
+    console.log("*** queryString ***", queryString);
+  }
+
+  // http://localhost:3000/vet_profiles?utf8=%E2%9C%93&search=jurong&commit=Search
+  fetch('/vet_profiles.json?'+queryString)
     .then(
       function(response) {
         if (response.status !== 200) {

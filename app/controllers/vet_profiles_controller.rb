@@ -11,15 +11,17 @@ class VetProfilesController < ApplicationController
   # GET /vet_profiles.json
   def index
     require "open-uri"
-    # # if a params[:search] is received
-    if params[:search]
-      # search for vet profiles using the model method `search_vet_profiles`
-      # passing in the search parameters, `params[:search]`
-      @vet_profiles = VetProfile.search_vet_profiles(params[:search])
-    else
-      # otherwise, retrive all vet profiles
-      @vet_profiles = VetProfile.all
-    end
+    # # # if a params[:search] is received
+    # if params[:search]
+    #   # search for vet profiles using the model method `search_vet_profiles`
+    #   # passing in the search parameters, `params[:search]`
+    #   @search_params = params[:search]
+    #   @vet_profiles = VetProfile.search_vet_profiles(params[:search])
+    # else
+    #   # otherwise, retrive all vet profiles
+    #   @search_params = ''
+    #   @vet_profiles = VetProfile.all
+    # end
 
     # prepare the query strings required for OneMap API
     # vetPositions = ""
@@ -27,8 +29,34 @@ class VetProfilesController < ApplicationController
       user_profile = UserProfile.find(current_user.id)
       @user_lat = user_profile.userLat
       @user_long = user_profile.userLong
+
+      if params[:search]
+        # search for vet profiles using the model method `search_vet_profiles`
+        # passing in the search parameters, `params[:search]`
+        @search_params = params[:search]
+        @vet_profiles = VetProfile.search_vet_profiles(params[:search])
+      else
+        # otherwise, retrive all vet profiles
+        @search_params = ''
+        @vet_profiles = VetProfile.all
+      end
+  
     else
       @user_lat = 0;
+
+      if params[:search]
+        # search for vet profiles using the model method `search_vet_profiles`
+        # passing in the search parameters, `params[:search]`
+        @search_params = params[:search]
+        @vet_profiles = VetProfile.search_vet_profiles(params[:search])
+      else
+        # otherwise, retrive all vet profiles
+        @search_params = ''
+        @vet_profiles = VetProfile.all
+      end
+
+
+
     end
   end
 
