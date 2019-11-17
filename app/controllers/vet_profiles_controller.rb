@@ -100,7 +100,7 @@ class VetProfilesController < ApplicationController
   def destroy
     @vet_profile.destroy
     respond_to do |format|
-      format.html { redirect_to vet_profiles_url, notice: 'Vet profile was successfully destroyed.' }
+      format.html { redirect_to vet_profiles_url, notice: 'Vet profile was successfully removed.' }
       format.json { head :no_content }
     end
   end
@@ -112,7 +112,7 @@ class VetProfilesController < ApplicationController
 
     # check if the vet is already in the user's list of vets
     if current_user.vets and current_user.vets.map(&:id).include? vet.id
-      redirect_to @vet_profile, notice: 'Vet was already added previously.'
+      redirect_to @vet_profile, notice: 'Vet was added previously.'
     else
       # add this vet to the list of vets of the user
       current_user.vets << vet
@@ -123,7 +123,7 @@ class VetProfilesController < ApplicationController
         if current_user.save(validate: false)
           format.html { redirect_to @vet_profile, notice: 'Vet added to My Vets.'}
         else
-          format.html { redirect_to @vet_profile, notice: 'Error adding vet to user.'}
+          format.html { redirect_to @vet_profile, notice: 'Error adding vet to your record.'}
         end
       end
     end
@@ -142,13 +142,13 @@ class VetProfilesController < ApplicationController
       # delete the vet from the user's list of vets
       current_user.vets.delete(vet)
 
-      redirect_to @vet_profile, notice: 'Vet has been removed.'
+      redirect_to @vet_profile, notice: 'Vet has been removed from your record.'
 
     else
       # if the vet to be removed is NOT in the user's list of vets
       # then there is nothing to be removed
 
-      redirect_to @vet_profile, notice: 'Error removing vet.'
+      redirect_to @vet_profile, notice: 'Error removing vet from your record.'
     end
   end
 
