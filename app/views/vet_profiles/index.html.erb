@@ -97,9 +97,11 @@
 <script>
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
-slider.max = sessionStorage.getItem("maxDist");
-slider.value = Math.floor(slider.max / 2);
-output.innerHTML = slider.value/1000;
+if (slider !== null) {
+  slider.max = sessionStorage.getItem("maxDist");
+  slider.value = Math.floor(slider.max / 2);
+  output.innerHTML = slider.value/1000;
+}
 </script>
 
 <% if user_signed_in? %>
@@ -237,10 +239,12 @@ output.innerHTML = slider.value/1000;
       });
   }
   buildMap();
-  slider.oninput = function() {
-    vetsMap.remove();
-    output.innerHTML = slider.value/1000;
-    buildMap();
-    markUser();
+  if (slider !== null) {
+    slider.oninput = function() {
+      vetsMap.remove();
+      output.innerHTML = slider.value/1000;
+      buildMap();
+      markUser();
+    }
   }
 </script>
