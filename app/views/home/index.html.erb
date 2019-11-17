@@ -49,3 +49,49 @@
 		</a>
 	</div>
 </div>
+
+<script>
+  sessionStorage.setItem("distData", "");
+  var distData;
+</script>
+
+<% if user_signed_in? %>
+  <% @vet_profiles.each do |vp| %>
+    <script>
+      //let userId = <%= current_user.id %>;
+      var base_url = "https://developers.onemap.sg";
+      var token = '<%= ENV["ONEMAPTOKEN"] %>'
+      var vetLat = "<%= vp.vetLat %>"
+      var vetLong = "<%= vp.vetLong %>"
+      var userLat = "<%= @userLat %>"
+      var userLong = "<%= @userLong %>"
+      var distanceparams = `/privateapi/routingsvc/route?start=${userLat},${userLong}&end=${vetLat},${vetLong}&routeType=walk&token=${token}`
+      fetch(`${base_url}${distanceparams}`)
+        .then(
+          function(response) {
+            if (response.status !== 200) {
+              console.log('Looks like there was a problem. Status Code: ' +
+                response.status);
+              return;
+            }
+
+            // Examine the text in the response
+            response.json().then(function(data) {
+              if (sessionStorage.getItem("distData") === "")
+                distData = {};
+              else
+                distData = JSON.parse(sessionStorage.getItem("distData"));
+              console.log(distData)
+              var vetId = <%= vp.id %>
+              distData[`${vetId}`] = data.route_summary.total_distance;
+              sessionStorage.setItem("distData", JSON.stringify(distData));
+              console.log(JSON.parse(sessionStorage.getItem("distData")));
+            });
+          }
+        )
+        .catch(function(err) {
+          console.log('Fetch Error :-S', err);
+        });
+    </script>
+  <% end %>
+<% end %>

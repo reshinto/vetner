@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_073224) do
+ActiveRecord::Schema.define(version: 2019_11_17_001912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,16 @@ ActiveRecord::Schema.define(version: 2019_11_14_073224) do
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
+  create_table "user_vet_distance", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "vet_id"
+    t.string "distance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_vet_distance_on_user_id"
+    t.index ["vet_id"], name: "index_user_vet_distance_on_vet_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean "admin", default: false
     t.string "email", default: "", null: false
@@ -112,6 +122,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_073224) do
     t.string "vetLat"
     t.string "vetLong"
     t.string "unit"
+    t.text "popupdetails"
     t.index ["vet_id"], name: "index_vet_profiles_on_vet_id"
   end
 
@@ -131,5 +142,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_073224) do
   add_foreign_key "pet_records", "pets"
   add_foreign_key "pets", "users"
   add_foreign_key "user_profiles", "users"
+  add_foreign_key "user_vet_distance", "users"
+  add_foreign_key "user_vet_distance", "vets"
   add_foreign_key "vet_profiles", "vets"
 end

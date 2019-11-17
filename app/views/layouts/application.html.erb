@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Vetner</title>
-		<%= csrf_meta_tags %>
-		<%= csp_meta_tag %>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
-		<%= stylesheet_link_tag    'application', media: 'all' %>
-		<%= javascript_include_tag 'application' %>
-	</head>
-	<body>
-		<header>
-			<%= render "/layouts/navbar" %>
-		</header>
-		<main class="custom-scroll" role="main">
-			<%= yield %>
-		</main>
-		<footer>
-			<div class="container">
-				<span class="text-muted">Vetner &copy; 2019</span>
-			</div>
-		</footer>
-		<!-- search results will be appended here-->
-			<div id="search-results"></div>
-	</body>
+  <head>
+    <title>Vetner</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   crossorigin=""></script>
+    <%# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+    <script src="https://cdn.onemap.sg/leaflet/onemap-leaflet.js"></script> %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>
+    <header>
+      <%= render "/layouts/navbar" %>
+    </header>
+    <main class="custom-scroll" role="main">
+      <%= yield %>
+    </main>
+    <footer>
+      <div class="container">
+        <span class="text-muted">Vetner &copy; 2019</span>
+      </div>
+    </footer>
+  </body>
 </html>

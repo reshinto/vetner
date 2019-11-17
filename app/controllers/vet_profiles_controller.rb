@@ -4,40 +4,31 @@ class VetProfilesController < ApplicationController
 
   before_action :authenticate_vet!, only: [:edit, :update, :destroy]
 
-  @@baseOnemapUrl = "https://www.onemap.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&width=1000&height=450"
+  @@base_url = "https://developers.onemap.sg"
+  @@token = ENV["ONEMAPTOKEN"]
 
   # GET /vet_profiles
   # GET /vet_profiles.json
   def index
-    # if a params[:search] is received
+    require "open-uri"
+    # # if a params[:search] is received
     if params[:search]
-      # call the model method search_by_clinic_name, defined in VetProfile model
-      @search_results_vet_profiles = VetProfile.search_by_clinic_name(params[:search])
-      # send the search results to the partial view _search-results.js.erb
-      # located at views/user_profiles
-      respond_to do |format|
-        format.js { render partial: 'user_profiles/search-results'}
-      end
+      # search for vet profiles using the model method `search_vet_profiles`
+      # passing in the search parameters, `params[:search]`
+      @vet_profiles = VetProfile.search_vet_profiles(params[:search])
     else
-      # render the view for list of vet profiles
+      # otherwise, retrive all vet profiles
       @vet_profiles = VetProfile.all
-      vetPositions = ""
-      @vet_profiles.each do |vp|
-        vetPositions += "&marker=latLng:#{vp.vetLat},#{vp.vetLong}!icon:fa-plus!colour:lightblue"
-      end
-      if current_user
-        user_profile = UserProfile.find(current_user.id)
-        # address = "#{user_profile.address} #{user_profile.country}"
-        # userResults = Geocoder.search(address).first.coordinates
-        # puts userResults
-        # userLat = userResults[0]
-        # userLong = userResults[1]
-        userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
-        @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPositions}"
-      else
-        @address = "#{@@baseOnemapUrl}#{vetPositions}"
-        puts @address
-      end
+    end
+
+    # prepare the query strings required for OneMap API
+    # vetPositions = ""
+    if current_user
+      user_profile = UserProfile.find(current_user.id)
+      @user_lat = user_profile.userLat
+      @user_long = user_profile.userLong
+    else
+      @user_lat = 0;
     end
   end
 
@@ -45,17 +36,15 @@ class VetProfilesController < ApplicationController
   # GET /vet_profiles/1.json
   def show
     @vet_profile = VetProfile.find(params[:id])
-    vetPosition = "&marker=latLng:#{@vet_profile.vetLat},#{@vet_profile.vetLong}!icon:fa-plus!colour:lightblue"
+    @vetLat = @vet_profile.vetLat
+    @vetLong = @vet_profile.vetLong
     if current_user
       user_profile = UserProfile.find(current_user.id)
-      # address = "#{user_profile.address} #{user_profile.country}"
-      # userResults = Geocoder.search(address).first.coordinates
-      # userLat = userResults[0]
-      # userLong = userResults[1]
-      userPosition = "&marker=latLng:#{user_profile.userLat},#{user_profile.userLong}!icon:fa-user!colour:red"
-      @address = "#{@@baseOnemapUrl}#{userPosition}#{vetPosition}"
+      @userLat = user_profile.userLat
+      @userLong = user_profile.userLong
     else
-      @address = "#{@@baseOnemapUrl}#{vetPosition}"
+      @userLat = @vetLat
+      @userLong = @vetLong
     end
   end
 
@@ -94,7 +83,7 @@ class VetProfilesController < ApplicationController
         format.html { redirect_to @vet_profile, notice: 'Vet profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @vet_profile }
 
-        result = JSON.load(open("https://developers.onemap.sg/commonapi/search?searchVal=#{@vet_profile.postalcode}&returnGeom=Y&getAddrDetails=Y"))
+        result = JSON.load(open("#{@base_url}/commonapi/search?searchVal=#{@vet_profile.postalcode}&returnGeom=Y&getAddrDetails=Y"))
         vetLat = result["results"][0]["LATITUDE"]
         vetLong = result["results"][0]["LONGITUDE"]
         address = result["results"][0]["ADDRESS"]
@@ -132,7 +121,7 @@ class VetProfilesController < ApplicationController
       respond_to do |format|
         # if the current user is successfully saved
         if current_user.save(validate: false)
-          format.html { redirect_to @vet_profile, notice: 'Vet was successfully added to your record.'}
+          format.html { redirect_to @vet_profile, notice: 'Vet added to My Vets.'}
         else
           format.html { redirect_to @vet_profile, notice: 'Error adding vet to your record.'}
         end
