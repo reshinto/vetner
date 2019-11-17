@@ -83,6 +83,9 @@
                 distData = JSON.parse(sessionStorage.getItem("distData"));
               // console.log(distData)
               var vetId = <%= vp.id %>
+              if (sessionStorage.getItem("maxDist") < data.route_summary.total_distance) {
+                sessionStorage.setItem("maxDist", data.route_summary.total_distance);
+              }
               distData[`${vetId}`] = data.route_summary.total_distance;
               sessionStorage.setItem("distData", JSON.stringify(distData));
               // console.log(JSON.parse(sessionStorage.getItem("distData")));
