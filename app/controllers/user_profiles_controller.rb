@@ -13,7 +13,11 @@ class UserProfilesController < ApplicationController
   def show
     @pets = Pet.where(user_id: current_user.id)
     vet_ids = current_user.vets.map(&:id)
+    user_profile = UserProfile.find(current_user.id)
+    @userLat = user_profile.userLat
+    @userLong = user_profile.userLong
     @vet_profiles = VetProfile.where(vet_id: vet_ids)
+    @getAllVetProfilesDistance = VetProfile.all
   end
 
   # GET /user_profiles/new
