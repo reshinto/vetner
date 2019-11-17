@@ -18,6 +18,13 @@
     <div id="vetsMap" style="height:500px; width: 98vw; border-radius: 1rem;"></div>
   </div>
 
+  <% if user_signed_in? %>
+    <div class="slidecontainer">
+      <input class="custom-range" type="range" id="myRange">
+      <p>Set Distance: <span id="demo"></span> km</p>
+    </div>
+  <% end %>
+
   <h2>SVA Registered Veterinary Centres</h2>
 
     <%# <div class="col-12 col-md-7 custom-scroll"> %>
@@ -87,114 +94,107 @@
   </div>
 </div>
 
-
 <script>
-  if (<%= @user_lat %> === 0)
-    var center = L.bounds([1.56073, 104.11475], [1.16, 103.502]).getCenter();
-  else
-    var center = L.bounds([<%= @user_lat %>, <%= @user_long %>], [<%= @user_lat %>, <%= @user_long %>]).getCenter();
-  var vetsMap = L.map('vetsMap').setView([center.x, center.y], 12);
-
-  var oneMap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
-    detectRetina: true,
-    maxZoom: 18,
-    minZoom: 11,
-    //Do not remove this attribution
-    attribution: '<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data &copy; contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
-  });
-
-  // using mapbox style in leaflet:
-  // https://docs.mapbox.com/studio-manual/overview/publish-your-style/#mapboxjs-and-leaflet
-
-  var openStreetMap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-  // var openStreetMap = L.tileLayer('https://api.mapbox.com/styles/v1/myvetner/ck31pugs60xp31cnv5u199bij/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 15,
-      // these styles can be used if using the api endpoint of
-      // https://api.tiles.mapbox.com/v4/{id}/ ... ...
-      id: 'mapbox.streets',
-      // id: 'mapbox.outdoors',
-      // id: 'mapbox.dark',
-      // id: 'mapbox.light',
-      // id: 'mapbox.satellite',
-      // id: 'mapbox.satellite+streets',
-
-      // styles created using mapbox studio:
-      // for api endpoint of:
-      // https://api.mapbox.com/styles/v1/ ... ...
-      // the style id has to be inside the api querystring
-      // mapbox://styles/myvetner/ck31pugs60xp31cnv5u199bij
-      // mapbox://styles/myvetner/ck31pzphd1lq81cogrqeuo2ty
-      accessToken: '<%= ENV["MAPBOXTOKEN"] %>'
-  });
-
-
-  // oneMap.addTo(vetsMap);
-  openStreetMap.addTo(vetsMap);
-
-  let searchParams = "<%= @search_params %>";
-  let queryString = "";
-
-  console.log("*** searchParams ***", searchParams);
-
-  if (searchParams) {
-    console.log("*** queryString is NOT empty!!!");
-    queryString = `?utf8=%E2%9C%93&search=${searchParams}&commit=Search`;
-    console.log("*** queryString ***", queryString);
-  } else {
-    console.log("*** queryString is EMPTY1!!!");
-    console.log("*** queryString ***", queryString);
-  }
-
-  // http://localhost:3000/vet_profiles?utf8=%E2%9C%93&search=jurong&commit=Search
-  fetch('/vet_profiles.json?'+queryString)
-    .then(
-      function(response) {
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-          return;
-        }
-
-        // Examine the text in the response
-        response.json().then(function(data) {
-          // console.log(data);
-
-          // https://github.com/jseppi/Leaflet.MakiMarkers
-          // https://labs.mapbox.com/maki-icons/
-          L.MakiMarkers.accessToken = '<%= ENV["MAPBOXTOKEN"] %>';
-          let icon = L.MakiMarkers.icon({icon: "hospital", color: "#cc66ff", size: "m"});
-
-          data.forEach( vet => {
-            if (<%= @user_lat %> === 0) {
-              let marker = L.marker([vet.vetLat, vet.vetLong], {icon: icon}).addTo(vetsMap);
-              marker.bindPopup(
-                `<h6 class="text-primary">
-                  <a href='/vet_profiles/${vet.id}' target="_blank">${vet.clinic_name}</a>
-                </h6>`
-              );
-            } else if (JSON.parse(sessionStorage.getItem("distData"))[`${vet.id}`] <= 5000) {
-              let marker = L.marker([vet.vetLat, vet.vetLong], {icon: icon}).addTo(vetsMap);
-              marker.bindPopup(
-                `<h6 class="text-primary">
-                  <a href='/vet_profiles/${vet.id}' target="_blank">${vet.clinic_name}</a>
-                </h6>`
-              );
-            }
-          });
-        });
-      }
-    )
-    .catch(function(err) {
-      console.log('Fetch Error :-S', err);
-    });
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+slider.max = sessionStorage.getItem("maxDist")
+slider.value = Math.floor(slider.max / 2);
+output.innerHTML = slider.value/1000;
 </script>
-
 
 <% if user_signed_in? %>
   <script>
-    let userId = <%= current_user.id %>;
-    fetch(`/user_profiles/${userId}.json`)
+    function markUser() {
+      let userId = <%= current_user.id %>;
+      fetch(`/user_profiles/${userId}.json`)
+        .then(
+          function(response) {
+            if (response.status !== 200) {
+              console.log('Looks like there was a problem. Status Code: ' +
+                response.status);
+              return;
+            }
+
+            // Examine the text in the response
+            response.json().then(function(data) {
+
+              // https://github.com/jseppi/Leaflet.MakiMarkers
+              // https://labs.mapbox.com/maki-icons/
+              L.MakiMarkers.accessToken = '<%= ENV["MAPBOXTOKEN"] %>';
+              let icon = L.MakiMarkers.icon({icon: "heart", color: "#E31515", size: "m"});
+
+              let marker = L.marker([data.userLat, data.userLong], {icon: icon}).addTo(vetsMap);
+              marker.bindPopup("<h6 class='text-danger'>Home</h6>");
+            });
+          }
+        )
+        .catch(function(err) {
+          console.log('Fetch Error :-S', err);
+        });
+    }
+    markUser();
+  </script>
+<% end %>
+
+<script>
+  var vetsMap;
+  function buildMap() {
+    var center = L.bounds([1.56073, 104.11475], [1.16, 103.502]).getCenter();
+    vetsMap = L.map('vetsMap').setView([center.x, center.y], 12);
+
+    var oneMap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
+      detectRetina: true,
+      maxZoom: 18,
+      minZoom: 11,
+      //Do not remove this attribution
+      attribution: '<img src="https://docs.onemap.sg/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> New OneMap | Map data &copy; contributors, <a href="http://SLA.gov.sg">Singapore Land Authority</a>'
+    });
+
+    // using mapbox style in leaflet:
+    // https://docs.mapbox.com/studio-manual/overview/publish-your-style/#mapboxjs-and-leaflet
+
+    var openStreetMap = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    // var openStreetMap = L.tileLayer('https://api.mapbox.com/styles/v1/myvetner/ck31pugs60xp31cnv5u199bij/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 11,
+        // these styles can be used if using the api endpoint of
+        // https://api.tiles.mapbox.com/v4/{id}/ ... ...
+        id: 'mapbox.streets',
+        // id: 'mapbox.outdoors',
+        // id: 'mapbox.dark',
+        // id: 'mapbox.light',
+        // id: 'mapbox.satellite',
+        // id: 'mapbox.satellite+streets',
+
+        // styles created using mapbox studio:
+        // for api endpoint of:
+        // https://api.mapbox.com/styles/v1/ ... ...
+        // the style id has to be inside the api querystring
+        // mapbox://styles/myvetner/ck31pugs60xp31cnv5u199bij
+        // mapbox://styles/myvetner/ck31pzphd1lq81cogrqeuo2ty
+        accessToken: '<%= ENV["MAPBOXTOKEN"] %>'
+    });
+
+
+    // oneMap.addTo(vetsMap);
+    openStreetMap.addTo(vetsMap);
+
+    let searchParams = "<%= @search_params %>";
+    let queryString = "";
+
+    console.log("*** searchParams ***", searchParams);
+
+    if (searchParams) {
+      console.log("*** queryString is NOT empty!!!");
+      queryString = `?utf8=%E2%9C%93&search=${searchParams}&commit=Search`;
+      console.log("*** queryString ***", queryString);
+    } else {
+      console.log("*** queryString is EMPTY1!!!");
+      console.log("*** queryString ***", queryString);
+    }
+
+    // http://localhost:3000/vet_profiles?utf8=%E2%9C%93&search=jurong&commit=Search
+    fetch('/vet_profiles.json?'+queryString)
       .then(
         function(response) {
           if (response.status !== 200) {
@@ -205,19 +205,42 @@
 
           // Examine the text in the response
           response.json().then(function(data) {
+            // console.log(data);
 
             // https://github.com/jseppi/Leaflet.MakiMarkers
             // https://labs.mapbox.com/maki-icons/
             L.MakiMarkers.accessToken = '<%= ENV["MAPBOXTOKEN"] %>';
-            let icon = L.MakiMarkers.icon({icon: "heart", color: "#E31515", size: "m"});
+            let icon = L.MakiMarkers.icon({icon: "hospital", color: "#cc66ff", size: "m"});
 
-            let marker = L.marker([data.userLat, data.userLong], {icon: icon}).addTo(vetsMap);
-            marker.bindPopup("<h6 class='text-danger'>Home</h6>");
+            data.forEach( vet => {
+              if (<%= @user_lat %> === 0) {
+                let marker = L.marker([vet.vetLat, vet.vetLong], {icon: icon}).addTo(vetsMap);
+                marker.bindPopup(
+                  `<h6 class="text-primary">
+                    <a href='/vet_profiles/${vet.id}' target="_blank">${vet.clinic_name}</a>
+                  </h6>`
+                );
+              } else if (JSON.parse(sessionStorage.getItem("distData"))[`${vet.id}`] <= slider.value) {
+                let marker = L.marker([vet.vetLat, vet.vetLong], {icon: icon}).addTo(vetsMap);
+                marker.bindPopup(
+                  `<h6 class="text-primary">
+                    <a href='/vet_profiles/${vet.id}' target="_blank">${vet.clinic_name}</a>
+                  </h6>`
+                );
+              }
+            });
           });
         }
       )
       .catch(function(err) {
         console.log('Fetch Error :-S', err);
       });
-  </script>
-<% end %>
+  }
+  buildMap();
+  slider.oninput = function() {
+    vetsMap.remove();
+    output.innerHTML = slider.value/1000;
+    buildMap();
+    markUser();
+  }
+</script>
