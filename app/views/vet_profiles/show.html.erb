@@ -25,7 +25,7 @@
                 <a href=<%= "tel:+65-#{@vet_profile.phone}" %>><%= @vet_profile.phone %></a>
                 </li>
                 <% if user_signed_in? %>
-                  <li class="list-group-item"><i class="fas fa-drafting-compass mr-2"></i><%= "#{@distance.to_f/ 1000} km" %></li>
+                  <li class="list-group-item"><i class="fas fa-drafting-compass mr-2"></i><span id="distanceValue"></span></li>
                 <% end %>
                 <li class="list-group-item"><i class="fas fa-globe"></i>&nbsp&nbsp<a href="http://<%= @vet_profile.website %>" target=”_blank”><%= @vet_profile.website %></a></li>
             </ul>
@@ -74,6 +74,8 @@
 
 
 <script>
+  var distanceValueElem = document.getElementById("distanceValue");
+  distanceValueElem.innerHTML = `${JSON.parse(sessionStorage.getItem("distData"))[`<%= @vet_profile.id %>`]/1000}km`;
   var center = L.bounds([<%= @vetLat %>, <%= @vetLong %>], [<%= @userLat %>, <%= @userLong %>]).getCenter();
   var vetsMap = L.map('vetsMap').setView([center.x, center.y], 12);
 
