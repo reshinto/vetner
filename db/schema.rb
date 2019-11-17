@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_220038) do
+ActiveRecord::Schema.define(version: 2019_11_17_001912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 2019_11_16_220038) do
     t.bigint "vet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "distance"
     t.index ["user_id"], name: "index_users_vets_on_user_id"
     t.index ["vet_id"], name: "index_users_vets_on_vet_id"
   end
