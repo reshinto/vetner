@@ -1,67 +1,91 @@
-<%= form_with(model: vet_profile, local: true) do |form| %>
-  <% if vet_profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(vet_profile.errors.count, "error") %> prohibited this vet_profile from being saved:</h2>
+<div class="container" style="margin-top: 2rem; margin-bottom: 2rem;">
+	<div class="row justify-content-md-center">
+		<div class="col-lg-8">
+			<%= form_with(model: vet_profile, local: true) do |form| %>
+			<% if vet_profile.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(vet_profile.errors.count, "error") %> prohibited this vet_profile from being saved:</h2>
+					<ul>
+					<% vet_profile.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+					<% end %>
+					</ul>
+				</div>
+			<% end %>
 
-      <ul>
-      <% vet_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<div class="form-group row">
+				<%= form.label :clinic_name, class: "col-sm-3 col-form-label" %>
+				<div class="col-sm-9">
+				<%= form.text_area :clinic_name, required: true, class: "form-control" %>
+				</div>
+			</div>
 
-  <div class="field">
-    <%= form.label :clinic_name %>
-    <%= form.text_area :clinic_name %>
-  </div>
+			<%# <div class="field"> %>
+			<%#   <%= form.label :address, "Street address" %1> %>
+			<%#   <%= form.text_area :address %1> %>
+			<%# </div> %>
 
-  <%# <div class="field"> %>
-  <%#   <%= form.label :address, "Street address" %1> %>
-  <%#   <%= form.text_area :address %1> %>
-  <%# </div> %>
+			<div class="form-group row">
+				<%= form.label :postalcode, class: "col-sm-3 col-form-label" %>
+				<div class="col-sm-9">
+				<%= form.text_field :postalcode, required: true, class: "form-control" %>
+				</div>
+			</div>
 
-  <div class="field">
-    <%= form.label :postalcode %>
-    <%= form.text_field :postalcode %>
-  </div>
+			<div class="form-group row">
+				<%= form.label :unit, class: "col-sm-3 col-form-label" %>
+				<div class="col-sm-9">
+				<%= form.text_field :unit, class: "form-control" %>
+				</div>
+			</div>
 
-  <div class="field">
-    <%= form.label :unit %>
-    <%= form.text_field :unit %>
-  </div>
+			<%# <div class="field"> %>
+			<%#   <%= form.label :country %1> %>
+			<%#   <%= form.text_field :country %1> %>
+			<%# </div> %>
 
-  <%# <div class="field"> %>
-  <%#   <%= form.label :country %1> %>
-  <%#   <%= form.text_field :country %1> %>
-  <%# </div> %>
+			<div class="form-group row">
+				<%= form.label :phone, class: "col-sm-3 col-form-label" %>
+				<div class="col-sm-9">
+				<%= form.text_field :phone, required: true, class: "form-control" %>
+				</div>
+			</div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
+			<div class="form-group row">
+				<%= form.label :website, class: "col-sm-3 col-form-lab" %>
+				<div class="col-sm-9">
+				<%= form.text_field :website, class: "form-control" %>
+				</div>
+			</div>
 
-  <div class="field">
-    <%= form.label :website %>
-    <%= form.text_field :website %>
-  </div>
+			<div class="form-group row">
+				<%= form.label :hours, class: "col-sm-3 col-form-lab" %>
+				<div class="col-sm-9">
+				<%= form.text_area :hours, class: "form-control" %>
+				</div>
+			</div>
 
-  <div class="field">
-    <%= form.label :hours %>
-    <%= form.text_field :hours %>
-  </div>
+			<div class="form-group row">
+				<%= form.label :services, class: "col-sm-3 col-form-lab" %>
+				<div class="col-sm-9">
+				<%= form.text_area :services, class: "form-control" %>
+				</div>
+			</div>
 
-  <div class="field">
-    <%= form.label :services %>
-    <%= form.text_area :services %>
-  </div>
+		<!--  <div class="form-group row">
+				<%= form.label :image %>
+				<%= form.file_field :image %>
+			</div> -->
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+			<div class="form-group">
+				<div class="col text-center">
+					<div class="actions">
+						<%= form.submit class: "btn btn-warning" %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% end %>
+		</div>
+	</div>
+</div>
