@@ -5,31 +5,15 @@ class VetProfilesController < ApplicationController
   before_action :authenticate_vet!, only: [:edit, :update, :destroy]
 
   @@base_url = "https://developers.onemap.sg"
-  @@token = ENV["ONEMAPTOKEN"]
+  # @@token = ENV["ONEMAPTOKEN"]
 
   # GET /vet_profiles
   # GET /vet_profiles.json
   def index
-    require "open-uri"
-    # # # if a params[:search] is received
-    # if params[:search]
-    #   # search for vet profiles using the model method `search_vet_profiles`
-    #   # passing in the search parameters, `params[:search]`
-    #   @search_params = params[:search]
-    #   @vet_profiles = VetProfile.search_vet_profiles(params[:search])
-    # else
-    #   # otherwise, retrive all vet profiles
-    #   @search_params = ''
-    #   @vet_profiles = VetProfile.all
-    # end
-
-    # prepare the query strings required for OneMap API
-    # vetPositions = ""
     if current_user
       user_profile = UserProfile.find(current_user.id)
       @user_lat = user_profile.userLat
       @user_long = user_profile.userLong
-
       if params[:search]
         # search for vet profiles using the model method `search_vet_profiles`
         # passing in the search parameters, `params[:search]`
@@ -40,10 +24,8 @@ class VetProfilesController < ApplicationController
         @search_params = ''
         @vet_profiles = VetProfile.all
       end
-  
     else
       @user_lat = 0;
-
       if params[:search]
         # search for vet profiles using the model method `search_vet_profiles`
         # passing in the search parameters, `params[:search]`
@@ -54,9 +36,6 @@ class VetProfilesController < ApplicationController
         @search_params = ''
         @vet_profiles = VetProfile.all
       end
-
-
-
     end
   end
 
@@ -90,7 +69,6 @@ class VetProfilesController < ApplicationController
   def create
     @vet_profile = VetProfile.new(vet_profile_params)
     @vet_profile.vet_id = current_vet.id
-
     respond_to do |format|
       if @vet_profile.save
         format.html { redirect_to @vet_profile, notice: 'Vet profile was successfully created.' }
@@ -105,9 +83,9 @@ class VetProfilesController < ApplicationController
   # PATCH/PUT /vet_profiles/1
   # PATCH/PUT /vet_profiles/1.json
   def update
-    require "open-uri"
     respond_to do |format|
       if @vet_profile.update(vet_profile_params)
+        require "open-uri"
         format.html { redirect_to @vet_profile, notice: 'Vet profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @vet_profile }
 
@@ -162,20 +140,15 @@ class VetProfilesController < ApplicationController
     # retrieve the vet object based on the vet_id passed from the form
     # this is the vet to be removed from the user's list of vets
     vet = Vet.find_by(id: remove_vet_from_user_params[:vet_id])
-
     # check if the user has vets AND
     # the vet to be removed is indeed in the user's list of vets
     if current_user.vets and current_user.vets.map(&:id).include? vet.id
-
       # delete the vet from the user's list of vets
       current_user.vets.delete(vet)
-
       redirect_to @vet_profile, notice: 'Vet has been removed from your record.'
-
     else
       # if the vet to be removed is NOT in the user's list of vets
       # then there is nothing to be removed
-
       redirect_to @vet_profile, notice: 'Error removing vet from your record.'
     end
   end
