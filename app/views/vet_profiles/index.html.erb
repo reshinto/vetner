@@ -89,7 +89,10 @@
 
 
 <script>
-  var center = L.bounds([1.56073, 104.11475], [1.16, 103.502]).getCenter();
+  if (<%= @user_lat %> === 0)
+    var center = L.bounds([1.56073, 104.11475], [1.16, 103.502]).getCenter();
+  else
+    var center = L.bounds([<%= @user_lat %>, <%= @user_long %>], [<%= @user_lat %>, <%= @user_long %>]).getCenter();
   var vetsMap = L.map('vetsMap').setView([center.x, center.y], 12);
 
   var oneMap = L.tileLayer('https://maps-{s}.onemap.sg/v3/Default/{z}/{x}/{y}.png', {
@@ -148,14 +151,22 @@
           let icon = L.MakiMarkers.icon({icon: "hospital", color: "#cc66ff", size: "m"});
 
           data.forEach( vet => {
-            let marker = L.marker([vet.vetLat, vet.vetLong], {icon: icon}).addTo(vetsMap);
-            marker.bindPopup(
-              `<h6 class="text-primary">
-                <a href='/vet_profiles/${vet.id}' target="_blank">${vet.clinic_name}</a>
-              </h6>`
-            );
+            if (<%= @user_lat %> === 0) {
+              let marker = L.marker([vet.vetLat, vet.vetLong], {icon: icon}).addTo(vetsMap);
+              marker.bindPopup(
+                `<h6 class="text-primary">
+                  <a href='/vet_profiles/${vet.id}' target="_blank">${vet.clinic_name}</a>
+                </h6>`
+              );
+            } else if (JSON.parse(sessionStorage.getItem("distData"))[`${vet.id}`] <= 5000) {
+              let marker = L.marker([vet.vetLat, vet.vetLong], {icon: icon}).addTo(vetsMap);
+              marker.bindPopup(
+                `<h6 class="text-primary">
+                  <a href='/vet_profiles/${vet.id}' target="_blank">${vet.clinic_name}</a>
+                </h6>`
+              );
+            }
           });
-
         });
       }
     )
