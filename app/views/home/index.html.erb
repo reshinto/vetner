@@ -81,11 +81,11 @@
                 distData = {};
               else
                 distData = JSON.parse(sessionStorage.getItem("distData"));
-              console.log(distData)
+              // console.log(distData)
               var vetId = <%= vp.id %>
               distData[`${vetId}`] = data.route_summary.total_distance;
               sessionStorage.setItem("distData", JSON.stringify(distData));
-              console.log(JSON.parse(sessionStorage.getItem("distData")));
+              // console.log(JSON.parse(sessionStorage.getItem("distData")));
             });
           }
         )
