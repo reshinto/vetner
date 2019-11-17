@@ -30,8 +30,10 @@
 					<li class="list-group-item"><i class="fas fa-sitemap mr-2"></i><%= @pet.breed %></li>
 				</ul>
 				<div class="col-12 text-center">
-					<%= link_to raw('<i class="fas fa-edit mr-2"></i> Edit'), edit_pet_path(@pet), class: "btn btn-primary mr-2" %>
-					<%= link_to raw('<i class="fas fa-heart-broken mr-2"></i> Remove'), pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+					<% if user_signed_in? %>
+						<%= link_to raw('<i class="fas fa-edit mr-2"></i> Edit'), edit_pet_path(@pet), class: "btn btn-primary mr-2" %>
+						<%= link_to raw('<i class="fas fa-heart-broken mr-2"></i> Remove'), pet_path(@pet), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -43,7 +45,9 @@
 		<% else %>
 			<h3><%= @pet.name%>'s <%= "record".pluralize(@pet_records.count) %></h3>
 		<% end %>
-		<%= link_to raw("<i class='fas fa-plus-circle mr-2'></i> New"), new_pet_record_path(id: @pet.id), class: "btn btn-primary my-2" %>
+		<% if user_signed_in? %>
+			<%= link_to raw("<i class='fas fa-plus-circle mr-2'></i> New"), new_pet_record_path(id: @pet.id), class: "btn btn-primary my-2" %>
+		<% end %>
 		<div class="table-responsive">
 			<table class="table">
 				<thead class="thead-light">
@@ -68,8 +72,10 @@
 								<td>
 									<div class="d-none d-sm-block d-md-block d-lg-block d-xl-block">
 										<%= link_to raw("<i class='fas fa-eye mr-3'></i>"), pet_record_path(pr), class: "text-secondary" %>
+									<% if user_signed_in? %>
 										<%= link_to raw("<i class='fas fa-edit mr-3'></i>"), edit_pet_record_path(pr), class: "text-secondary" %>
 										<%= link_to raw("<i class='fas fa-trash-alt mr-3'></i>"), pet_record_path(pr), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-secondary" %>
+									<% end %>
 									</div>
 								</td>
 							</tr>
