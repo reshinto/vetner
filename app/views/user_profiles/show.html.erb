@@ -2,7 +2,11 @@
   <% if notice %>
     <div class="row">
       <div class="col">
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <% if notice == 'Invalid Postal Code.' %>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <% else %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <% end %>
           <p id="notice" class="p-0 m-0"><%= notice %></p>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
