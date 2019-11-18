@@ -21,11 +21,13 @@
 	<% if user_signed_in? %>
 		<div class="slidecontainer">
 			<input class="custom-range" type="range" id="myRange">
-			<p>Set Distance: <span id="demo"></span> km</p>
+			<div class="container-fluid text-center">
+				<p style="color:white">Drag Slider to Set Distance: <span id="demo"></span> km</p>
+			</div>
 		</div>
 	<% end %>
 
-	<h2>SVA Registered Veterinary Centres</h2>
+	<h2 style="color:white">SVA Registered Veterinary Centres</h2>
 
 		<%# <div class="col-12 col-md-7 custom-scroll"> %>
 		<% if @vet_profiles.length == 0 %>
@@ -37,7 +39,7 @@
 		<div class="card-columns">
 			<!-- loop through vet profiles and render each one of them as a card -->
 			<% @vet_profiles.each do |vet_profile| %>
-			<div class="card">
+			<div class="card bg-light">
 				<div class="card-body">
 					<h5 class="card-title">
 						<i class="fas fa-clinic-medical mr-1"></i>
