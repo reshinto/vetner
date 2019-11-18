@@ -6,32 +6,32 @@
 * Mapbox: https://docs.mapbox.com/
 * Leaflet: https://leafletjs.com/reference-1.6.0.html
 ## Installation instructions
-* Clone the repository
+1. Clone the repository
 ```
 git clone https://github.com/reshinto/vetner.git
 ```
-* Install all dependencies
+2. Install all dependencies
 ```
 bundle i
 ```
-* Create Database
+3. Create Database
 ```
 rails db:create
 rails db:migrate
 ```
-* Get API key for Mapbox and One Map
-* Create .env file
+4. Get API key for Mapbox and One Map
+5. Create .env file
 ```
 touch .env
 ```
-* Edit .env file and input the required information without quotes
+6. Edit .env file and input the required information without quotes
 ```
 GMAIL_USERNAME = example@email.com
 GMAIL_PASSWORD = somepassword
 ONEMAPTOKEN = someApiKey
 MAPBOXTOKEN = someApiKey
 ```
-* (optional) Run seeds to populate sample data
+7. (optional) Run seeds to populate sample data
 ```
 rails db:seed
 ```
