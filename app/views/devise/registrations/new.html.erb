@@ -6,7 +6,7 @@
 </div>
 <div class="login-main">
    <div class="col-md-8 col-sm-12">
-      <div class="register-form">
+      <div class="register-form" style="color:white">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="form-group">
@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="actions">
-            <%= f.submit "Sign up", class: "btn btn-success" %>
+            <%= f.submit "Sign up", class: "btn btn-primary" %>
           </div>
         <% end %>
       <div style="margin-top: 20px;">
