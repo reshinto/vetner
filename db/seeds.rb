@@ -74,7 +74,8 @@ vets = [
     "",
     488684,
     66361788,
-    "advancedvetcare.sg"
+    "advancedvetcare.sg",
+    true
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjIlMjIlM0VBbmltYWwlMjBXb3JsZCUyMFZldGVyaW5hcnklMjBDbGluaWMlMjBQdGUlMjBMdGQlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -83,7 +84,8 @@ vets = [
     "",
     545527,
     62860929,
-    "animalworldclinic.com"
+    "animalworldclinic.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjMlMjIlM0VBQVZDLSUyMEFuaW1hbCUyMGFuZCUyMEF2aWFuJTIwVmV0ZXJpbmFyeSUyMENsaW5pYyUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -92,7 +94,8 @@ vets = [
     "#01-254",
     760716,
     68539397,
-    "aavcsingapore.webs.com"
+    "aavcsingapore.webs.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQlMjIlM0VBY2FjaWElMjBWZXRlcmluYXJ5JTIwQ2xpbmljJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -101,7 +104,8 @@ vets = [
     "#01-1671",
     560338,
     64816889,
-    ""
+    "",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjUlMjIlM0VBbGxwZXRzJTIwJTI2YW1wJTNCJTIwQXF1YWxpZmUlMjBDbGluaWMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -110,7 +114,8 @@ vets = [
     "Seletar Hills Estate",
     809041,
     64813700,
-    "allpetsaqualife.com"
+    "allpetsaqualife.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjYlMjIlM0VBbWJlciUyMENhdCUyMFZldCUyMFB0ZSUyMEx0ZCUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -119,7 +124,8 @@ vets = [
     "Frankel Estate",
     459836,
     62455543,
-    "ambercatvet.com"
+    "ambercatvet.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjclMjIlM0VBbWJlciUyMFZldGVyaW5hcnklMjBQcmFjdGljZSUyMFB0ZSUyMEx0ZCUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -128,7 +134,8 @@ vets = [
     "Frankel Estate",
     459837,
     62455543,
-    "ambervet.com"
+    "ambervet.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjglMjIlM0VBbmltYWwlMjBJbmZpcm1hcnklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -137,7 +144,8 @@ vets = [
     "",
     307590,
     63582663,
-    "www.aivet.com.sg"
+    "www.aivet.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjklMjIlM0VBbmltYWwlMjBNZWRpY2FsJTIwQ2VudHJlJTIwKFZFVCU0MFJWKSUyMFB0ZSUyMEx0ZCUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -146,7 +154,8 @@ vets = [
     "#01-487, Indus Garden",
     161078,
     62710665,
-    "VETatRV.com"
+    "VETatRV.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjEwJTIyJTNFQW5pbWFsJTIwUHJhY3RpY2UlMjBQdGUlMjBMdGQlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -155,7 +164,8 @@ vets = [
     "#01-00",
     534753,
     62883929,
-    "animalpractice.com.sg"
+    "animalpractice.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjExJTIyJTNFQW5pbWFsJTIwQXJrJTIwVmV0ZXJpbmFyeSUyMEdyb3VwJTIwKEFuaW1hbCUyMEFyayUyMEJpbmphaSklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -164,7 +174,8 @@ vets = [
     "",
     589823,
     61006000,
-    "arkvet.com.sg"
+    "arkvet.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjEyJTIyJTNFQW5pbWFsJTIwQXJrJTIwVmV0ZXJpbmFyeSUyMEdyb3VwJTIwKEFuaW1hbCUyMEFyayUyMEdyZWVuZGFsZSklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -173,7 +184,8 @@ vets = [
     "",
     289498,
     6463710,
-    "arkvet.com.sg"
+    "arkvet.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjEzJTIyJTNFQW5pbWFsJTIwQXJrJTIwVmV0ZXJpbmFyeSUyMEdyb3VwJTIwKEFuaW1hbCUyMEFyayUyMFRhbXBpbmVzKSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -182,7 +194,8 @@ vets = [
     "#01-42",
     521139,
     "65871797 / 65871798",
-    "arkvet.com.sg"
+    "arkvet.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjE0JTIyJTNFQW5pbWFsJTIwQXJrJTIwVmV0ZXJpbmFyeSUyMEdyb3VwJTIwKEFuaW1hbCUyMEFyayUyMFRDTSklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -191,7 +204,8 @@ vets = [
     "#01-62",
     521139,
     67893578,
-    "arkvet.com.sg"
+    "arkvet.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjE1JTIyJTNFQW5pbWFsJTIwUmVjb3ZlcnklMjBWZXRlcmluYXJ5JTIwUmVmZXJyYWwlMjBDZW50cmUlMjBQdGUlMjBMdGQlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -200,7 +214,8 @@ vets = [
     "",
     218225,
     62522623,
-    "doctorsbeckandstone.com"
+    "doctorsbeckandstone.com",
+    true
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjE2JTIyJTNFQmFya3dheSUyMFBldCUyMEhlYWx0aCUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -209,7 +224,8 @@ vets = [
     "",
     348535,
     "69044300 / 69044301",
-    "Barkway.sg"
+    "Barkway.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjE3JTIyJTNFQnJpZ2h0b24lMjBWZXQlMjBDYXJlJTIwUHRlJTIwTHRkJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -218,7 +234,8 @@ vets = [
     "",
     555970,
     62822484,
-    "brightonvetcare.com"
+    "brightonvetcare.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjE4JTIyJTNFQ2FyZSUyMFZldGVyaW5hcnklMjBDbGluaWMlMjBQdGUlMjBMdGQlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -227,7 +244,8 @@ vets = [
     "#01-473",
     310124,
     62500535,
-    "carevetclinic.com.sg"
+    "carevetclinic.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjE5JTIyJTNFQ2xpbmljJTIwRm9yJTIwUGV0cyUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -236,7 +254,8 @@ vets = [
     "#01-141",
     389730,
     67451337,
-    "clinicforpets.sg"
+    "clinicforpets.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjIwJTIyJTNFQ29tcGFuaW9uJTIwQW5pbWFsJTIwU3VyZ2VyeSUyMFB0ZSUyMEx0ZCUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -245,7 +264,8 @@ vets = [
     "#01-04/05 Shaw Corner",
     329586,
     62557950,
-    "comvet.com"
+    "comvet.com",
+    true
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjIxJTIyJTNFRGVmdSUyMFZldGVyaW5hcnklMjBDbGluaWMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -254,7 +274,8 @@ vets = [
     "#01-79",
     539214,
     62848411,
-    "defuvetclinic.com"
+    "defuvetclinic.com",
+    false
   ],
   [
     "i!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjIyJTIyJTNFRWRtb25kJTIwVGFuJTIwVmV0ZXJpbmFyeSUyMFN1cmdlcnklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -263,7 +284,8 @@ vets = [
     "#01-65",
     550151,
     62821581,
-    ""
+    "",
+    false
   ],
   [
     "i!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjIzJTIyJTNFRnJhbmtlbCUyMFZldGVyaW5hcnklMjBDZW50cmUlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -272,7 +294,8 @@ vets = [
     "",
     458224,
     68761212,
-    "frankelvet.com.sg"
+    "frankelvet.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjI0JTIyJTNFR2VuZXNpcyUyMFZldGVyaW5hcnklMjBDbGluaWMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -281,7 +304,8 @@ vets = [
     "#01-43",
     760935,
     62570682,
-    "www.genesisvet.com.sg"
+    "www.genesisvet.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjI1JTIyJTNFR2VudGxlJTIwT2FrJTIwVmV0ZXJpbmFyeSUyMENsaW5pYyUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -290,7 +314,8 @@ vets = [
     "#01-225",
     270021,
     62508001,
-    "gentleoakvet.com.sg"
+    "gentleoakvet.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjI2JTIyJTNFSXNsYW5kJTIwVmV0ZXJpbmFyeSUyMENsaW5pYyUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -299,7 +324,8 @@ vets = [
     "Jurong East Ville, #01-404",
     600114,
     65605991,
-    "ivc.com.sg"
+    "ivc.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjI3JTIyJTNFSXNsYW5kJTIwVmV0ZXJpbmFyeSUyMENsaW5pYyUyMChOb3J0aGVhc3QpJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -308,7 +334,8 @@ vets = [
     "#01-154",
     460123,
     64494491,
-    "ivc.com.sg"
+    "ivc.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjI4JTIyJTNFSmFtZXMlMjBUYW4lMjBWZXRlcmluYXJ5JTIwQ2VudHJlJTIwUHRlJTIwTHRkJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -317,7 +344,8 @@ vets = [
     "",
     297823,
     62531122,
-    "jtvet.com"
+    "jtvet.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjI5JTIyJTNFSmlyZWglMjBWZXRlcmluYXJ5JTIwQ2xpbmljJTIwUHRlJTIwTHRkJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -326,7 +354,8 @@ vets = [
     "Monville Mansion #01-04",
     329857,
     62669566,
-    "jirehvets.com.sg"
+    "jirehvets.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjMwJTIyJTNFTGFuZG9uJTIwVmV0ZXJpbmFyeSUyMFNwZWNpYWxpc3RzJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -335,7 +364,8 @@ vets = [
     "",
     599013,
     64637228,
-    "lvs.com.sg"
+    "lvs.com.sg",
+    true
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjMxJTIyJTNFTGlnaHQlMjBvZiUyMExpZmUlMjBWZXRlcmluYXJ5JTIwQ2xpbmljJTIwYW5kJTIwU2VydmljZXMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -344,7 +374,8 @@ vets = [
     "#01-3508",
     470703,
     62433282,
-    "light-of-life-vet-clinic.webs.com"
+    "light-of-life-vet-clinic.webs.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjMyJTIyJTNFTWFyYW5hdGhhJTIwVmV0ZXJpbmFyeSUyMENsaW5pYyUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -353,7 +384,8 @@ vets = [
     "#01-234",
     100077,
     62730100,
-    "maranathavet@hotmail.com"
+    "maranathavet@hotmail.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjMzJTIyJTNFTW9uc3RlciUyMFBldCUyMFZldCUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -362,7 +394,8 @@ vets = [
     "#01-14/16",
     "080006",
     63279148,
-    "monsterpetvet.com"
+    "monsterpetvet.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjM0JTIyJTNFTW91bnQlMjBQbGVhc2FudCUyMEFuaW1hbCUyMENsaW5pYyUyMChFYXN0KSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -371,7 +404,8 @@ vets = [
     "",
     428855,
     63486110,
-    "mountpleasant.com.sg"
+    "mountpleasant.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjM1JTIyJTNFTW91bnQlMjBQbGVhc2FudCUyMEFuaW1hbCUyMENsaW5pYyUyMChOb3J0aCklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -380,7 +414,8 @@ vets = [
     "#01-59",
     550151,
     62871190,
-    "mountpleasant.com.sg"
+    "mountpleasant.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjM2JTIyJTNFTW91bnQlMjBQbGVhc2FudCUyMEFuaW1hbCUyME1lZGljYWwlMjBDZW50cmUlMjAoQmVkb2spJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -389,7 +424,8 @@ vets = [
     "#01-577",
     460158,
     64443561,
-    "mountpleasant.com.sg"
+    "mountpleasant.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjM3JTIyJTNFTW91bnQlMjBQbGVhc2FudCUyMEFuaW1hbCUyME1lZGljYWwlMjBDZW50cmUlMjAoQ2xlbWVudGkpJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -398,7 +434,8 @@ vets = [
     "#01-18/20",
     120105,
     67768858,
-    "www.mountpleasant.com.sg"
+    "www.mountpleasant.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjM4JTIyJTNFTW91bnQlMjBQbGVhc2FudCUyMEFuaW1hbCUyME1lZGljYWwlMjBDZW50cmUlMjAoRmFycmVyKSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -407,7 +444,8 @@ vets = [
     "#02-141",
     260003,
     62711132,
-    "mountpleasant.com.sg"
+    "mountpleasant.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjM5JTIyJTNFTW91bnQlMjBQbGVhc2FudCUyMFJlZmVycmFsJTIwQ2xpbmljJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -416,7 +454,8 @@ vets = [
     "",
     297824,
     62508333,
-    "mountpleasant.com.sg"
+    "mountpleasant.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQwJTIyJTNFTW91bnQlMjBQbGVhc2FudCUyMFZldGVyaW5hcnklMjBDZW50cmUlMjAoQ2hhbmdpKSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -425,7 +464,8 @@ vets = [
     "",
     507667,
     65460166,
-    "mountpleasant.com.sg"
+    "mountpleasant.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQxJTIyJTNFTW91bnQlMjBQbGVhc2FudCUyMFZldGVyaW5hcnklMjBDZW50cmUlMjAoR2VsZW5nZ2FuZyklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -434,7 +474,8 @@ vets = [
     "",
     578187,
     62517666,
-    "mountpleasant.com.sg"
+    "mountpleasant.com.sg",
+    true
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQyJTIyJTNFTW91bnQlMjBQbGVhc2FudCUyMFZldGVyaW5hcnklMjBDZW50cmUlMjAoTWFuZGFpKSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -443,7 +484,8 @@ vets = [
     "",
     779391,
     64515242,
-    "mountpleasant.com.sg"
+    "mountpleasant.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQzJTIyJTNFTXklMjBGYW1pbHklMjBWZXQlMjBDbGluaWMlMjBhbmQlMjBTdXJnZXJ5JTIwUHRlJTIwTHRkJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -452,7 +494,8 @@ vets = [
     "#01-403",
     650265,
     65660448,
-    ""
+    "",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQ0JTIyJTNFTmFtbHklMjBBbmltYWwlMjBDbGluaWMlMjBQdGUlMjBMdGQlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -461,7 +504,8 @@ vets = [
     "",
     267223,
     64694744,
-    ""
+    "",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQ1JTIyJTNFTmFtJTIwU2FuZyUyMFZldGVyaW5hcnklMjBDbGluaWMlMjBQdGUlMjBMdGQlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -470,7 +514,8 @@ vets = [
     "#01-697 Balestier Shopping Center",
     320002,
     62548138,
-    "namsangveterinaryclinic.webs.com"
+    "namsangveterinaryclinic.webs.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQ2JTIyJTNFT2FzaXMlMjBWZXRlcmluYXJ5JTIwQ2xpbmljJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -479,7 +524,8 @@ vets = [
     "",
     574302,
     62562693,
-    "oasis-vet.com"
+    "oasis-vet.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQ3JTIyJTNFT2hhbmElMjBWZXRDYXJlJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -488,7 +534,8 @@ vets = [
     "Loyang Point #04-01",
     510258,
     62829070,
-    "ohanavetcare.com.sg"
+    "ohanavetcare.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQ4JTIyJTNFUGFzc2lvbiUyMFZldGVyaW5hcnklMjBDbGluaWMlMjBQdGUlMjBMdGQlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -497,7 +544,8 @@ vets = [
     "#01-86",
     730111,
     66358725,
-    "passionvet.com"
+    "passionvet.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjQ5JTIyJTNFUC5BLlclMjAoUGVvcGxlJTIwQW5pbWFsJTIwV2VsbG5lc3MpJTIwVmV0ZXJpbmFyeSUyMENlbnRyZSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -506,7 +554,8 @@ vets = [
     "#01-207",
     "090112",
     62737573,
-    "paw.sg"
+    "paw.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjUwJTIyJTNFUGV0JTIwQ2FyZSUyMENlbnRyZSUyMCUyNmFtcCUzQiUyMENsaW5pYyUyMFB0ZSUyMEx0ZCUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -515,7 +564,8 @@ vets = [
     "Sin Chuan Garden",
     416318,
     64485835,
-    ""
+    "",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjUxJTIyJTNFUGV0JTIwQ2xpbmljJTIwUHRlJTIwTHRkJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -524,7 +574,8 @@ vets = [
     "#01-12",
     550211,
     62885565,
-    ""
+    "",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjUyJTIyJTNFUGV0cyUyMEF2ZW51ZSUyMFZldGVyaW5hcnklMjBDbGluaWMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -533,7 +584,8 @@ vets = [
     "#01-11",
     260008,
     64710111,
-    "petsavenue.com.sg"
+    "petsavenue.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjUzJTIyJTNFUG9pbnQlMjBWZXRlcmluYXJ5JTIwU3VyZ2VyeSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -542,7 +594,8 @@ vets = [
     "#01-1044",
     640541,
     64256772,
-    "pointveterinarysurgery.com"
+    "pointveterinarysurgery.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjU0JTIyJTNFUG9pbnQlMjBWZXRlcmluYXJ5JTIwU3VyZ2VyeSUyMChUZWxvayUyMEJsYW5nYWgpJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -551,7 +604,8 @@ vets = [
     "#01-339",
     "090038",
     62741677,
-    "pointveterinarysurgery.com"
+    "pointveterinarysurgery.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjU1JTIyJTNFUXVlZW4ncyUyMFZldGVyaW5hcnklMjBTdXJnZXJ5JTIwKFF1ZWVuJ3MlMjBWZXRzKSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -560,7 +614,8 @@ vets = [
     "#02-155",
     260003,
     64750038,
-    ""
+    "",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjU2JTIyJTNFUmVoYWJWZXQlMjBQdGUuJTIwTHRkLiUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -569,7 +624,8 @@ vets = [
     "#01-01",
     218154,
     62916881,
-    "www.rehabvet.com"
+    "www.rehabvet.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjU3JTIyJTNFU2luZ2Fwb3JlJTIwVHVyZiUyMENsdWIlMjBFcXVpbmUlMjBIb3NwaXRhbCUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -578,7 +634,8 @@ vets = [
     "Singapore Racecourse",
     738078,
     68791000,
-    ""
+    "",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjU4JTIyJTNFU2luZ2Fwb3JlJTIwVmV0ZXJpbmFyeSUyMEFuaW1hbCUyMENsaW5pYyUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -587,7 +644,8 @@ vets = [
     "#01-11",
     730768,
     63650308,
-    "singvet.wordpress.com"
+    "singvet.wordpress.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjU5JTIyJTNFU1BDQSUyMENsaW5pYyUyMCpDb21tdW5pdHklMjBBbmltYWxzJTIwT25seSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -596,7 +654,8 @@ vets = [
     "",
     699012,
     62875355,
-    "spca.org.sg/services_clinic.asp"
+    "spca.org.sg/services_clinic.asp",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjYwJTIyJTNFU3ByaW5nJTIwVmV0ZXJpbmFyeSUyMENhcmUlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -605,7 +664,8 @@ vets = [
     "#01-1412",
     530123,
     62863313,
-    "springvet.com.sg"
+    "springvet.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjYxJTIyJTNFU3RhcnMlMjBWZXRlcmluYXJ5JTIwQ2xpbmljJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -614,7 +674,8 @@ vets = [
     "#01-301",
     530211,
     62809880,
-    "starsveterinaryclinic.com"
+    "starsveterinaryclinic.com",
+    true
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjYyJTIyJTNFU3RhcnMlMjBWZXRlcmluYXJ5JTIwTmlnaHQlMjBDbGluaWMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -623,7 +684,8 @@ vets = [
     "#01-301",
     530211,
     62809880,
-    "starsveterinaryclinic.com"
+    "starsveterinaryclinic.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjYzJTIyJTNFVGhlJTIwQW5pbWFsJTIwQ2xpbmljJTIwUHRlJTIwTHRkJTIwKEthdG9uZyUyMEJyYW5jaCklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -632,7 +694,8 @@ vets = [
     "#01-63",
     425500,
     64404767,
-    "animalclinic.com.sg"
+    "animalclinic.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjY0JTIyJTNFVGhlJTIwQW5pbWFsJTIwQ2xpbmljJTIwUHRlJTIwTHRkJTIwKENsZW1lbnRpKSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -641,7 +704,8 @@ vets = [
     "#01-19",
     120109,
     67744464,
-    "animalclinic.com.sg"
+    "animalclinic.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjY1JTIyJTNFVGhlJTIwQW5pbWFsJTIwRG9jdG9ycyUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -650,7 +714,8 @@ vets = [
     "#01-94/96",
     560108,
     64514531,
-    "theanimaldoctors.com.sg"
+    "theanimaldoctors.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjY2JTIyJTNFVGhlJTIwQW5pbWFsJTIwRG9jdG9ycyUyMChUaW9uZyUyMEJhaHJ1KSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -659,7 +724,8 @@ vets = [
     "Next to Tiong Bahru Plaza #02-07/08",
     161011,
     62533023,
-    "theanimaldoctors.com.sg"
+    "theanimaldoctors.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjY3JTIyJTNFVGhlJTIwQ2F0JTIwQ2xpbmljJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -668,7 +734,8 @@ vets = [
     "#01-33",
     120109,
     67763450,
-    ""
+    "",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjY4JTIyJTNFVGhlJTIwSm95b3VzJTIwVmV0JTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -677,7 +744,8 @@ vets = [
     "#01-30A, Sunshine Place",
     680475,
     67690304,
-    "tjv.com.sg"
+    "tjv.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjY5JTIyJTNFVGhlJTIwSm95b3VzJTIwVmV0JTIwKFl1YW4lMjBDaGluZyklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -686,7 +754,8 @@ vets = [
     "#03-03",
     618640,
     "62674137 / 62674138",
-    "tjv.com.sg"
+    "tjv.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjcwJTIyJTNFVGhlJTIwUGV0JTIwRG9jdG9ycyUyMFZldGVyaW5hcnklMjBDbGluaWMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -695,7 +764,8 @@ vets = [
     "#01-311 Pandan Valley Condominium",
     597627,
     64387779,
-    "petdoctors.com.sg"
+    "petdoctors.com.sg",
+    true
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjcxJTIyJTNFVGhlJTIwVmV0ZXJpbmFyeSUyMENsaW5pYyUyMChIb2xsYW5kJTIwVmlsbGFnZSklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -704,7 +774,8 @@ vets = [
     "",
     277742,
     64686312,
-    "vetclinic.sg"
+    "vetclinic.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjcyJTIyJTNFVGhlJTIwVmV0ZXJpbmFyeSUyMENsaW5pYyUyMChUYW1waW5lcyklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -713,7 +784,8 @@ vets = [
     "#01-201",
     520476,
     67842048,
-    "vetclinic.sg"
+    "vetclinic.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjczJTIyJTNFVGhlJTIwVmlzaXRpbmclMjBWZXRzJTIwQ2xpbmljJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -722,7 +794,8 @@ vets = [
     "#01-09",
     257720,
     64753405,
-    "thevisitingvets.com.sg"
+    "thevisitingvets.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjc0JTIyJTNFVG9hJTIwUGF5b2glMjBWZXRzJTIwKFRvYSUyMFBheW9oJTIwVmV0ZXJpbmFyeSUyMFN1cmdlcnkpJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -731,7 +804,8 @@ vets = [
     "#01-1477",
     319074,
     62543326,
-    "toapayohvets.com"
+    "toapayohvets.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjc1JTIyJTNFVG93biUyMFZldHMlMjBBbmltYWwlMjBDbGluaWMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -740,7 +814,8 @@ vets = [
     "#01-687",
     160022,
     62767026,
-    "townvets.com.sg"
+    "townvets.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjc2JTIyJTNFVW5pdGVkJTIwVmV0ZXJpbmFyeSUyMENsaW5pYyUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -749,7 +824,8 @@ vets = [
     "#01-148",
     560107,
     64556880,
-    "unitedvetclinic.com"
+    "unitedvetclinic.com",
+    false
   ],
   [
     "Vet Central",
@@ -758,7 +834,8 @@ vets = [
     "#01-357",
     310069,
     66358646,
-    "vetcentral.com.sg"
+    "vetcentral.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjc4JTIyJTNFVmV0ZXJpbmFyeSUyMEVtZXJnZW5jeSUyMGFuZCUyMFNwZWNpYWx0eSUyMEhvc3BpdGFsJTIwKFZFUyklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -767,7 +844,8 @@ vets = [
     "",
     535815,
     65817028,
-    "veshospital.com.sg"
+    "veshospital.com.sg",
+    true
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjc5JTIyJTNFVmV0cyUyMGZvciUyMExpZmUlMjBBbmltYWwlMjBDbGluaWMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -776,7 +854,8 @@ vets = [
     "Valley Point #01-05/06",
     248371,
     67320273,
-    "vetsforlife.com.sg"
+    "vetsforlife.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjgwJTIyJTNFVmV0cyUyMGZvciUyMExpZmUlMjBBbmltYWwlMjBDbGluaWMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -785,7 +864,8 @@ vets = [
     "",
     437106,
     63488346,
-    "vetsforlife.com.sg"
+    "vetsforlife.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjgxJTIyJTNFVmV0cyUyMEZvciUyMFBldHMlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -794,7 +874,8 @@ vets = [
     "#01-157",
     640519,
     65691627,
-    "vetsforpetsclinic.com.sg"
+    "vetsforpetsclinic.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjgyJTIyJTNFVmV0JTIwUHJhY3RpY2UlMjBQdGUlMjBMdGQlM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -803,7 +884,8 @@ vets = [
     "#01-04/05",
     598123,
     64621757,
-    "vetpractice.com.sg"
+    "vetpractice.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjgzJTIyJTNFVmV0JTIwUHJhY3RpY2UlMjBQdGUlMjBMdGQlMjAoSG9sbGFuZCUyMEJyYW5jaCklM0MlMkZhJTNFJTNDJTJGcCUzRQ==",
@@ -812,7 +894,8 @@ vets = [
     "#01-219",
     270031,
     67785285,
-    "vetpractice.com.sg"
+    "vetpractice.com.sg",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjg0JTIyJTNFV2VzdCUyMENvYXN0JTIwVmV0Y2FyZSUzQyUyRmElM0UlM0MlMkZwJTNF",
@@ -821,7 +904,8 @@ vets = [
     "#01-300",
     120612,
     67777423,
-    "westcoast-vetcare.com"
+    "westcoast-vetcare.com",
+    false
   ],
   [
     "!iwt:JTNDcCUzRSUzQ2ElMjBocmVmJTNEJTIyaHR0cHMlM0ElMkYlMkZ2ZXRuZXIuaGVyb2t1YXBwLmNvbSUyRnZldF9wcm9maWxlcyUyRjg1JTIyJTNFV29vZGdyb3ZlJTIwVmV0ZXJpbmFyeSUyMFNlcnZpY2VzJTNDJTJGYSUzRSUzQyUyRnAlM0U=",
@@ -830,7 +914,8 @@ vets = [
     "#02-06",
     739065,
     69090264,
-    ""
+    "",
+    false
   ]
 ]
 
@@ -854,6 +939,7 @@ vets.each_with_index do |vet, index|
     vetLat: vetLat,
     vetLong: vetLong,
     popupdetails: vet[0],
-    vet_id: Vet.last.id
+    vet_id: Vet.last.id,
+    emergency: vet[7]
   )
 end

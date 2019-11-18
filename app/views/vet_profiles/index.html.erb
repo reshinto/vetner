@@ -21,11 +21,13 @@
 	<% if user_signed_in? %>
 		<div class="slidecontainer">
 			<input class="custom-range" type="range" id="myRange">
-			<p>Set Distance: <span id="demo"></span> km</p>
+			<div class="container-fluid text-center">
+				<p style="color:white">Drag Slider to Set Distance: <span id="demo"></span> km</p>
+			</div>
 		</div>
 	<% end %>
 
-	<h2>SVA Registered Veterinary Centres</h2>
+	<h2 style="color:white">SVA Registered Veterinary Centres</h2>
 
 		<%# <div class="col-12 col-md-7 custom-scroll"> %>
 		<% if @vet_profiles.length == 0 %>
@@ -37,7 +39,7 @@
 		<div class="card-columns">
 			<!-- loop through vet profiles and render each one of them as a card -->
 			<% @vet_profiles.each do |vet_profile| %>
-			<div class="card">
+			<div class="card bg-light">
 				<div class="card-body">
 					<h5 class="card-title">
 						<i class="fas fa-clinic-medical mr-1"></i>
@@ -48,7 +50,10 @@
 						<%= vet_profile.address %><br>
 						<%= vet_profile.unit %><br>
 						<i class="fas fa-phone mr-2"></i>
-						<a href=<%= "tel:+65-#{vet_profile.phone}" %>><%= vet_profile.phone %></a>
+						<a href=<%= "tel:+65-#{vet_profile.phone}" %>><%= vet_profile.phone %></a><br>
+						<% if vet_profile.emergency %>						
+							<span class="badge badge-danger my-2"><i class="fas fa-first-aid mr-2"></i>24-hour</span>
+						<% end %>							
 					</p>
 					<div class="mt-auto text-center">
 						<% if user_signed_in? %>
@@ -186,16 +191,9 @@ if (slider !== null) {
 		let searchParams = "<%= @search_params %>";
 		let queryString = "";
 
-		console.log("*** searchParams ***", searchParams);
-
 		if (searchParams) {
-			console.log("*** queryString is NOT empty!!!");
 			queryString = `?utf8=%E2%9C%93&search=${searchParams}&commit=Search`;
-			console.log("*** queryString ***", queryString);
-		} else {
-			console.log("*** queryString is EMPTY1!!!");
-			console.log("*** queryString ***", queryString);
-		}
+		} 
 
 		// http://localhost:3000/vet_profiles?utf8=%E2%9C%93&search=jurong&commit=Search
 		fetch('/vet_profiles.json?'+queryString)

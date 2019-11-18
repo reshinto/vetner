@@ -42,15 +42,15 @@
 						<% if current_user_vet_ids.include? @vet_profile.id %>
 						<!-- show the "added" badge -->
 						<div class="my-2 mt-auto text-center">
-								<button class="btn btn-info" disabled><i class="fas fa-check-circle mr-2"></i>Added to My Vets</button>
+								<button class="btn btn-success shadow-lg" disabled><i class="fas fa-check-circle mr-2"></i>Added to My Vets</button>
 						</div>
 						<% else %>
 						<!-- show the "add vet" button  -->
 						<div class="my-2 mt-auto text-center">
 							<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(@vet_profile.vet_id), html:{class: "mt-auto mx-auto d-block"},local: true) do |f| %>
 								<%= f.hidden_field :vet_id, value: @vet_profile.vet_id %>
-								<%= button_tag(type: 'submit', class: "btn btn-success") do %>
-									<i class="fas fa-plus-circle mr-2"></i>Add Vet
+								<%= button_tag(type: 'submit', class: "btn btn-warning shadow-lg") do %>
+									<i class="fas fa-plus-circle mr-2"></i>Add to My Vets
 								<% end %>
 							<% end %>
 						</div>
@@ -60,7 +60,7 @@
 						<!-- show the "add vet" button -->
 						<%= form_with(scope: :add_vet_to_user, url: add_vet_to_user_path(@vet_profile.vet_id), html: {class: 'my-2'}, local: true) do |f| %>
 						<%= f.hidden_field :vet_id, value: @vet_profile.vet_id %>
-						<%= button_tag(type: 'submit', class: "btn btn-success shadow-lg") do %>
+						<%= button_tag(type: 'submit', class: "btn btn-warning shadow-lg") do %>
 								<i class="fas fa-plus-circle mr-2"></i>Add As My Vet
 						<% end %>
 						<% end %>
