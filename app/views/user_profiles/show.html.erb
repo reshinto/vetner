@@ -32,8 +32,13 @@
 						<% end %>
 					</div>
 					<div class="col-md-8 text-center">
-						<h3 style="color:white"><%= @user_profile.username %></h3>
-						<%= link_to raw('<i class="fas fa-edit mr-2"></i>Edit Profile'), edit_user_profile_path(@user_profile), class: "btn btn-warning" %>
+						<h3><%= @user_profile.username %></h3>
+						<div style="margin-bottom: 1vh;">
+							<%= link_to raw('<i class="fas fa-edit mr-2"></i>Edit Profile'), edit_user_profile_path(@user_profile), class: "btn btn-warning" %>
+						</div>
+						<div>
+							<%= link_to raw('<i class="fas fa-edit mr-2"></i>Edit Account'), edit_account_path("users"), class: "btn btn-primary" %>
+						</div>
 					</div>
 				</div>
 			</div>

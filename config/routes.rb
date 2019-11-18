@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get '/contacts', to: 'contacts#new'
   resources :contacts, only: [:new, :create]
   get '/vets/:id' => 'vets#show' , as: 'vet'
+  get ':users/edit' => 'devise/registration#edit', :as => :edit_account
 end
