@@ -51,9 +51,9 @@
 						<%= vet_profile.unit %><br>
 						<i class="fas fa-phone mr-2"></i>
 						<a href=<%= "tel:+65-#{vet_profile.phone}" %>><%= vet_profile.phone %></a><br>
-						<% if vet_profile.emergency %>						
+						<% if vet_profile.emergency %>
 							<span class="badge badge-danger my-2"><i class="fas fa-first-aid mr-2"></i>24-hour</span>
-						<% end %>							
+						<% end %>
 					</p>
 					<div class="mt-auto text-center">
 						<% if user_signed_in? %>
@@ -106,7 +106,7 @@ var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 if (slider !== null) {
 	slider.max = sessionStorage.getItem("maxDist");
-	slider.value = Math.floor(slider.max / 2);
+	slider.value = slider.max;
 	output.innerHTML = slider.value/1000;
 }
 </script>
@@ -193,7 +193,7 @@ if (slider !== null) {
 
 		if (searchParams) {
 			queryString = `?utf8=%E2%9C%93&search=${searchParams}&commit=Search`;
-		} 
+		}
 
 		// http://localhost:3000/vet_profiles?utf8=%E2%9C%93&search=jurong&commit=Search
 		fetch('/vet_profiles.json?'+queryString)
