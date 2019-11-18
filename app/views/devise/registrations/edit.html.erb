@@ -5,7 +5,7 @@
 </div>
 <div class="edit-main">
    <div class="col-md-12 col-sm-12">
-      <div class="edit-form">
+      <div class="edit-form", style="color:white">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="form-group">
@@ -36,13 +36,13 @@
             </div>
           </div>
           <div class="actions">
-            <%= f.submit "Update", class: "btn btn-success" %>
+            <%= f.submit "Update", class: "btn btn-primary" %>
           </div>
         <% end %>
 
         <br>
 
-        <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<!--         <p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p> -->
 
         <%= link_to "Back", :back %>
     </div>

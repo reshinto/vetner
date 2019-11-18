@@ -6,7 +6,7 @@
 </div>
 <div class="login-main">
    <div class="col-md-6 col-sm-12">
-      <div class="login-form">
+      <div class="login-form", style="color:white">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group">
               <div class="field">
@@ -21,7 +21,7 @@
               </div>
             </div>
             <div class="actions">
-              <%= f.submit "Log in", class: "btn btn-black" %>
+              <%= f.submit "Log in", class: "btn btn-primary" %>
             </div>
         <% end %>
         <div style="margin-top: 20px;">
