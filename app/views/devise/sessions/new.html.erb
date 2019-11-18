@@ -1,4 +1,4 @@
-<div class="container text-center" style="margin-top: 2rem; margin-bottom: 2rem;">
+<div class="container text-center" style="margin-top: 2rem; margin-bottom: 2rem; color:white;">
 	<h2>Log in</h2>
 
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -21,7 +21,7 @@
 		<% end %>
 	</div>
 		<div class="actions">
-			<%= f.submit "Log in" %>
+			<%= f.submit "Log in", class: "btn btn-primary" %>
 		</div>
 	<% end %>
 

@@ -16,7 +16,7 @@
 			</div>
 		</div>
 		<script>
-			window.setTimeout(function() { $(".alert").alert('close'); }, 1000);
+			window.setTimeout(function() { $(".alert").alert('close'); }, 3000);
 		</script>
 	<% end %>
 	<div class="row">
@@ -32,7 +32,7 @@
 						<% end %>
 					</div>
 					<div class="col-md-8 text-center">
-						<h3><%= @user_profile.username %></h3>
+						<h3 style="color:white"><%= @user_profile.username %></h3>
 						<%= link_to raw('<i class="fas fa-edit mr-2"></i>Edit Profile'), edit_user_profile_path(@user_profile), class: "btn btn-warning" %>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 						<div class="row">
 							<% @pets.each do |p| %>
 								<div class="col-12 col-md-6">
-									<div class="card mb-3">
+									<div class="card bg-light mb-3">
 										<div class="row no-gutters">
 											<div class="col-md-4">
 												<% if p.image.attached? %>
@@ -112,7 +112,7 @@
 								<div class="input-group">
 									<%= text_field_tag :search, params[:search], placeholder: "Search & add vet...", class: "form-control bg-none" %>
 									<div class="input-group-append border-0">
-										<button class="input-group-btn btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+										<button class="input-group-btn btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
 									</div>
 								</div>
 								<% end %>
@@ -122,7 +122,7 @@
 						<div class="row">
 							<% @vet_profiles.each do |vp| %>
 								<div class="col-12 col-md-6 my-2">
-									<div class="card">
+									<div class="card bg-light">
 										<div class="card-body">
 											<h5 class="card-title"><i class="fas fa-clinic-medical"></i>
 												<%= link_to vp.clinic_name, vet_profile_path(vp), class: "text-primary" %>

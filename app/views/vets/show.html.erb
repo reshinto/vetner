@@ -55,7 +55,7 @@
 					</thead>
 					<tbody>
 					<% @pets.each_with_index do |pet, i| %>
-						<tr>
+						<tr class="table-light">
 							<th scope="row"><%= i+1 %></th>
 							<td><%= pet.user.user_profile[0].username %></td>
 							<td><%= pet.user.user_profile[0].phone %></td>
