@@ -65,7 +65,7 @@
 				<tbody>
 
 					<% @pet_records.each_with_index do |pr, i| %>
-							<tr>
+							<tr class="table-light">
 								<th scope="row"><%= i+1 %></th>
 								<td>
 									<%= link_to pr.title, pet_record_path(pr) %>
