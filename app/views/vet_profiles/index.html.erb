@@ -28,27 +28,59 @@
 	<% end %>
 
 	<h2 style="color:white">SVA Registered Veterinary Centres</h2>
+		<%# <% byebug %>
+		<% if @emergency_params == 'true' %>
+			<%= form_tag(vet_profiles_path, method: "get", local: true, class: "d-inline-block m-2") do %>
+			<div class="input-group">
+					<%= hidden_field_tag 'emergency', 'true' %>
+					<div class="input-group-append border-0">
+						<button class="btn btn-primary rounded" type="submit" disabled >
+							<i class="fas fa-filter mr-2"></i>24-hour Vets Only
+						</button>
+					</div>				
+			</div>
+			<% end %>
+			<%= form_tag(vet_profiles_path, method: "get", local: true, class: "d-inline-block m-2") do %>
+			<div class="input-group">
+					<div class="input-group-append border-0">
+						<button class="btn btn-primary rounded" type="submit">
+							<i class="fas fa-filter mr-2"></i>All Vets
+						</button>
+					</div>				
+			</div>
+			<% end %>
 
-        <%= form_tag(vet_profiles_path, method: "get", local: true, class: "form-inline mt-2 mt-md-0 my-2") do %>
-        <div class="input-group">
-				<%= hidden_field_tag 'emergency', 'true' %>
-				<div class="input-group-append border-0">
-					<button class="btn btn-primary" type="submit">
-						<i class="fas fa-filter mr-2"></i>24-hour Vets Only
-					</button>
-				</div>				
-        </div>
-        <% end %>
-        <%= form_tag(vet_profiles_path, method: "get", local: true, class: "form-inline mt-2 mt-md-0 my-2") do %>
-        <div class="input-group">
-				<div class="input-group-append border-0">
-					<button class="btn btn-primary" type="submit">
-						<i class="fas fa-filter mr-2"></i>All Vets
-					</button>
-				</div>				
-        </div>
-        <% end %>
+		<% else %>
+
+			<%= form_tag(vet_profiles_path, method: "get", local: true, class: "d-inline-block m-2") do %>
+			<div class="input-group">
+					<%= hidden_field_tag 'emergency', 'true' %>
+					<div class="input-group-append border-0">
+						<button class="btn btn-primary rounded" type="submit">
+							<i class="fas fa-filter mr-2"></i>24-hour Vets Only
+						</button>
+					</div>				
+			</div>
+			<% end %>
+
+			<%= form_tag(vet_profiles_path, method: "get", local: true, class: "d-inline-block m-2") do %>
+			<div class="input-group">
+					<div class="input-group-append border-0">
+						<button class="btn btn-primary rounded" type="submit" disabled>
+							<i class="fas fa-filter mr-2"></i>All Vets
+						</button>
+					</div>				
+			</div>
+			<% end %>
+		<% end %>
+
+
+
 		
+
+
+
+
 		<%# <div class="col-12 col-md-7 custom-scroll"> %>
 		<% if @vet_profiles.length == 0 %>
 			<div class="alert alert-warning my-2" role="alert">
