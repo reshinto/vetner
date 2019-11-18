@@ -36,5 +36,6 @@ MAPBOXTOKEN = someApiKey
 rails db:seed
 ```
 ## Wireframes
+![Wireframe](./documentation/wireframe.png)
 ## Entity Relationship Diagram (ERD)
 ![ERD](./documentation/ERD-image.png)
