@@ -37,4 +37,4 @@ rails db:seed
 ```
 ## Wireframes
 ## ERD
-<img src="./documentation/vetner-ERD.pdf" alt="ERD image"  width="4200" height="4200">
+![ERD](./documentation/ERD-image.png)
