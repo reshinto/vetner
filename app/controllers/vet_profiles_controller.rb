@@ -19,6 +19,9 @@ class VetProfilesController < ApplicationController
         # passing in the search parameters, `params[:search]`
         @search_params = params[:search]
         @vet_profiles = VetProfile.search_vet_profiles(params[:search])
+      elsif params[:emergency]
+        @emergency_params = params[:emergency]
+        @vet_profiles = VetProfile.where(emergency: true)
       else
         # otherwise, retrive all vet profiles
         @search_params = ''
@@ -32,6 +35,9 @@ class VetProfilesController < ApplicationController
         # passing in the search parameters, `params[:search]`
         @search_params = params[:search]
         @vet_profiles = VetProfile.search_vet_profiles(params[:search])
+      elsif params[:emergency]
+        @emergency_params = params[:emergency]
+        @vet_profiles = VetProfile.where(emergency: true)
       else
         # otherwise, retrive all vet profiles
         @search_params = ''
