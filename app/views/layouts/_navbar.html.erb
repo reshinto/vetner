@@ -38,18 +38,22 @@
 					</div>
 				</li>
 			<% end %>
+		</ul>
+		<ul class="navbar-nav">
 			<li class="nav-item">
 				<%= link_to 'Contact Us', contacts_url, class: "nav-link" %>
 			</li>
+      <li>
+        <!-- search bar for searching vets-->
+        <%= form_tag(vet_profiles_path, method: "get", local: true, class: "form-inline mt-2 mt-md-0") do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control bg-none border-0" %>
+          <div class="input-group-append border-0">
+            <button class="input-group-btn btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+        <% end %>
+      </li>
 		</ul>
-		<!-- search bar for searching vets-->
-		<%= form_tag(vet_profiles_path, method: "get", local: true, class: "form-inline mt-2 mt-md-0") do %>
-		<div class="input-group">
-			<%= text_field_tag :search, params[:search], placeholder: "Search vet...", class: "form-control bg-none border-0" %>
-			<div class="input-group-append border-0">
-				<button class="input-group-btn btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-			</div>
-		</div>
-		<% end %>
 	</div>
 </nav>
