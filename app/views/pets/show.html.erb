@@ -15,7 +15,7 @@
 		</script>
 	<% end %>
 	<div class="row">
-		<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+		<div class="col-12 col-md-4">
 			<div class="card bg-light mx-auto">
 				<% if @pet.image.attached? %>
 					<img src=<%= (url_for(@pet.image)) %> alt="" class="card-img-top">
@@ -40,13 +40,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 mt-3">
+		<div class="col-12 col-md-8">
 		<% if @pet_records.count == 0 %>
 			<div class="alert alert-primary" role="alert">
 				<i class="fas fa-info-circle mr-2"></i>No record found for <%= @pet.name%>.
 			</div>
 		<% else %>
-			<h3><%= @pet.name%>'s <%= "record".pluralize(@pet_records.count) %></h3>
+			<h3 class="text-white"><%= @pet.name%>'s <%= "record".pluralize(@pet_records.count) %></h3>
 		<% end %>
 		<% if user_signed_in? %>
 			<%= link_to raw("<i class='fas fa-plus-circle mr-2'></i> New"), new_pet_record_path(id: @pet.id), class: "btn btn-primary my-2" %>
