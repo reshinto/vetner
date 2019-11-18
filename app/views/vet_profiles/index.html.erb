@@ -28,6 +28,58 @@
 	<% end %>
 
 	<h2 style="color:white">SVA Registered Veterinary Centres</h2>
+		<%# <% byebug %>
+		<% if @emergency_params == 'true' %>
+			<%= form_tag(vet_profiles_path, method: "get", local: true, class: "d-inline-block m-2") do %>
+			<div class="input-group">
+					<%= hidden_field_tag 'emergency', 'true' %>
+					<div class="input-group-append border-0">
+						<button class="btn btn-primary rounded" type="submit" disabled >
+							<i class="fas fa-filter mr-2"></i>24-hour Vets Only
+						</button>
+					</div>				
+			</div>
+			<% end %>
+			<%= form_tag(vet_profiles_path, method: "get", local: true, class: "d-inline-block m-2") do %>
+			<div class="input-group">
+					<div class="input-group-append border-0">
+						<button class="btn btn-primary rounded" type="submit">
+							<i class="fas fa-filter mr-2"></i>All Vets
+						</button>
+					</div>				
+			</div>
+			<% end %>
+
+		<% else %>
+
+			<%= form_tag(vet_profiles_path, method: "get", local: true, class: "d-inline-block m-2") do %>
+			<div class="input-group">
+					<%= hidden_field_tag 'emergency', 'true' %>
+					<div class="input-group-append border-0">
+						<button class="btn btn-primary rounded" type="submit">
+							<i class="fas fa-filter mr-2"></i>24-hour Vets Only
+						</button>
+					</div>				
+			</div>
+			<% end %>
+
+			<%= form_tag(vet_profiles_path, method: "get", local: true, class: "d-inline-block m-2") do %>
+			<div class="input-group">
+					<div class="input-group-append border-0">
+						<button class="btn btn-primary rounded" type="submit" disabled>
+							<i class="fas fa-filter mr-2"></i>All Vets
+						</button>
+					</div>				
+			</div>
+			<% end %>
+		<% end %>
+
+
+
+		
+
+
+
 
 		<%# <div class="col-12 col-md-7 custom-scroll"> %>
 		<% if @vet_profiles.length == 0 %>
@@ -189,11 +241,15 @@ if (slider !== null) {
 		openStreetMap.addTo(vetsMap);
 
 		let searchParams = "<%= @search_params %>";
+		let emergencyParams = "<%= @emergency_params %>";
 		let queryString = "";
 
 		if (searchParams) {
 			queryString = `?utf8=%E2%9C%93&search=${searchParams}&commit=Search`;
-		}
+		} 
+		if (emergencyParams) {
+			queryString = `?utf8=%E2%9C%93&emergency=true`;
+		} 
 
 		// http://localhost:3000/vet_profiles?utf8=%E2%9C%93&search=jurong&commit=Search
 		fetch('/vet_profiles.json?'+queryString)
