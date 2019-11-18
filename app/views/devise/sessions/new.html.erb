@@ -1,29 +1,32 @@
-<div class="container text-center" style="margin-top: 2rem; margin-bottom: 2rem;">
-	<h2>Log in</h2>
-
-	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-	<div class="form-group">
-		<div class="field">
-			<%= f.label :email %><br />
-			<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-		</div>
-		<br>
-		<div class="field">
-			<%= f.label :password %><br />
-			<%= f.password_field :password, autocomplete: "current-password" %>
-		</div>
-		<br>
-		<% if devise_mapping.rememberable? %>
-			<div class="field">
-				<%= f.check_box :remember_me %>
-				<%= f.label :remember_me %>
-			</div>
-		<% end %>
-	</div>
-		<div class="actions">
-			<%= f.submit "Log in" %>
-		</div>
-	<% end %>
-
-	<%= render "devise/shared/links" %>
+<div class="sidenav">
+  <div class="login-main-text">
+    <h2>Vetner<br> Login Page</h2>
+    <p>Login or Sign up from here to access.</p>
+  </div>
+</div>
+<div class="login-main">
+   <div class="col-md-6 col-sm-12">
+      <div class="login-form">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+              <div class="field">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="field">
+                <%= f.label :password %><br />
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+              </div>
+            </div>
+            <div class="actions">
+              <%= f.submit "Log in", class: "btn btn-black" %>
+            </div>
+        <% end %>
+        <div style="margin-top: 20px;">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+   </div>
 </div>
