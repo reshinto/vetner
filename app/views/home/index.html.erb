@@ -12,7 +12,7 @@
 					<div class="carousel-caption text-right">
 						<h1>Find Registered Vets.</h1>
 						<p>Partnering petowners to Singapore Veterinary Association registered veterinary centres.<br>Easily find a vet nearby you with our interactive map.</p>
-						<p><a class="btn btn-lg btn-info" href="/vet_profiles" role="button">Find A Vet</a></p>
+						<p><a class="btn btn-lg btn-primary" href="/vet_profiles" role="button">Find A Vet</a></p>
 					</div>
 				</div>
 			</div>
@@ -27,7 +27,7 @@
 						<% if user_signed_in? %>
 							<p><%= link_to 'My Profile', user_profile_url(id: current_user.id), class: "btn btn-lg btn-success" %>
 						<% else %>
-							<p><%= link_to 'Register An Account', new_user_registration_url, class: "btn btn-lg btn-info" %></p>
+							<p><%= link_to 'Register An Account', new_user_registration_url, class: "btn btn-lg btn-warning" %></p>
 						<% end %>
 					</div>
 				</div>
@@ -41,7 +41,7 @@
 						<% if vet_signed_in? %>
 							<p><%= link_to 'Your Clinic Dashboard', vet_url(id: current_vet.id), class: "btn btn-lg btn-success" %></p>
 						<% else %>
-							<p><%= link_to 'Register Your Vet Clinic', contacts_url, class: "btn btn-lg btn-info" %></p>
+							<p><%= link_to 'Register Your Vet Clinic', contacts_url, class: "btn btn-lg btn-warning" %></p>
 						<% end %>
 					</div>
 				</div>

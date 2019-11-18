@@ -11,12 +11,19 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
+@import "variables";
 @import "bootstrap";
+@import "bootswatch";
 @import "pets";
 @import "contacts";
 
 body {
 	overflow: hidden;
+	// background-image: url("jr-korpa-_WY9BUmtyug-unsplash.jpg");
+	// background-position: center; /* Center the image */
+	// background-repeat: no-repeat; /* Do not repeat the image */
+	// background-size: cover; /* Resize the background image to cover the entire container */
 }
 
 main {
@@ -27,8 +34,9 @@ footer {
 	position: fixed;
 	bottom: 0;
 	width: 100vw;
-	background-color: black;
-  z-index: 2;
+	background-color: #2C3E50;
+	color: white;
+	z-index: 2;
 }
 
 .custom-scroll {

@@ -25,7 +25,7 @@
 					</div>
 					<div class="col-md-8 text-center">
 						<h3><%= @user_profile.username %></h3>
-						<%= link_to raw('<i class="fas fa-edit mr-2"></i>Edit Profile'), edit_user_profile_path(@user_profile), class: "btn btn-info" %>
+						<%= link_to raw('<i class="fas fa-edit mr-2"></i>Edit Profile'), edit_user_profile_path(@user_profile), class: "btn btn-warning" %>
 					</div>
 				</div>
 			</div>
@@ -55,7 +55,7 @@
 				<div class="tab-pane fade show active" id="pet" role="tabpanel" aria-labelledby="pet-tab">
 					<div class="container mt-3">
 						<!-- button to add new pet -->
-						<%= link_to raw('<i class="fas fa-plus-circle mr-2"></i>new pet'), new_pet_path, class: "btn btn-info my-2" %>
+						<%= link_to raw('<i class="fas fa-plus-circle mr-2"></i>new pet'), new_pet_path, class: "btn btn-success my-2" %>
 						<!-- list of pet cards -->
 						<div class="row">
 							<% @pets.each do |p| %>
