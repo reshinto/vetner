@@ -48,7 +48,10 @@
 						<%= vet_profile.address %><br>
 						<%= vet_profile.unit %><br>
 						<i class="fas fa-phone mr-2"></i>
-						<a href=<%= "tel:+65-#{vet_profile.phone}" %>><%= vet_profile.phone %></a>
+						<a href=<%= "tel:+65-#{vet_profile.phone}" %>><%= vet_profile.phone %></a><br>
+						<% if vet_profile.emergency %>						
+							<span class="badge badge-danger my-2"><i class="fas fa-first-aid mr-2"></i>24-hour</span>
+						<% end %>							
 					</p>
 					<div class="mt-auto text-center">
 						<% if user_signed_in? %>
