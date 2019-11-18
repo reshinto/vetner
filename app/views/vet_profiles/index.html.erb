@@ -37,7 +37,7 @@
 						<button class="btn btn-primary rounded" type="submit" disabled >
 							<i class="fas fa-filter mr-2"></i>24-hour Vets Only
 						</button>
-					</div>				
+					</div>
 			</div>
 			<% end %>
 			<%= form_tag(vet_profiles_path, method: "get", local: true, class: "d-inline-block m-2") do %>
@@ -46,7 +46,7 @@
 						<button class="btn btn-primary rounded" type="submit">
 							<i class="fas fa-filter mr-2"></i>All Vets
 						</button>
-					</div>				
+					</div>
 			</div>
 			<% end %>
 
@@ -59,7 +59,7 @@
 						<button class="btn btn-primary rounded" type="submit">
 							<i class="fas fa-filter mr-2"></i>24-hour Vets Only
 						</button>
-					</div>				
+					</div>
 			</div>
 			<% end %>
 
@@ -69,14 +69,14 @@
 						<button class="btn btn-primary rounded" type="submit" disabled>
 							<i class="fas fa-filter mr-2"></i>All Vets
 						</button>
-					</div>				
+					</div>
 			</div>
 			<% end %>
 		<% end %>
 
 
 
-		
+
 
 
 
@@ -182,7 +182,7 @@ if (slider !== null) {
 							// https://github.com/jseppi/Leaflet.MakiMarkers
 							// https://labs.mapbox.com/maki-icons/
 							L.MakiMarkers.accessToken = '<%= ENV["MAPBOXTOKEN"] %>';
-							let icon = L.MakiMarkers.icon({icon: "heart", color: "#E31515", size: "m"});
+							let icon = L.MakiMarkers.icon({icon: "building", color: "#E31515", size: "m"});
 
 							let marker = L.marker([data.userLat, data.userLong], {icon: icon}).addTo(vetsMap);
 							marker.bindPopup("<h6 class='text-danger'>Home</h6>");
@@ -246,10 +246,10 @@ if (slider !== null) {
 
 		if (searchParams) {
 			queryString = `?utf8=%E2%9C%93&search=${searchParams}&commit=Search`;
-		} 
+		}
 		if (emergencyParams) {
 			queryString = `?utf8=%E2%9C%93&emergency=true`;
-		} 
+		}
 
 		// http://localhost:3000/vet_profiles?utf8=%E2%9C%93&search=jurong&commit=Search
 		fetch('/vet_profiles.json?'+queryString)
