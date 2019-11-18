@@ -52,14 +52,18 @@ class UserProfilesController < ApplicationController
     require "open-uri"
     respond_to do |format|
       if @user_profile.update(user_profile_params)
+        result = JSON.load(open("https://developers.onemap.sg/commonapi/search?searchVal=#{@user_profile.postalcode}&returnGeom=Y&getAddrDetails=Y"))
+        if result["results"].length > 0
+          userLat = result["results"][0]["LATITUDE"]
+          userLong = result["results"][0]["LONGITUDE"]
+          address = result["results"][0]["ADDRESS"]
+          @user_profile.update(:address => address, :userLat => userLat, :userLong => userLong)
+        else
+          format.html { redirect_to @user_profile, notice: 'Invalid Postal Code.' }
+          format.json { render :show, status: :ok, location: @user_profile }
+        end
         format.html { redirect_to @user_profile, notice: 'User profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_profile }
-
-        result = JSON.load(open("https://developers.onemap.sg/commonapi/search?searchVal=#{@user_profile.postalcode}&returnGeom=Y&getAddrDetails=Y"))
-        userLat = result["results"][0]["LATITUDE"]
-        userLong = result["results"][0]["LONGITUDE"]
-        address = result["results"][0]["ADDRESS"]
-        @user_profile.update(:address => address, :userLat => userLat, :userLong => userLong)
       else
         format.html { render :edit }
         format.json { render json: @user_profile.errors, status: :unprocessable_entity }
