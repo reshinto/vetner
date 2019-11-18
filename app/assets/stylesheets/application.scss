@@ -20,7 +20,7 @@
 
 body {
 	overflow: hidden;
-	background-image: url("jr-korpa-_WY9BUmtyug-unsplash.jpg");
+	background-image: url("background.jpg");
 	background-position: center; /* Center the image */
 	background-repeat: no-repeat; /* Do not repeat the image */
 	background-size: cover; /* Resize the background image to cover the entire container */
@@ -71,87 +71,87 @@ footer {
 
 // login page
 .main-head{
-  height: 150px;
-  background: #FFF;
+	height: 150px;
+	background: #FFF;
 }
 
 .sidenav {
-  height: 50%;
-  background-color: #2D3E50;
-  overflow-x: hidden;
+	height: 50%;
+	background-color: #2D3E50;
+	overflow-x: hidden;
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {
-    height: 50%;
-    padding-top: 0;
-  }
+	.sidenav {
+		height: 50%;
+		padding-top: 0;
+	}
 }
 
 @media screen and (max-width: 450px) {
-  .sidenav {
-    height: 50%;
-    padding-top: 0;
-  }
+	.sidenav {
+		height: 50%;
+		padding-top: 0;
+	}
 
-  .login-form{
-    margin-top: 2vh;
-    margin-bottom: 5vh;
-  }
+	.login-form{
+		margin-top: 2vh;
+		margin-bottom: 5vh;
+	}
 
-  .edit-form{
-    margin-top: 2vh;
-    margin-bottom: 5vh;
-  }
+	.edit-form{
+		margin-top: 2vh;
+		margin-bottom: 5vh;
+	}
 
-  .register-form{
-    margin-top: 2vh;
-    margin-bottom: 5vh;
-  }
+	.register-form{
+		margin-top: 2vh;
+		margin-bottom: 5vh;
+	}
 }
 
 @media screen and (min-width: 768px){
-  .edit-main{
-    // margin-top: 0vh;
-    margin-left: 50vw;
-  }
+	.edit-main{
+		// margin-top: 0vh;
+		margin-left: 50vw;
+	}
 
-  .login-main{
-    // margin-top: 0vh;
-    margin-left: 65vw;
-  }
+	.login-main{
+		// margin-top: 0vh;
+		margin-left: 65vw;
+	}
 
-  .sidenav{
-    height: 100%;
-    width: 50vw;
-    position: fixed;
-    padding-top: 20vh;
-    padding-left: 10vw;
-    z-index: 1;
-    top: 0;
-    left: 0;
-  }
+	.sidenav{
+		height: 100%;
+		width: 50vw;
+		position: fixed;
+		padding-top: 20vh;
+		padding-left: 10vw;
+		z-index: 1;
+		top: 0;
+		left: 0;
+	}
 
-  .login-form{
-    margin-top: 35vh;
-  }
+	.login-form{
+		margin-top: 35vh;
+	}
 
-  .edit-form{
-    margin-top: 20vh;
-  }
+	.edit-form{
+		margin-top: 20vh;
+	}
 
-  .register-form{
-    margin-top: 30vh;
-  }
+	.register-form{
+		margin-top: 30vh;
+	}
 }
 
 
 .login-main-text{
-  margin-top: 20vh;
-  padding: 60px;
-  color: #fff;
+	margin-top: 20vh;
+	padding: 60px;
+	color: #fff;
 }
 
 .login-main-text h2{
-  font-weight: 300;
+	font-weight: 300;
 }
