@@ -1,4 +1,6 @@
 # VETNER
+## Demo
+![Demo](./documentation/demo.gif)
 ## Technologies used
 * Ruby, Rails, Javascript, HTML, SCSS, Bootstrap, PostgreSQL
 ### APIS
