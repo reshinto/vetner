@@ -41,3 +41,10 @@ rails db:seed
 ![Wireframe](./documentation/wireframe.png)
 ## Entity Relationship Diagram (ERD)
 ![ERD](./documentation/ERD-image.png)
+## Collaborators
+* **Terence**
+[reshinto](https://github.com/reshinto)
+* **Hong Jin** 
+[lhjd](https://github.com/lhjd)
+* **Sim Yen** 
+[SimYen](https://github.com/SimYen)
