@@ -152,7 +152,8 @@ GEM
       activesupport (>= 4.2)
     popper_js (1.14.5)
     public_suffix (4.0.1)
-    puma (3.12.2)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.0.8)
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
@@ -282,7 +283,7 @@ DEPENDENCIES
   mail_form
   pg (>= 0.18, < 2.0)
   pg_search
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 5.2.3)
   rails_admin
   sass-rails (~> 5.0)
