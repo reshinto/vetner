@@ -79,11 +79,19 @@ If you seeded the database, sign in with one of the generated admin accounts and
 - Active Storage is configured for local disk storage by default; update `config/storage.yml` if you plan to use a different service in production.
 - Map features rely on browser `sessionStorage` for caching distance calculations. Clear site data if you need to reset cached values during development.
 
-## Contributing
-1. Fork the repository and create a feature branch.
-2. Follow the existing Ruby style conventions (Ruby 2.5, Rails 5.2) and keep views accessible and responsive (Bootstrap 4).
-3. Run the test suite and linting tools relevant to your changes.
-4. Submit a pull request describing the update, including screenshots for UI changes when possible.
+## Wireframes
 
-## License
-This project is provided for educational purposes. Please contact the maintainers before using the code for commercial deployments.
+![Wireframe](./documentation/wireframe.png)
+
+## Entity Relationship Diagram (ERD)
+
+![ERD](./documentation/ERD-image.png)
+
+## Collaborators
+
+- **Terence**
+  [reshinto](https://github.com/reshinto)
+- **Hong Jin**
+  [lhjd](https://github.com/lhjd)
+- **Sim Yen**
+  [SimYen](https://github.com/SimYen)
