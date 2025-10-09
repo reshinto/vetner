@@ -3,6 +3,10 @@
 ## Overview
 Vetner is a Ruby on Rails platform that helps pet owners in Singapore connect with Singapore Veterinary Association registered clinics, manage their pets' medical history, and collaborate with their preferred veterinarians. The application combines a searchable clinic directory with personal health records so that owners and vets share the same up-to-date information. Interactive maps powered by OneMap, Mapbox, and Leaflet make it easy to locate nearby clinics, while secure authentication ensures that pet owners and veterinary staff each see the tools tailored to their role.
 
+## Demo
+
+![Demo](./images/demo.gif)
+
 ## Key Features
 - **Interactive vet discovery map** – Explore clinic locations plotted on a Leaflet map that uses OneMap basemaps and Mapbox markers. Signed-in owners can filter clinics by walking distance using a slider that is pre-filled with travel times calculated from stored home coordinates, while everyone can filter for 24-hour emergency providers and run full-text searches by clinic name, address, or postal code.
 - **Dual authentication flows** – Devise manages separate sign-in and sign-up paths for pet owners (`User`) and veterinary clinics (`Vet`). Onboarding automatically creates the corresponding profile records so each account can complete its details right after registration.
